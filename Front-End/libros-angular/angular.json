@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "libros-angular": {
+    "PracticaAngularNode": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/libros-angular",
+            "outputPath": "dist/PracticaAngularNode",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,15 +27,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/styles.css"
             ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/@popperjs/core/dist/umd/popper.min.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -74,10 +68,12 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "libros-angular:build:production"
+              "browserTarget": "PracticaAngularNode:build:production"
+              
             },
             "development": {
-              "browserTarget": "libros-angular:build:development"
+              "browserTarget": "PracticaAngularNode:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
@@ -85,7 +81,8 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "libros-angular:build"
+            "browserTarget": "PracticaAngularNode:build",
+            
           }
         },
         "test": {
@@ -108,5 +105,5 @@
       }
     }
   },
-  "defaultProject": "libros-angular"
+  "defaultProject": "PracticaAngularNode"
 }
