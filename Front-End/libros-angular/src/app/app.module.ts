@@ -8,6 +8,8 @@ import { HomeComponent } from './home/home.component';
 import { NewsletterComponent } from './newsletter/newsletter.component';
 import { ProductosHomeComponent } from './productos-home/productos-home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './components/header/header.component';
+
 
 @NgModule({
   declarations: [
@@ -15,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     InicioComponent,
     HomeComponent,
     NewsletterComponent,
-    ProductosHomeComponent
+    ProductosHomeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
