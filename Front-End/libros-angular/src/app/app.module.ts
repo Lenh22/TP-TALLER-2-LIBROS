@@ -9,6 +9,7 @@ import { NewsletterComponent } from './newsletter/newsletter.component';
 import { ProductosHomeComponent } from './productos-home/productos-home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { HeaderComponent } from './components/header/header.component';
     HomeComponent,
     NewsletterComponent,
     ProductosHomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
