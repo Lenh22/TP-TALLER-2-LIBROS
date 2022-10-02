@@ -12,6 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductoDetalleComponent } from './components/producto-detalle/producto-detalle.component';
 import { NuevoUsuarioComponent } from './components/nuevo-usuario/nuevo-usuario.component';
+import { CarritoComponent } from './components/carrito/carrito.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { NuevoUsuarioComponent } from './components/nuevo-usuario/nuevo-usuario.
     HeaderComponent,
     FooterComponent,
     ProductoDetalleComponent,
-    NuevoUsuarioComponent
+    NuevoUsuarioComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,
