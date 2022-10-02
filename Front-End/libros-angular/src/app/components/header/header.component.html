@@ -2,7 +2,7 @@
   <div
     class="bg-dark header-top px-5 py-1 d-flex justify-content-between align-items-center"
   >
-    <div class="d-flex gap-3">
+    <div class="d-flex gap-3 header-top-contact">
       <span style="color: #fff; font-size: 12px"
         ><i class="fa-solid fa-phone" style="color: rgb(255, 0, 0)"></i> (+5411)
         4480-8900</span
@@ -36,14 +36,13 @@
       <div
         class="modal fade"
         id="staticBackdrop"
-        data-bs-backdrop="static"
         data-bs-keyboard="false"
         tabindex="-1"
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true"
       >
         <div class="modal-dialog">
-          <div class="modal-content bg-warning">
+          <div class="modal-content bg-light">
             <div class="modal-header">
               <h5 class="modal-title" id="staticBackdropLabel">Bienvenido</h5>
               <button
@@ -73,21 +72,42 @@
                   />
                 </div>
                 <div class="modal-footer">
-                  <!-- <button
-                    style="border-radius: 60px"
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    Sing up
-                  </button> -->
                   <button
                     type="button"
-                    class="btn btn-primary"
+                    class="btn btn-warning"
                     style="border-radius: 60px"
                   >
                     Ingresar
                   </button>
+                </div>
+                <div class="d-flex gap-3 flex-wrap">
+                  o inicie sesión con
+                  <div class="d-flex gap-2">
+                    <span
+                      style="background-color: blue; border-radius: 60px"
+                      class="px-4"
+                      ><i
+                        class="fa-brands fa-facebook-f"
+                        style="color: #fff"
+                      ></i
+                    ></span>
+                    <span
+                      style="
+                        background-color: rgb(91, 91, 253);
+                        border-radius: 60px;
+                      "
+                      class="px-4"
+                      ><i class="fa-brands fa-twitter" style="color: #fff"></i
+                    ></span>
+                    <span
+                      style="
+                        background-color: rgb(211, 194, 194);
+                        border-radius: 60px;
+                      "
+                      class="px-4"
+                      ><i class="fa-brands fa-google" style="color: #fff"></i
+                    ></span>
+                  </div>
                 </div>
               </form>
             </div>
@@ -97,7 +117,7 @@
     </div>
   </div>
   <div class="header-botton px-5">
-    <div class="d-flex align-items-center py-2">
+    <div class="d-flex align-items-center py-3 header-botton-info">
       <div
         class="logotipo d-flex gap-2 align-items-center"
         style="filter: invert(100%)"
@@ -105,12 +125,12 @@
         <img src="../../../assets/imagenes/iso.png" alt="isotipo" width="30" />
         <a href=""
           ><img
-            width="150"
+            width="180"
             src="https://fontmeme.com/permalink/221001/e8000a6afc66936e040a5d1e9a070f90.png"
             alt="fuente-uncial-antiqua"
         /></a>
       </div>
-      <div class="col-6 m-auto">
+      <div class="col-6 m-auto header-botton__search">
         <form class="input-group my-3">
           <button
             style="border-radius: 60px 0 0 60px"
@@ -133,6 +153,7 @@
             type="text"
             class="form-control"
             aria-label="Text input with dropdown button"
+            placeholder="Buscar producto"
           />
           <button
             style="border-radius: 0 60px 60px 0"
@@ -143,10 +164,12 @@
           </button>
         </form>
       </div>
-      <div class="d-flex gap-4 text-light align-items-center">
+      <div
+        class="d-flex gap-3 text-light align-items-center header-botton__cart"
+      >
         <span
           >Favoritos <i class="fa-regular fa-heart"></i
-          ><span class="fav-count">15</span></span
+          ><span class="fav-count">4</span></span
         >
         
          <span class="carrito" routerLink="/carrito">   <i class="fa-solid fa-cart-shopping"></i>
