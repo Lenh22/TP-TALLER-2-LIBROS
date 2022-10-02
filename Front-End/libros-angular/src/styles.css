@@ -1,17 +1,28 @@
-a{
+a {
   text-decoration: none;
 }
 
-section{
+section {
   max-width: 1440px;
   padding: 3vw;
   margin: auto;
 }
 
-button{
+button {
   font-weight: bolder;
 }
 
-li{
+li {
   list-style: none;
+}
+
+@media (max-width: 767px) {
+
+  .header-top,
+  .footer-top,
+  .header-botton,
+  .footer-botton {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
 }
