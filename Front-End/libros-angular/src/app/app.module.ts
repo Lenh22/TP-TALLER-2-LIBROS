@@ -10,6 +10,8 @@ import { ProductosHomeComponent } from './productos-home/productos-home.componen
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ProductoDetalleComponent } from './components/producto-detalle/producto-detalle.component';
+import { NuevoUsuarioComponent } from './components/nuevo-usuario/nuevo-usuario.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { FooterComponent } from './components/footer/footer.component';
     NewsletterComponent,
     ProductosHomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ProductoDetalleComponent,
+    NuevoUsuarioComponent
   ],
   imports: [
     BrowserModule,

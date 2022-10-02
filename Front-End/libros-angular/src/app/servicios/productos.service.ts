@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Subject } from "rxjs";
+import { BehaviorSubject, Observable, Subject } from "rxjs";
 import { environment } from "src/environments/environment";
 import { tap } from 'rxjs/operators';
 
@@ -10,7 +10,7 @@ import { tap } from 'rxjs/operators';
 export class ProductosService {
   //to do : cuando tengamos una api cambiar url y agregar ${environment.apiUrl}
   productosNuevosHome() {
-    const url = 'https://6330b5d2cff0e7bf70e0cb48.mockapi.io/libreria/producto '
+    const url = environment.URL + 'libreria/producto '
     return this.http
     .get<any>(
     `${url}`)
@@ -24,5 +24,9 @@ export class ProductosService {
   }
 
   constructor(private http: HttpClient) { }
+
+  public detalle(id:number):Observable<any>{
+    return this.http.get<any>(environment.URL + `libreria/detalle/${id}`); //cambiar a la url adecuada
+  }
 
 }
