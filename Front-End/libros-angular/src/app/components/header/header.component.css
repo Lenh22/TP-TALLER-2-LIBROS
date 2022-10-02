@@ -1,0 +1,36 @@
+@import url("../../../styles.css");
+.header-botton {
+  background-color: #000;
+  border-bottom: 2px solid red;
+}
+
+.logotipo-header {
+  filter: invert(100%);
+}
+
+.header-dropdown-category {
+  border-radius: 60px 0 0 60px;
+}
+
+.header-social-media {
+  color: #fff;
+}
+
+.header-social-media:hover {
+  color: rgb(233, 217, 217);
+}
+
+.cart-count,
+.fav-count {
+  font-size: 12px;
+  padding: 2px 4px;
+  border-radius: 50%;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.login-modal {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+}
