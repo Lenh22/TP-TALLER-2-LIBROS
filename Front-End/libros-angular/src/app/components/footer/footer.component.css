@@ -9,3 +9,29 @@
 .footer-botton{
   color: #fff;
 }
+
+.footer-top h5{
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 991px){
+.footer-top{
+  flex-direction: column-reverse;
+  gap: 30px;
+}
+.footer-top-about-us{
+  width: 100%;
+}
+.footer-payments{
+  flex-wrap: wrap;
+}
+}
+
+/*@media (max-width: 767px){
+
+}*/
+
+/*@media (max-width: 280px){
+
+}*/
