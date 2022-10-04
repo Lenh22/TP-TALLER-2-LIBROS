@@ -45,37 +45,67 @@
     </div>
   </div>
 </section>
-<!-- /SECTION -->
+<!-- /SECTION
 
 <!-- SECTION -->
 <section>
+  <ngb-pagination
+    [collectionSize]="productosNuevos.length"
+    [pageSize]="productosNuevos.length / 2.5"
+    [rotate]="true"
+    [(page)]="page"
+    [boundaryLinks]="true"
+    aria-label="Default pagination"
+    class="d-flex justify-content-start pagination-rounded-flat pagination-success mb-3"
+  ></ngb-pagination>
   <div class="d-flex flex-wrap justify-content-center gap-5">
-    <ng-container ng-container *ngFor="let producto of productosNuevos">
+    <div
+      *ngFor="
+        let producto of productosNuevos
+          | slice: (page - 1) * 6:(page - 1) * 6 + 6
+      "
+    >
       <div
-        class="product-card d-flex flex-column align-items-center text-center gap-2 border border-2 rounded p-2"
+        class="product-card d-flex flex-column gap-2 border border-2 rounded-4 p-3"
       >
-        <div class="product-img">
+        <div class="d-flex justify-content-end">
+          <span
+            class="bg-success px-3 border rounded-5 text-light fw-semibold {{
+              producto.descuento || 'invisible'
+            }}"
+            >- %{{ producto.descuento }}</span
+          >
+        </div>
+        <div class="product-img d-block m-auto">
           <img
             [src]="producto.imagen"
             class="card-img-top"
             [alt]="producto.nombre"
-            height="200"
+            style="object-fit: cover; height: 180px; width: 120px"
           />
-          <!-- <div class="product-label">
-            <span class="sale">-30%</span>
-          </div> -->
         </div>
-        <div class="product-body">
+        <div class="product-body text-center">
           <span style="font-size: 14px">{{ producto.categoria }}</span>
           <span
             class="product-name my-2 d-block"
-            style="word-break: break-all; width: 250px; height: 50px"
+            style="word-break: break; width: 250px; height: 60px"
           >
-            <a href="#">{{ producto.nombre }}</a>
+            <a href="/producto/{{ producto.id }}}">{{ producto.nombre }}</a>
           </span>
-          <h5 class="fw-bolder">
-            {{ producto.precio.toFixed(2) }}
-            <!-- $980.00 <del class="product-old-price">$990.00</del> -->
+          <h5
+            class="{{
+              producto.descuento > 0 ? 'fw-semibold price-delete' : 'invisible'
+            }}"
+          >
+            ${{ producto.precio.toFixed(2) }}
+          </h5>
+          <h5 class="semi-bold">
+            ${{
+              (
+                producto.precio -
+                (producto.precio * producto.descuento) / 100
+              ).toFixed(2)
+            }}
           </h5>
           <div class="my-2 d-flex gap-1 justify-content-center">
             <li *ngFor="let n of numSequence(producto.calificacion)">
@@ -104,11 +134,20 @@
           </div>
         </div>
         <div class="d-flex justify-content-center mt-2">
-          <button class="btn btn-danger btn-general">
+          <button class="btn btn-danger btn-general fw-semibold">
             <i class="fa fa-shopping-cart"></i> Añadir al carrito
           </button>
         </div>
       </div>
-    </ng-container>
+    </div>
   </div>
+  <ngb-pagination
+    [collectionSize]="productosNuevos.length"
+    [pageSize]="productosNuevos.length / 2.5"
+    [rotate]="true"
+    [(page)]="page"
+    [boundaryLinks]="true"
+    aria-label="Default pagination"
+    class="d-flex justify-content-end pagination-rounded-flat pagination-success mt-5"
+  ></ngb-pagination>
 </section>

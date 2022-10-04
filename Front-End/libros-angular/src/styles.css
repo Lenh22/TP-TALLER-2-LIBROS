@@ -2,7 +2,7 @@ a {
   text-decoration: none;
 }
 
-section {
+section, .container-general {
   max-width: 1440px;
   padding: 3vw;
   margin: auto;
