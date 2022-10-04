@@ -12,6 +12,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ProductoDetalleComponent } from './components/producto-detalle/producto-detalle.component';
 import { NuevoUsuarioComponent } from './components/nuevo-usuario/nuevo-usuario.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
+import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { BannerHomeComponent } from './components/banner-home/banner-home.component';
 
 
 @NgModule({
@@ -24,12 +26,15 @@ import { CarritoComponent } from './components/carrito/carrito.component';
     FooterComponent,
     ProductoDetalleComponent,
     NuevoUsuarioComponent,
-    CarritoComponent
+    CarritoComponent,
+    BannerHomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    NgbPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

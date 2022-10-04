@@ -1,0 +1,21 @@
+@import url("../../../styles.css");
+
+.banner-home {
+  background-image: url('./../../../assets/imagenes/banner.jpg');
+  height: 400px;
+  background-position: 25% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (max-width: 767px) {
+  .banner-info{
+    display: none !important;
+  }
+
+  .banner-home{
+    height: 250px;
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -254,3 +254,15 @@ body {
 .profile-card-6:hover .profile-overview {
   padding-bottom: 25px;
 }
+
+
+.product-card:hover {
+  border: 2px solid rgb(170, 66, 66) !important;
+}
+
+.price-delete {
+  text-decoration-line: line-through;
+  color: rgb(150, 144, 144);
+  font-weight: normal;
+  font-size: 14px;
+}
