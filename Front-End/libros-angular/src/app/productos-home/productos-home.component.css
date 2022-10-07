@@ -266,3 +266,15 @@ body {
   font-weight: normal;
   font-size: 14px;
 }
+
+/* @media (max-width: 991px) {
+  .product-list {
+    justify-content: center !important;
+  }
+} */
+
+/* @media (max-width: 767px) {
+.product-container-card{
+  width: 50%;
+}
+} */
