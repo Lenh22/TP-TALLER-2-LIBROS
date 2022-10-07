@@ -14,6 +14,8 @@ import { NuevoUsuarioComponent } from './components/nuevo-usuario/nuevo-usuario.
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { BannerHomeComponent } from './components/banner-home/banner-home.component';
+import { CarritoService } from './servicios/carrito.service';
+import { CategoriaService } from './servicios/categoria.service';
 
 
 @NgModule({
@@ -36,7 +38,7 @@ import { BannerHomeComponent } from './components/banner-home/banner-home.compon
     NgbModule,
     NgbPaginationModule,
   ],
-  providers: [],
+  providers: [CarritoService, CategoriaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

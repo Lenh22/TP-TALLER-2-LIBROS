@@ -142,11 +142,18 @@
             Categorias
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#">Separated link</a></li>
+            <li>
+              <a class="dropdown-item" href="#lista-productos"
+                >Todos los productos</a
+              >
+            </li>
+            <div *ngFor="let categoria of categorias">
+              <li>
+                <a class="dropdown-item" href="#lista-productos">{{
+                  categoria.nombre
+                }}</a>
+              </li>
+            </div>
           </ul>
           <input
             style="border: 2px solid rgb(255, 255, 255)"
