@@ -1,0 +1,17 @@
+{
+  "name": "back-end",
+  "version": "0.0.1",
+  "description": "backend del proyecto taller web 1 de un ecommerce relacionado con libros",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rodrigo edu lean vivalafrance",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1"
+  }
+}
