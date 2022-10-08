@@ -1,3 +1,9 @@
+<mat-drawer-container
+  class="example-container {{ show > 0 ? 'show' : 'hiode' }}"
+  autosize
+  (click)="closeDrawer(); drawer.close()"
+>
+</mat-drawer-container>
 <header>
   <div
     class="bg-dark header-top px-5 py-1 d-flex justify-content-between align-items-center"
@@ -179,11 +185,25 @@
           ><span class="fav-count">4</span></span
         >
 
-        <span class="carrito" routerLink="/carrito"
-          >Carrito <i class="fa-solid fa-cart-shopping"></i>
-          <span class="cart-count">3</span>
+        <span style="color: #fff">
+          <span class="carrito" routerLink="/carrito">Carrito </span>
+          <button
+            type="button"
+            mat-button
+            (click)="drawer.toggle(); showDrawer(); ('opened=!opened')"
+            style="border: none; color: #fff; background-color: inherit"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-count">3</span>
+          </button>
         </span>
       </div>
     </div>
   </div>
 </header>
+<mat-drawer #drawer class="example-sidenav col-4" mode="over" position="end">
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio facilis
+  doloremque dolorum delectus molestiae, animi facere totam reprehenderit sit
+  suscipit, nisi amet aperiam architecto, iste quos esse atque dolor velit.
+  <button (click)="drawer.close(); closeDrawer()">cerrar</button>
+</mat-drawer>

@@ -37,8 +37,34 @@
   background-color: rgba(255, 255, 255, 0);
   border: none;
 }
-.carrito{
-  cursor:pointer;
+.carrito {
+  cursor: pointer;
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+  position: fixed;
+  z-index: 1111;
+}
+
+.show {
+  background-color: rgb(94, 72, 72);
+  opacity: 0.4;
+  z-index: 111;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+}
+
+.hide {
+  display: none;
 }
 
 @media (max-width: 991px) {
@@ -57,11 +83,19 @@
   .header-botton__search {
     width: 100%;
   }
+
+  .example-sidenav {
+    width: 50%;
+  }
 }
 
 @media (max-width: 767px) {
   .header-botton__cart {
     align-self: center !important;
+  }
+
+  .example-sidenav {
+    width: 100%;
   }
 }
 

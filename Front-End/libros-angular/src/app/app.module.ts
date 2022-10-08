@@ -16,7 +16,9 @@ import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { BannerHomeComponent } from './components/banner-home/banner-home.component';
 import { CarritoService } from './servicios/carrito.service';
 import { CategoriaService } from './servicios/categoria.service';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { StylesService } from './servicios/styles.service';
 
 @NgModule({
   declarations: [
@@ -37,8 +39,10 @@ import { CategoriaService } from './servicios/categoria.service';
     HttpClientModule,
     NgbModule,
     NgbPaginationModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
   ],
-  providers: [CarritoService, CategoriaService],
-  bootstrap: [AppComponent]
+  providers: [CarritoService, CategoriaService, StylesService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -10,6 +10,7 @@ const FILTER_PAG_REGEX = /[^0-9]/g;
 export class ProductosHomeComponent implements OnInit {
   productosNuevos: ListaProductos[] = [];
   page:number = 1;
+  show: number = 0;
 
   constructor(private serviciosProductos: ProductosService) {}
 
