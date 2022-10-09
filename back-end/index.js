@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/api/authenticate', (req, res) => {
- 
+    console.log(req.body);
     if (req.body) {
       var user = req.body;
       console.log(user)
