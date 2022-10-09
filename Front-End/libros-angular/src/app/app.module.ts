@@ -14,6 +14,7 @@ import { NuevoUsuarioComponent } from './components/nuevo-usuario/nuevo-usuario.
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { BannerHomeComponent } from './components/banner-home/banner-home.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { BannerHomeComponent } from './components/banner-home/banner-home.compon
     HttpClientModule,
     NgbModule,
     NgbPaginationModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

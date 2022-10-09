@@ -41,6 +41,7 @@
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true"
       >
+      <!-- login -->
         <div class="modal-dialog">
           <div class="modal-content bg-light">
             <div class="modal-header">
@@ -53,7 +54,7 @@
               ></button>
             </div>
             <div class="modal-body">
-              <form>
+              <form [formGroup]="formularioLogin">
                 <div class="mb-2">
                   <input
                     type="email"
@@ -61,6 +62,7 @@
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                     placeholder="Usuario"
+                    formControlName="usuario"
                   />
                 </div>
                 <div class="mb-2">
@@ -69,6 +71,7 @@
                     class="form-control"
                     id="exampleInputPassword1"
                     placeholder="Contraseña"
+                    formControlName="contrasenia"
                   />
                 </div>
                 <div class="modal-footer">
@@ -76,6 +79,7 @@
                     type="button"
                     class="btn btn-warning"
                     style="border-radius: 60px"
+                    (click)="onLogin()"
                   >
                     Ingresar
                   </button>

@@ -5,6 +5,8 @@
 export const environment = {
   production: false,
   URL: 'https://6330b5d2cff0e7bf70e0cb48.mockapi.io/',
+  api: 'http://localhost:3000/api',
+  token:"",
   // URL: '[Aqui ira la otra url]',
 };
 
