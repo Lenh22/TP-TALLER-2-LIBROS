@@ -49,22 +49,17 @@
 }
 
 .example-sidenav {
-  padding: 20px;
   position: fixed;
   z-index: 1111;
 }
 
-.show {
+.showDrawer {
   background-color: rgb(94, 72, 72);
   opacity: 0.4;
   z-index: 111;
   width: 100vw;
   height: 100vh;
   position: fixed;
-}
-
-.hide {
-  display: none;
 }
 
 @media (max-width: 991px) {
