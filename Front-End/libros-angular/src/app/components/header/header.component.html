@@ -1,58 +1,112 @@
-<mat-drawer-container class="example-container {{ show > 0 && 'showDrawer' }}" autosize
-  (click)="closeDrawer(); drawer.close()">
-</mat-drawer-container>
 <header>
-  <div class="bg-dark header-top px-5 py-1 d-flex justify-content-between align-items-center">
+  <div
+    class="bg-dark header-top px-5 py-1 d-flex justify-content-between align-items-center"
+  >
     <div class="d-flex gap-3 header-top-contact">
-      <span style="color: #fff; font-size: 12px"><i class="fa-solid fa-phone" style="color: rgb(255, 0, 0)"></i> (+5411)
-        4480-8900</span>
-      <span style="color: #fff; font-size: 12px"><i class="fa-solid fa-envelope" style="color: rgb(255, 0, 0)"></i>
-        alumnos@unlam.edu.ar</span>
-      <span style="color: #fff; font-size: 12px"><i class="fa-solid fa-location-dot" style="color: rgb(255, 0, 0)"></i>
-        San Justo, Buenos Aires, Argentina</span>
+      <span style="color: #fff; font-size: 12px"
+        ><i class="fa-solid fa-phone" style="color: rgb(255, 0, 0)"></i> (+5411)
+        4480-8900</span
+      >
+      <span style="color: #fff; font-size: 12px"
+        ><i class="fa-solid fa-envelope" style="color: rgb(255, 0, 0)"></i>
+        alumnos@unlam.edu.ar</span
+      >
+      <span style="color: #fff; font-size: 12px"
+        ><i class="fa-solid fa-location-dot" style="color: rgb(255, 0, 0)"></i>
+        San Justo, Buenos Aires, Argentina</span
+      >
     </div>
     <div class="d-flex gap-3 align-items-center">
-      <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="color: #fff">
+      <button
+        type="button"
+        class="btn"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+        style="color: #fff"
+      >
         Login <i class="fa-solid fa-right-to-bracket"></i>
       </button>
-      <a href="/registrar" rel="noopener noreferrer" class="fw-bolder" style="color: #fff">Sign up <i
-          class="fa-solid fa-user-plus"></i>
+      <a
+        href="/registrar"
+        rel="noopener noreferrer"
+        class="fw-bolder"
+        style="color: #fff"
+        >Sign up <i class="fa-solid fa-user-plus"></i>
       </a>
-      <div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
         <div class="modal-dialog">
           <div class="modal-content bg-light">
             <div class="modal-header">
               <h5 class="modal-title" id="staticBackdropLabel">Bienvenido</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
             </div>
             <div class="modal-body">
               <form>
                 <div class="mb-2">
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Usuario" />
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    placeholder="Usuario"
+                  />
                 </div>
                 <div class="mb-2">
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" />
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="exampleInputPassword1"
+                    placeholder="Contraseña"
+                  />
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-warning" style="border-radius: 60px">
+                  <button
+                    type="button"
+                    class="btn btn-warning"
+                    style="border-radius: 60px"
+                  >
                     Ingresar
                   </button>
                 </div>
                 <div class="d-flex gap-3 flex-wrap">
                   o inicie sesión con
                   <div class="d-flex gap-2">
-                    <span style="background-color: blue; border-radius: 60px" class="px-4"><i
-                        class="fa-brands fa-facebook-f" style="color: #fff"></i></span>
-                    <span style="
+                    <span
+                      style="background-color: blue; border-radius: 60px"
+                      class="px-4"
+                      ><i
+                        class="fa-brands fa-facebook-f"
+                        style="color: #fff"
+                      ></i
+                    ></span>
+                    <span
+                      style="
                         background-color: rgb(91, 91, 253);
                         border-radius: 60px;
-                      " class="px-4"><i class="fa-brands fa-twitter" style="color: #fff"></i></span>
-                    <span style="
+                      "
+                      class="px-4"
+                      ><i class="fa-brands fa-twitter" style="color: #fff"></i
+                    ></span>
+                    <span
+                      style="
                         background-color: rgb(211, 194, 194);
                         border-radius: 60px;
-                      " class="px-4"><i class="fa-brands fa-google" style="color: #fff"></i></span>
+                      "
+                      class="px-4"
+                      ><i class="fa-brands fa-google" style="color: #fff"></i
+                    ></span>
                   </div>
                 </div>
               </form>
@@ -64,43 +118,73 @@
   </div>
   <div class="header-botton px-5">
     <div class="d-flex align-items-center py-3 header-botton-info">
-      <div class="logotipo d-flex gap-2 align-items-center" style="filter: invert(100%)">
+      <div
+        class="logotipo d-flex gap-2 align-items-center"
+        style="filter: invert(100%)"
+      >
         <img src="../../../assets/imagenes/iso.png" alt="isotipo" width="30" />
-        <a href=""><img width="180" src="https://fontmeme.com/permalink/221001/e8000a6afc66936e040a5d1e9a070f90.png"
-            alt="fuente-uncial-antiqua" /></a>
+        <a href=""
+          ><img
+            width="180"
+            src="https://fontmeme.com/permalink/221001/e8000a6afc66936e040a5d1e9a070f90.png"
+            alt="fuente-uncial-antiqua"
+        /></a>
       </div>
       <div class="col-6 m-auto header-botton__search">
         <form class="input-group my-3">
-          <button style="border-radius: 60px 0 0 60px" class="btn btn-light dropdown-toggle border border-0"
-            type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <button
+            style="border-radius: 60px 0 0 60px"
+            class="btn btn-light dropdown-toggle border border-0"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
             Categorias
           </button>
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item" href="#lista-productos">Todos los productos</a>
+              <a class="dropdown-item" href="#lista-productos"
+                >Todos los productos</a
+              >
             </li>
             <div *ngFor="let categoria of categorias">
               <li>
                 <a class="dropdown-item" href="#lista-productos">{{
                   categoria.nombre
-                  }}</a>
+                }}</a>
               </li>
             </div>
           </ul>
-          <input style="border: 2px solid rgb(255, 255, 255)" type="text" class="form-control"
-            aria-label="Text input with dropdown button" placeholder="Buscar producto" />
-          <button style="border-radius: 0 60px 60px 0" class="btn btn-danger fw-bolder" type="submit">
+          <input
+            style="border: 2px solid rgb(255, 255, 255)"
+            type="text"
+            class="form-control"
+            aria-label="Text input with dropdown button"
+            placeholder="Buscar producto"
+          />
+          <button
+            style="border-radius: 0 60px 60px 0"
+            class="btn btn-danger fw-bolder"
+            type="submit"
+          >
             Buscar
           </button>
         </form>
       </div>
-      <div class="d-flex gap-3 text-light align-items-center header-botton__cart">
-        <span>Favoritos <i class="fa-solid fa-heart"></i><span class="fav-count">4</span></span>
+      <div
+        class="d-flex gap-3 text-light align-items-center header-botton__cart"
+      >
+        <span
+          >Favoritos <i class="fa-solid fa-heart"></i
+          ><span class="fav-count">4</span></span
+        >
 
         <span style="color: #fff">
           <span class="carrito" routerLink="/carrito">Carrito </span>
-          <button type="button" mat-button (click)="drawer.toggle(); showDrawer()"
-            style="border: none; color: #fff; background-color: inherit">
+          <button
+            type="button"
+            style="border: none; color: #fff; background-color: inherit"
+          >
             <i class="fa-solid fa-cart-shopping"></i>
             <span class="cart-count">3</span>
           </button>
@@ -109,50 +193,3 @@
     </div>
   </div>
 </header>
-<mat-drawer #drawer class="example-sidenav col-4" mode="over" position="end">
-  <div class="d-flex flex-column justify-content-between" style="height: 100%;">
-    <div class="header-drawer d-flex justify-content-between align-items-center p-4"
-      style="border-bottom: 1px solid rgb(177, 165, 165) !important;padding-bottom: 10px;">
-      <h4>Carrito</h4>
-      <div class="logotipo d-flex gap-2 align-items-center">
-        <img src="../../../assets/imagenes/iso.png" alt="isotipo" width="30" />
-        <img width="140" src="https://fontmeme.com/permalink/221001/e8000a6afc66936e040a5d1e9a070f90.png"
-          alt="fuente-uncial-antiqua" />
-      </div>
-      <i class="fa-solid fa-circle-xmark" (click)="drawer.close(); closeDrawer()" style="cursor: pointer;"></i>
-    </div>
-    <div class="d-flex align-items-center flex-column m-auto">
-      <i class="fa-sharp fa-solid fa-bag-shopping fa-5x" style="color: rgb(153, 136, 136);"></i>
-      <span class="d-block fw-bolder">Tu carrito esta vacio</span>
-    </div>
-    <div class="footer-drawer px-4 py-3" style="border-top: 1px solid rgb(134, 2, 2) !important;padding-bottom: 10px;">
-      <div class="d-flex justify-content-between">
-        <span class="fw-bolder">Subtotal</span>
-        <span class="fw-bolder">$15000.00</span>
-      </div>
-      <div class="d-flex justify-content-center my-3">
-        <button class="btn btn-danger btn-general fw-semibold" style="width: 100%;">
-          <i class="fa-solid fa-bag-shopping"></i> Proceder a pagar
-        </button>
-      </div>
-      <div class="d-flex justify-content-center gap-5 fst-italic">
-        <span class="d-flex align-items-center gap-2"><i class="fa-solid fa-truck-fast"
-            style="color: rgb(105, 98, 98);"></i><span style="font-size: 12px;">Envios a
-            todo el país</span></span>
-        <span class="d-flex align-items-center gap-2"><i class="fa-solid fa-check-to-slot"
-            style="color: rgb(105, 98, 98);"></i><span style="font-size: 12px;">Envios
-            autorizados</span></span>
-      </div>
-      <div class="d-flex justify-content-center gap-2 flex-wrap px-2 pt-3" style="color: rgb(105, 98, 98);">
-        <i class="fa-brands fa-cc-visa fa-2x"></i>
-        <i class="fa-brands fa-cc-mastercard fa-2x"></i>
-        <i class="fa-brands fa-cc-apple-pay fa-2x"></i>
-        <i class="fa-brands fa-cc-paypal fa-2x"></i>
-        <i class="fa-brands fa-cc-amex fa-2x"></i>
-        <i class="fa-brands fa-google-pay fa-2x"></i>
-        <i class="fa-brands fa-cc-amazon-pay fa-2x"></i>
-        <i class="fa-brands fa-cc-diners-club fa-2x"></i>
-      </div>
-    </div>
-  </div>
-</mat-drawer>
