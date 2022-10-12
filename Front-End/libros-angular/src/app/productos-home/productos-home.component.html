@@ -58,7 +58,10 @@
     aria-label="Default pagination"
     class="d-flex justify-content-start pagination-rounded-flat pagination-success mb-3"
   ></ngb-pagination>
-  <div class="d-flex flex-wrap justify-content-center gap-5 m-auto" style="max-width: 1024px;">
+  <div
+    class="d-flex flex-wrap justify-content-center gap-5 m-auto"
+    style="max-width: 1024px"
+  >
     <div
       *ngFor="
         let producto of productosNuevos
@@ -85,7 +88,9 @@
           />
         </div>
         <div class="product-body text-center">
-          <span style="font-size: 14px">{{ producto.categoria }}</span>
+          <span style="font-size: 14px" class="fst-italic">{{
+            getCategoriaProducto(producto.categoria)
+          }}</span>
           <span
             class="product-name my-2 d-block"
             style="word-break: break; width: 250px; height: 60px"

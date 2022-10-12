@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Categoria, ListaCategoria } from 'src/app/modulos/DataProductos';
+import { Form } from '@angular/forms';
+import {
+  Categoria,
+  ListaCategoria,
+  ListaProductos,
+} from 'src/app/modulos/DataProductos';
 import { CategoriaService } from 'src/app/servicios/categoria.service';
+import { ProductosService } from 'src/app/servicios/productos.service';
 import { StylesService } from './../../servicios/styles.service';
 
 @Component({
@@ -14,14 +20,25 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private servicioCategorias: CategoriaService,
-    private styleService: StylesService
+    private styleService: StylesService,
+    private productoServicio: ProductosService
   ) {}
+
+  search: string;
+  productosBuscados: ListaProductos[] = [];
+  mensaje: string;
 
   ngOnInit(): void {
     this.servicioCategorias.getCategorias().subscribe((data) => {
       this.categorias = data;
       console.log('Categorias', this.categorias);
     });
+  }
+
+  searchProductHeader(search: string) {
+    this.productoServicio.buscarLibro(search);
+    this.productosBuscados = this.productoServicio.buscarLibro(search);
+    this.mensaje = this.productoServicio.mensajeNoExiste;
   }
 
   showDrawer() {

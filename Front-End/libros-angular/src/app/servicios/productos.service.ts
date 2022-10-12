@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { tap } from 'rxjs/operators';
+import { ListaProductos } from '../modulos/DataProductos';
 
 @Injectable({
   providedIn: 'root',
@@ -30,6 +31,22 @@ export class ProductosService {
   //     })
   //   );
   // }
+
+  listaProductos: ListaProductos[] = [];
+  productosBuscados: ListaProductos[] = [];
+  mensajeNoExiste: string;
+  buscarLibro(value: string) {
+    this.productosNuevosHome().subscribe((arg) => {
+      this.listaProductos = arg;
+    });
+    this.productosBuscados = this.listaProductos.filter((product) =>
+      product.nombre.toLowerCase().includes(value.toLowerCase())
+    );
+    if (this.productosBuscados.length === 0) {
+      this.mensajeNoExiste = 'No existe ese producto.';
+    }
+    return this.productosBuscados;
+  }
 
   constructor(private http: HttpClient) {}
 

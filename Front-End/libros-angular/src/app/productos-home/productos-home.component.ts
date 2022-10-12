@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductosService } from '../servicios/productos.service';
-import { ListaProductos } from '../modulos/DataProductos';
+import { ListaCategoria, ListaProductos } from '../modulos/DataProductos';
+import { CategoriaService } from '../servicios/categoria.service';
 const FILTER_PAG_REGEX = /[^0-9]/g;
 @Component({
   selector: 'app-productos-home',
@@ -9,17 +10,28 @@ const FILTER_PAG_REGEX = /[^0-9]/g;
 })
 export class ProductosHomeComponent implements OnInit {
   productosNuevos: ListaProductos[] = [];
-  page:number = 1;
+  categorias: ListaCategoria[] = [];
+
+  page: number = 1;
   show: number = 0;
 
-  constructor(private serviciosProductos: ProductosService) {}
+  constructor(
+    private serviciosProductos: ProductosService,
+    private servicioCategorias: CategoriaService
+  ) {}
 
   ngOnInit(): void {
     this.serviciosProductos.productosNuevosHome().subscribe((arg) => {
-      console.log(arg);
       this.productosNuevos = arg;
-      console.log(this.productosNuevos);
     });
+    this.servicioCategorias.getCategorias().subscribe((data) => {
+      this.categorias = data;
+    });
+  }
+
+  getCategoriaProducto(idCategoria: string) {
+    const categoria = this.categorias.find((element) => element.id == idCategoria);
+    return categoria?.nombre;
   }
 
   numSequence(n: number): Array<number> {
