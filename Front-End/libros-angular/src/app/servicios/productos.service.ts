@@ -34,7 +34,6 @@ export class ProductosService {
 
   listaProductos: ListaProductos[] = [];
   productosBuscados: ListaProductos[] = [];
-  mensajeNoExiste: string;
   buscarLibro(value: string) {
     this.productosNuevosHome().subscribe((arg) => {
       this.listaProductos = arg;
@@ -42,9 +41,6 @@ export class ProductosService {
     this.productosBuscados = this.listaProductos.filter((product) =>
       product.nombre.toLowerCase().includes(value.toLowerCase())
     );
-    if (this.productosBuscados.length === 0) {
-      this.mensajeNoExiste = 'No existe ese producto.';
-    }
     return this.productosBuscados;
   }
 

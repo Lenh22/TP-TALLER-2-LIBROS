@@ -6,13 +6,13 @@ import { HomeComponent } from './home/home.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 const routes: Routes = [
-  // {path: '', redirectTo: '/inicio', pathMatch: 'full'}, // para q cualquier direccion mande a inicio 
+  // {path: '', redirectTo: '/inicio', pathMatch: 'full'}, // para q cualquier direccion mande a inicio
   // {path: 'inicio', component: InicioComponent},
   {path: '', component: HomeComponent},
   {path: 'producto/:id', component:ProductoDetalleComponent},
   {path: 'registrar', component:NuevoUsuarioComponent},
   {path: 'carrito', component: CarritoComponent}
-  
+
 ];
 
 @NgModule({

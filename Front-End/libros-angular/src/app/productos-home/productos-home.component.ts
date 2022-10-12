@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductosService } from '../servicios/productos.service';
 import { ListaCategoria, ListaProductos } from '../modulos/DataProductos';
 import { CategoriaService } from '../servicios/categoria.service';
+import { FavoritoService } from './../servicios/favorito.service';
 const FILTER_PAG_REGEX = /[^0-9]/g;
 @Component({
   selector: 'app-productos-home',
@@ -15,9 +16,12 @@ export class ProductosHomeComponent implements OnInit {
   page: number = 1;
   show: number = 0;
 
+  productosFavoritos: string[] = [];
+
   constructor(
     private serviciosProductos: ProductosService,
-    private servicioCategorias: CategoriaService
+    private servicioCategorias: CategoriaService,
+    private fav: FavoritoService
   ) {}
 
   ngOnInit(): void {
@@ -30,7 +34,9 @@ export class ProductosHomeComponent implements OnInit {
   }
 
   getCategoriaProducto(idCategoria: string) {
-    const categoria = this.categorias.find((element) => element.id == idCategoria);
+    const categoria = this.categorias.find(
+      (element) => element.id == idCategoria
+    );
     return categoria?.nombre;
   }
 
@@ -44,5 +50,10 @@ export class ProductosHomeComponent implements OnInit {
 
   formatInput(input: HTMLInputElement) {
     input.value = input.value.replace(FILTER_PAG_REGEX, '');
+  }
+
+  agregarFavorito(id: string) {
+    this.productosFavoritos.push(id);
+    this.fav.agregarProductoAFavoritos(this.productosFavoritos);
   }
 }

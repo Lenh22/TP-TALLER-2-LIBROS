@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FavoritoService } from './servicios/favorito.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InicioComponent } from './inicio/inicio.component';
@@ -42,7 +42,7 @@ import { StylesService } from './servicios/styles.service';
     BrowserAnimationsModule,
     MatSidenavModule,
   ],
-  providers: [CarritoService, CategoriaService, StylesService],
+  providers: [CarritoService, CategoriaService, StylesService, FavoritoService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

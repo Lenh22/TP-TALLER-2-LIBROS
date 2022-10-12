@@ -38,7 +38,11 @@ export class HeaderComponent implements OnInit {
   searchProductHeader(search: string) {
     this.productoServicio.buscarLibro(search);
     this.productosBuscados = this.productoServicio.buscarLibro(search);
-    this.mensaje = this.productoServicio.mensajeNoExiste;
+    if (this.productosBuscados?.length === 0 && search !== null) {
+      this.mensaje = 'No existe ese producto.';
+    } else {
+      this.mensaje = '';
+    }
   }
 
   showDrawer() {
