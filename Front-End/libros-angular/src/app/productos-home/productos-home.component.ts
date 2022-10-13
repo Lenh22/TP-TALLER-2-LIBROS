@@ -33,6 +33,25 @@ export class ProductosHomeComponent implements OnInit {
     });
   }
 
+  createPaginator(array: ListaProductos[], size: number) {
+    var chunk = [],
+      i; // declara array vacio e indice de for
+    for (
+      i = 0;
+      i <= array.length;
+      i += size // loop que recorre el array
+    )
+      chunk.push(array.slice(i, i + size)); // push al array el tramo desde el indice del loop hasta el valor size + el indicador
+    return chunk;
+  }
+
+  idPage: number = 0;
+
+  verId(id: number) {
+    this.idPage = id;
+    console.log(this.idPage);
+  }
+
   getCategoriaProducto(idCategoria: string) {
     const categoria = this.categorias.find(
       (element) => element.id == idCategoria
