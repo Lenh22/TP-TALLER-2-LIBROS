@@ -72,7 +72,9 @@ export class ProductosHomeComponent implements OnInit {
   }
 
   agregarFavorito(id: string) {
-    this.productosFavoritos.push(id);
+    if (!this.productosFavoritos.includes(id)) {
+      this.productosFavoritos.push(id);
+    }
     this.fav.agregarProductoAFavoritos(this.productosFavoritos);
   }
 }

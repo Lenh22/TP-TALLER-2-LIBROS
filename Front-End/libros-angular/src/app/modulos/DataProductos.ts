@@ -35,3 +35,15 @@ export class Categoria implements ListaCategoria {
   id: string;
   nombre: string;
 }
+
+export interface ListaFavorito {
+  id: string;
+  usuario: string;
+  producto: string[];
+}
+
+export class Favorito implements ListaFavorito {
+  id: string;
+  usuario: string;
+  producto: string[];
+}

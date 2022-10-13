@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Form } from '@angular/forms';
 import {
   Categoria,
+  Favorito,
   ListaCategoria,
   ListaProductos,
 } from 'src/app/modulos/DataProductos';
 import { CategoriaService } from 'src/app/servicios/categoria.service';
 import { ProductosService } from 'src/app/servicios/productos.service';
 import { StylesService } from './../../servicios/styles.service';
+import { FavoritoService } from './../../servicios/favorito.service';
 
 @Component({
   selector: 'app-header',
@@ -16,12 +18,14 @@ import { StylesService } from './../../servicios/styles.service';
 })
 export class HeaderComponent implements OnInit {
   categorias: ListaCategoria[] = [];
+  listafavoritos: Favorito[] = [];
   show: number = 0;
 
   constructor(
     private servicioCategorias: CategoriaService,
     private styleService: StylesService,
-    private productoServicio: ProductosService
+    private productoServicio: ProductosService,
+    private favoritos: FavoritoService
   ) {}
 
   search: string;
@@ -31,7 +35,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.servicioCategorias.getCategorias().subscribe((data) => {
       this.categorias = data;
-      console.log('Categorias', this.categorias);
+    });
+    this.favoritos.verMisFavoritos().subscribe((data) => {
+      this.listafavoritos = data.producto;
+      console.log(this.listafavoritos);
     });
   }
 
