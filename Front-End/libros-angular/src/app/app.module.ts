@@ -37,10 +37,7 @@ import { StylesService } from './servicios/styles.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModule,
-    NgbPaginationModule,
-    BrowserAnimationsModule,
-    MatSidenavModule,
+    NgbModule
   ],
   providers: [CarritoService, CategoriaService, StylesService, FavoritoService],
   bootstrap: [AppComponent],
