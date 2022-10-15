@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductosService } from '../servicios/productos.service';
 import { ListaCategoria, ListaProductos } from '../modulos/DataProductos';
-import { CategoriaService } from '../servicios/categoria.service';
 import { FavoritoService } from './../servicios/favorito.service';
+import { CategoriaService } from 'src/app/servicios/categoria.service';
+import { CarritoService } from './../servicios/carrito.service';
 const FILTER_PAG_REGEX = /[^0-9]/g;
 @Component({
   selector: 'app-productos-home',
@@ -17,11 +18,13 @@ export class ProductosHomeComponent implements OnInit {
   show: number = 0;
 
   productosFavoritos: string[] = [];
+  productosCarrito: string[] = [];
 
   constructor(
     private serviciosProductos: ProductosService,
     private servicioCategorias: CategoriaService,
-    private fav: FavoritoService
+    private fav: FavoritoService,
+    private carrito: CarritoService
   ) {}
 
   ngOnInit(): void {
@@ -76,5 +79,12 @@ export class ProductosHomeComponent implements OnInit {
       this.productosFavoritos.push(id);
     }
     this.fav.agregarProductoAFavoritos(this.productosFavoritos);
+  }
+
+  agregarAlCarrito(id: string) {
+    if (!this.productosCarrito.includes(id)) {
+      this.productosCarrito.push(id);
+    }
+    this.carrito.agregarProductoAlCarrito(this.productosFavoritos);
   }
 }

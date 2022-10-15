@@ -13,13 +13,8 @@ export class ProductosService {
 
   //getProdsuctos
   productosNuevosHome() {
-    const url = environment.URL + 'libreria/producto ';
-    return this.http.get<any>(`${url}`).pipe(
-      tap((res: any) => {
-        if (res) {
-        }
-      })
-    );
+    const url = environment.firebase + 'producto.json';
+    return this.http.get<any>(url);
   }
 
   // public getProductsByCategory(category: any) {
@@ -36,7 +31,7 @@ export class ProductosService {
   productosBuscados: ListaProductos[] = [];
   buscarLibro(value: string) {
     this.productosNuevosHome().subscribe((arg) => {
-      this.listaProductos = arg;
+      this.listaProductos = [...arg];
     });
     this.productosBuscados = this.listaProductos.filter((product) =>
       product.nombre.toLowerCase().includes(value.toLowerCase())

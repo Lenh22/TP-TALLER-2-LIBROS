@@ -184,7 +184,7 @@
       <div
         class="d-flex gap-3 text-light align-items-center header-botton__cart"
       >
-        <span
+        <span style="cursor: pointer"
           >Favoritos <i class="fa-solid fa-heart"></i
           ><span class="fav-count">{{ listafavoritos.length }}</span></span
         >
@@ -200,14 +200,13 @@
             style="border: none; color: #fff; background-color: inherit"
           >
             <i class="fa-solid fa-cart-shopping"></i>
-            <span class="cart-count">3</span>
+            <span class="cart-count">{{ listaProductosA.length }}</span>
           </button>
         </span>
       </div>
     </div>
   </div>
 </header>
-
 <!--DRAWER CART-->
 <!-- https://bootsnipp.com/snippets/e3q3a -->
 <div
@@ -238,211 +237,134 @@
         (click)="closeDrawer()"
       ></i>
     </div>
-    <div [ngStyle]="{ 'overflow-y': 2 > 1 ? 'scroll' : 'none' }">
-      <div class="py-5 border px-4 d-flex gap-3">
-        <img
-          src="http://drive.google.com/uc?export=view&id=1d1xQxKvZI-N5nAFHB6mqyn6hNCeRwUkY"
-          alt=""
-          width="70"
-        />
-        <div style="width: 100%" class="gap-2 d-flex flex-column">
-          <div class="d-flex justify-content-between align-items-center gap-5">
-            <span class="d-block fw-bolder"
-              >Harry Potter y la Orden del Fenix</span
-            >
-            <i
-              class="fa-regular fa-circle-xmark d-block align-self-baseline"
-            ></i>
-          </div>
-          <span class="fst-italic">Fantasia</span>
-          <div class="d-flex justify-content-between align-items-center gap-5">
-            <div class="d-flex">
-              <div class="input-group">
-                <button
-                  type="button"
-                  class="quantity-left-minus btn btn-danger btn-number"
-                  data-type="minus"
-                  data-field=""
-                >
-                  <i class="fa-solid fa-minus fa-2xs"></i>
-                </button>
-                <input
-                  type="text"
-                  id="quantity"
-                  name="quantity"
-                  class="form-control input-number"
-                  value="0"
-                  min="1"
-                  max="100"
-                />
-                <button
-                  type="button"
-                  class="quantity-right-plus btn btn-success btn-number"
-                  data-type="plus"
-                  data-field=""
-                >
-                  <i class="fa-solid fa-plus fa-2xs"></i>
-                </button>
-              </div>
-            </div>
-            <span class="d-block">$1500.00</span>
-          </div>
-        </div>
-      </div>
-      <div class="py-5 border px-4 d-flex gap-3">
-        <img
-          src="http://drive.google.com/uc?export=view&id=1d1xQxKvZI-N5nAFHB6mqyn6hNCeRwUkY"
-          alt=""
-          width="70"
-        />
-        <div style="width: 100%" class="gap-2 d-flex flex-column">
-          <div class="d-flex justify-content-between align-items-center gap-5">
-            <span class="d-block fw-bolder"
-              >Harry Potter y la Orden del Fenix</span
-            >
-            <i
-              class="fa-regular fa-circle-xmark d-block align-self-baseline"
-            ></i>
-          </div>
-          <span class="fst-italic">Fantasia</span>
-          <div class="d-flex justify-content-between align-items-center gap-5">
-            <div class="d-flex">
-              <div class="input-group">
-                <button
-                  type="button"
-                  class="quantity-left-minus btn btn-danger btn-number"
-                  data-type="minus"
-                  data-field=""
-                >
-                  <i class="fa-solid fa-minus fa-2xs"></i>
-                </button>
-                <input
-                  type="text"
-                  id="quantity"
-                  name="quantity"
-                  class="form-control input-number"
-                  value="0"
-                  min="1"
-                  max="100"
-                />
-                <button
-                  type="button"
-                  class="quantity-right-plus btn btn-success btn-number"
-                  data-type="plus"
-                  data-field=""
-                >
-                  <i class="fa-solid fa-plus fa-2xs"></i>
-                </button>
-              </div>
-            </div>
-            <span class="d-block">$1500.00</span>
-          </div>
-        </div>
-      </div>
-      <div class="py-5 border px-4 d-flex gap-3">
-        <img
-          src="http://drive.google.com/uc?export=view&id=1d1xQxKvZI-N5nAFHB6mqyn6hNCeRwUkY"
-          alt=""
-          width="70"
-        />
-        <div style="width: 100%" class="gap-2 d-flex flex-column">
-          <div class="d-flex justify-content-between align-items-center gap-5">
-            <span class="d-block fw-bolder"
-              >Harry Potter y la Orden del Fenix</span
-            >
-            <i
-              class="fa-regular fa-circle-xmark d-block align-self-baseline"
-            ></i>
-          </div>
-          <span class="fst-italic">Fantasia</span>
-          <div class="d-flex justify-content-between align-items-center gap-5">
-            <div class="d-flex">
-              <div class="input-group">
-                <button
-                  type="button"
-                  class="quantity-left-minus btn btn-danger btn-number"
-                  data-type="minus"
-                  data-field=""
-                >
-                  <i class="fa-solid fa-minus fa-2xs"></i>
-                </button>
-                <input
-                  type="text"
-                  id="quantity"
-                  name="quantity"
-                  class="form-control input-number"
-                  value="0"
-                  min="1"
-                  max="100"
-                />
-                <button
-                  type="button"
-                  class="quantity-right-plus btn btn-success btn-number"
-                  data-type="plus"
-                  data-field=""
-                >
-                  <i class="fa-solid fa-plus fa-2xs"></i>
-                </button>
-              </div>
-            </div>
-            <span class="d-block">$1500.00</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- <div class="d-flex align-items-center flex-column m-auto">
-      <i
-        class="fa-sharp fa-solid fa-bag-shopping fa-5x"
-        style="color: rgb(153, 136, 136)"
-      ></i>
-      <span class="d-block fw-bolder">Tu carrito esta vacio</span>
-    </div> -->
     <div
-      class="footer-drawer px-4 py-2"
-      style="
-        border-top: 1px solid rgb(134, 2, 2) !important;
-        padding-bottom: 10px;
+      *ngIf="
+        productosCarrito.length > 0;
+        then thenProductos;
+        else elseProductosk
       "
-    >
-      <div class="d-flex justify-content-between">
-        <span class="fw-bolder">Subtotal</span>
-        <span class="fw-bolder">$15000.00</span>
-      </div>
-      <div class="d-flex justify-content-center my-3">
-        <button
-          class="btn btn-danger btn-general fw-semibold"
-          style="width: 100%"
-        >
-          <i class="fa-solid fa-bag-shopping"></i> Proceder a pagar
-        </button>
-      </div>
-      <div class="d-flex justify-content-center gap-5 fst-italic">
-        <span class="d-flex align-items-center gap-2"
-          ><i class="fa-solid fa-truck-fast" style="color: rgb(105, 98, 98)"></i
-          ><span style="font-size: 12px">Envios a todo el país</span></span
-        >
-        <span class="d-flex align-items-center gap-2"
-          ><i
-            class="fa-solid fa-check-to-slot"
-            style="color: rgb(105, 98, 98)"
-          ></i
-          ><span style="font-size: 12px">Envios autorizados</span></span
-        >
-      </div>
-      <div
-        class="d-flex justify-content-center gap-2 flex-wrap px-2 pt-3"
-        style="color: rgb(105, 98, 98)"
+    ></div>
+    <ng-template #thenProductos
+      ><div
+        [ngStyle]="{
+          'overflow-y': productosCarrito.length >= 2 ? 'scroll' : 'none'
+        }"
       >
-        <i class="fa-brands fa-cc-visa fa-2x"></i>
-        <i class="fa-brands fa-cc-mastercard fa-2x"></i>
-        <i class="fa-brands fa-cc-apple-pay fa-2x"></i>
-        <i class="fa-brands fa-cc-paypal fa-2x"></i>
-        <i class="fa-brands fa-cc-amex fa-2x"></i>
-        <i class="fa-brands fa-google-pay fa-2x"></i>
-        <i class="fa-brands fa-cc-amazon-pay fa-2x"></i>
-        <i class="fa-brands fa-cc-diners-club fa-2x"></i>
+        <div *ngFor="let item of listaProductosA">
+          <div class="py-5 border px-4 d-flex gap-3">
+            <img
+              src="http://drive.google.com/uc?export=view&id=1d1xQxKvZI-N5nAFHB6mqyn6hNCeRwUkY"
+              alt=""
+              width="70"
+            />
+            <div style="width: 100%" class="gap-2 d-flex flex-column">
+              <div
+                class="d-flex justify-content-between align-items-center gap-5"
+              >
+                <span class="d-block fw-bolder">{{ item.nombre }}</span>
+                <i
+                  class="fa-regular fa-circle-xmark d-block align-self-baseline"
+                ></i>
+              </div>
+              <span class="fst-italic">{{ item.categoria }}</span>
+              <div
+                class="d-flex justify-content-between align-items-center gap-5"
+              >
+                <div class="d-flex">
+                  <div class="input-group">
+                    <button
+                      type="button"
+                      class="quantity-left-minus btn btn-danger btn-number"
+                      data-type="minus"
+                      data-field=""
+                    >
+                      <i class="fa-solid fa-minus fa-2xs"></i>
+                    </button>
+                    <input
+                      type="text"
+                      id="quantity"
+                      name="quantity"
+                      class="form-control input-number"
+                      value="0"
+                      min="1"
+                      max="100"
+                    />
+                    <button
+                      type="button"
+                      class="quantity-right-plus btn btn-success btn-number"
+                      data-type="plus"
+                      data-field=""
+                    >
+                      <i class="fa-solid fa-plus fa-2xs"></i>
+                    </button>
+                  </div>
+                </div>
+                <span class="d-block">{{ item.precio }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+
+      <div
+        class="footer-drawer px-4 py-2"
+        style="
+          border-top: 1px solid rgb(134, 2, 2) !important;
+          padding-bottom: 10px;
+        "
+      >
+        <div class="d-flex justify-content-between">
+          <span class="fw-bolder">Subtotal</span>
+          <span class="fw-bolder">${{ subtotal.toFixed(2) }}</span>
+        </div>
+        <div class="d-flex justify-content-center my-3">
+          <button
+            class="btn btn-danger btn-general fw-semibold"
+            style="width: 100%"
+          >
+            <i class="fa-solid fa-bag-shopping"></i> Proceder a pagar
+          </button>
+        </div>
+        <div class="d-flex justify-content-center gap-5 fst-italic">
+          <span class="d-flex align-items-center gap-2"
+            ><i
+              class="fa-solid fa-truck-fast"
+              style="color: rgb(105, 98, 98)"
+            ></i
+            ><span style="font-size: 12px">Envios a todo el país</span></span
+          >
+          <span class="d-flex align-items-center gap-2"
+            ><i
+              class="fa-solid fa-check-to-slot"
+              style="color: rgb(105, 98, 98)"
+            ></i
+            ><span style="font-size: 12px">Envios autorizados</span></span
+          >
+        </div>
+        <div
+          class="d-flex justify-content-center gap-2 flex-wrap px-2 pt-3"
+          style="color: rgb(105, 98, 98)"
+        >
+          <i class="fa-brands fa-cc-visa fa-2x"></i>
+          <i class="fa-brands fa-cc-mastercard fa-2x"></i>
+          <i class="fa-brands fa-cc-apple-pay fa-2x"></i>
+          <i class="fa-brands fa-cc-paypal fa-2x"></i>
+          <i class="fa-brands fa-cc-amex fa-2x"></i>
+          <i class="fa-brands fa-google-pay fa-2x"></i>
+          <i class="fa-brands fa-cc-amazon-pay fa-2x"></i>
+          <i class="fa-brands fa-cc-diners-club fa-2x"></i>
+        </div></div
+    ></ng-template>
+
+    <ng-template #elseProductosk
+      ><div class="d-flex align-items-center flex-column m-auto">
+        <i
+          class="fa-sharp fa-solid fa-bag-shopping fa-5x"
+          style="color: rgb(153, 136, 136)"
+        ></i>
+        <span class="d-block fw-bolder">Tu carrito esta vacio</span>
+      </div></ng-template
+    >
   </div>
 </div>
 

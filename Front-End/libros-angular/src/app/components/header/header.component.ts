@@ -10,6 +10,7 @@ import { CategoriaService } from 'src/app/servicios/categoria.service';
 import { ProductosService } from 'src/app/servicios/productos.service';
 import { StylesService } from './../../servicios/styles.service';
 import { FavoritoService } from './../../servicios/favorito.service';
+import { CarritoService } from './../../servicios/carrito.service';
 
 @Component({
   selector: 'app-header',
@@ -25,21 +26,45 @@ export class HeaderComponent implements OnInit {
     private servicioCategorias: CategoriaService,
     private styleService: StylesService,
     private productoServicio: ProductosService,
-    private favoritos: FavoritoService
+    private favoritos: FavoritoService,
+    private carrito: CarritoService
   ) {}
 
   search: string;
   productosBuscados: ListaProductos[] = [];
   mensaje: string;
+  productosCarrito: string[] = [];
+  listaProductos: ListaProductos[] = [];
 
   ngOnInit(): void {
-    this.servicioCategorias.getCategorias().subscribe((data) => {
-      this.categorias = data;
-    });
+    // this.servicioCategorias.getCategorias().subscribe((data) => {
+    //   this.categorias = data;
+    // });
     this.favoritos.verMisFavoritos().subscribe((data) => {
       this.listafavoritos = data.producto;
-      console.log(this.listafavoritos);
     });
+    this.carrito.verCarrito().subscribe((data) => {
+      this.productosCarrito = data.producto;
+      this.productoServicio.productosNuevosHome().subscribe((data) => {
+        this.listaProductos = data;
+        this.productosCarrito.forEach((element) => {
+          this.verProductosDelCarrito(element);
+        });
+      });
+    });
+  }
+
+  listaProductosA: ListaProductos[] = [];
+  subtotal: number = 0;
+
+  verProductosDelCarrito(id: string) {
+    this.listaProductos.forEach((item) => {
+      if (item.id === id) {
+        this.listaProductosA.push(item);
+        this.subtotal += item.precio;
+      }
+    });
+    return this.listaProductosA;
   }
 
   searchProductHeader(search: string) {
@@ -54,11 +79,9 @@ export class HeaderComponent implements OnInit {
 
   showDrawer() {
     this.show = 1;
-    console.log(this.show);
   }
 
   closeDrawer() {
     this.show = 0;
-    console.log(this.show);
   }
 }

@@ -9,9 +9,16 @@ import { tap } from 'rxjs/operators';
 export class FavoritoService {
   constructor(private http: HttpClient) {}
 
+  arryFavoritos: string[] = [];
   agregarProductoAFavoritos(producto: string[]) {
-    const object = { id: 1, producto: [...producto], usuario: '1' };
-    const url = environment.URL2 + 'libreria/favorito/' + object.id;
+    this.verMisFavoritos().subscribe((data) => {
+      this.arryFavoritos = data.producto;
+    });
+    producto.forEach((element) => {
+      this.arryFavoritos.push(element);
+    });
+    const object = { id: 1, producto: this.arryFavoritos, usuario: '1' };
+    const url = environment.firebase + 'favorito/' + object.id + '.json';
     this.http.put(url, object).subscribe(
       (resp) => console.log(resp),
       (error) => console.log(error)
@@ -20,7 +27,7 @@ export class FavoritoService {
   }
 
   verMisFavoritos() {
-    const url = environment.URL2 + 'libreria/favorito/1 ';
-    return this.http.get<any>(`${url}`);
+    const url = environment.firebase + 'favorito/1.json ';
+    return this.http.get<any>(url);
   }
 }

@@ -1,15 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from "src/environments/environment";
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CarritoService {
+  constructor(private http: HttpClient) {}
 
-  // constructor(private http: HttpClient) { }
-  // agregarCarrito(idUsuario:number, productos:Producto) {
-  //   const url = environment.URL + 'libreria/carrito '
+  productosCarrito: string[] = [];
 
-  // }
+  agregarProductoAlCarrito(producto: string[]) {
+    console.log(producto);
+  }
+
+  idProductos: string[];
+  verCarrito() {
+    const url = environment.firebase + 'carrito/1.json ';
+    return this.http.get<any>(url);
+  }
 }
