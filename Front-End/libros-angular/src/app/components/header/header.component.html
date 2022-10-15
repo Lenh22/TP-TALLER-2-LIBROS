@@ -252,11 +252,7 @@
       >
         <div *ngFor="let item of listaProductosA">
           <div class="py-5 border px-4 d-flex gap-3">
-            <img
-              src="http://drive.google.com/uc?export=view&id=1d1xQxKvZI-N5nAFHB6mqyn6hNCeRwUkY"
-              alt=""
-              width="70"
-            />
+            <img src="{{ item.imagen }}" alt=""  height="120" class="m-auto"/>
             <div style="width: 100%" class="gap-2 d-flex flex-column">
               <div
                 class="d-flex justify-content-between align-items-center gap-5"
