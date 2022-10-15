@@ -208,6 +208,8 @@
   </div>
 </header>
 
+<!--DRAWER CART-->
+<!-- https://bootsnipp.com/snippets/e3q3a -->
 <div
   class="offcanvas offcanvas-end"
   data-bs-backdrop="false"
@@ -216,13 +218,10 @@
 >
   <div class="d-flex flex-column justify-content-between" style="height: 100%">
     <div
-      class="header-drawer d-flex justify-content-between align-items-center p-4"
-      style="
-        border-bottom: 1px solid rgb(177, 165, 165) !important;
-        padding-bottom: 10px;
-      "
+      class="header-drawer d-flex justify-content-between align-items-center p-4 border-bottom"
+      style="padding-bottom: 10px"
     >
-      <h4>Carrito</h4>
+      <h4 class="fw-bold m-0">Carrito</h4>
       <div class="logotipo d-flex gap-2 align-items-center">
         <img src="../../../assets/imagenes/iso.png" alt="isotipo" width="30" />
         <img
@@ -239,15 +238,167 @@
         (click)="closeDrawer()"
       ></i>
     </div>
-    <div class="d-flex align-items-center flex-column m-auto">
+    <div [ngStyle]="{ 'overflow-y': 2 > 1 ? 'scroll' : 'none' }">
+      <div class="py-5 border px-4 d-flex gap-3">
+        <img
+          src="http://drive.google.com/uc?export=view&id=1d1xQxKvZI-N5nAFHB6mqyn6hNCeRwUkY"
+          alt=""
+          width="70"
+        />
+        <div style="width: 100%" class="gap-2 d-flex flex-column">
+          <div class="d-flex justify-content-between align-items-center gap-5">
+            <span class="d-block fw-bolder"
+              >Harry Potter y la Orden del Fenix</span
+            >
+            <i
+              class="fa-regular fa-circle-xmark d-block align-self-baseline"
+            ></i>
+          </div>
+          <span class="fst-italic">Fantasia</span>
+          <div class="d-flex justify-content-between align-items-center gap-5">
+            <div class="d-flex">
+              <div class="input-group">
+                <button
+                  type="button"
+                  class="quantity-left-minus btn btn-danger btn-number"
+                  data-type="minus"
+                  data-field=""
+                >
+                  <i class="fa-solid fa-minus fa-2xs"></i>
+                </button>
+                <input
+                  type="text"
+                  id="quantity"
+                  name="quantity"
+                  class="form-control input-number"
+                  value="0"
+                  min="1"
+                  max="100"
+                />
+                <button
+                  type="button"
+                  class="quantity-right-plus btn btn-success btn-number"
+                  data-type="plus"
+                  data-field=""
+                >
+                  <i class="fa-solid fa-plus fa-2xs"></i>
+                </button>
+              </div>
+            </div>
+            <span class="d-block">$1500.00</span>
+          </div>
+        </div>
+      </div>
+      <div class="py-5 border px-4 d-flex gap-3">
+        <img
+          src="http://drive.google.com/uc?export=view&id=1d1xQxKvZI-N5nAFHB6mqyn6hNCeRwUkY"
+          alt=""
+          width="70"
+        />
+        <div style="width: 100%" class="gap-2 d-flex flex-column">
+          <div class="d-flex justify-content-between align-items-center gap-5">
+            <span class="d-block fw-bolder"
+              >Harry Potter y la Orden del Fenix</span
+            >
+            <i
+              class="fa-regular fa-circle-xmark d-block align-self-baseline"
+            ></i>
+          </div>
+          <span class="fst-italic">Fantasia</span>
+          <div class="d-flex justify-content-between align-items-center gap-5">
+            <div class="d-flex">
+              <div class="input-group">
+                <button
+                  type="button"
+                  class="quantity-left-minus btn btn-danger btn-number"
+                  data-type="minus"
+                  data-field=""
+                >
+                  <i class="fa-solid fa-minus fa-2xs"></i>
+                </button>
+                <input
+                  type="text"
+                  id="quantity"
+                  name="quantity"
+                  class="form-control input-number"
+                  value="0"
+                  min="1"
+                  max="100"
+                />
+                <button
+                  type="button"
+                  class="quantity-right-plus btn btn-success btn-number"
+                  data-type="plus"
+                  data-field=""
+                >
+                  <i class="fa-solid fa-plus fa-2xs"></i>
+                </button>
+              </div>
+            </div>
+            <span class="d-block">$1500.00</span>
+          </div>
+        </div>
+      </div>
+      <div class="py-5 border px-4 d-flex gap-3">
+        <img
+          src="http://drive.google.com/uc?export=view&id=1d1xQxKvZI-N5nAFHB6mqyn6hNCeRwUkY"
+          alt=""
+          width="70"
+        />
+        <div style="width: 100%" class="gap-2 d-flex flex-column">
+          <div class="d-flex justify-content-between align-items-center gap-5">
+            <span class="d-block fw-bolder"
+              >Harry Potter y la Orden del Fenix</span
+            >
+            <i
+              class="fa-regular fa-circle-xmark d-block align-self-baseline"
+            ></i>
+          </div>
+          <span class="fst-italic">Fantasia</span>
+          <div class="d-flex justify-content-between align-items-center gap-5">
+            <div class="d-flex">
+              <div class="input-group">
+                <button
+                  type="button"
+                  class="quantity-left-minus btn btn-danger btn-number"
+                  data-type="minus"
+                  data-field=""
+                >
+                  <i class="fa-solid fa-minus fa-2xs"></i>
+                </button>
+                <input
+                  type="text"
+                  id="quantity"
+                  name="quantity"
+                  class="form-control input-number"
+                  value="0"
+                  min="1"
+                  max="100"
+                />
+                <button
+                  type="button"
+                  class="quantity-right-plus btn btn-success btn-number"
+                  data-type="plus"
+                  data-field=""
+                >
+                  <i class="fa-solid fa-plus fa-2xs"></i>
+                </button>
+              </div>
+            </div>
+            <span class="d-block">$1500.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="d-flex align-items-center flex-column m-auto">
       <i
         class="fa-sharp fa-solid fa-bag-shopping fa-5x"
         style="color: rgb(153, 136, 136)"
       ></i>
       <span class="d-block fw-bolder">Tu carrito esta vacio</span>
-    </div>
+    </div> -->
     <div
-      class="footer-drawer px-4 py-3"
+      class="footer-drawer px-4 py-2"
       style="
         border-top: 1px solid rgb(134, 2, 2) !important;
         padding-bottom: 10px;
@@ -297,7 +448,7 @@
 
 <!-- resultado del buscador -->
 <section class="py-0">
-  <h3 class="{{ search.value !== '' || 'pt-3 pb-2 text-center' }}">
+  <h3 class="{{ search.value !== '' && 'pt-3 pb-2 text-center' }}">
     {{ search.value !== "" ? "Resultado" : "" }}
   </h3>
   <div class="d-flex flex-wrap gap-3 justify-content-center">
