@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Categoria, ListaCategoria } from 'src/app/modulos/DataProductos';
 import { CategoriaService } from 'src/app/servicios/categoria.service';
 import { StylesService } from './../../servicios/styles.service';
+
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { loginSendData } from 'src/app/modulos/DataLogin';
+import { LoginService } from 'src/app/servicios/login.service';
+
 
 @Component({
   selector: 'app-header',
@@ -12,16 +18,30 @@ export class HeaderComponent implements OnInit {
   categorias: ListaCategoria[] = [];
   show: number = 0;
 
-  constructor(
+
+
+  formularioLogin = new FormGroup({
+    usuario: new FormControl('',Validators.required),
+    contrasenia: new FormControl('',Validators.required),
+  })
+  constructor(private loginService:LoginService,
     private servicioCategorias: CategoriaService,
-    private styleService: StylesService
-  ) {}
+    private styleService: StylesService) { }
+
 
   ngOnInit(): void {
     this.servicioCategorias.getCategorias().subscribe((data) => {
       this.categorias = data;
       console.log('Categorias', this.categorias);
     });
+  }
+  onLogin():void{
+    const datosFormularioLogin:loginSendData=this.formularioLogin.value;
+    this.loginService.loginUsuario(datosFormularioLogin)
+      .subscribe(arg =>{
+        console.log(arg);
+      });
+    
   }
 
   showDrawer() {
