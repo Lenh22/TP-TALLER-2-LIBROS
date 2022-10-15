@@ -14,7 +14,11 @@ import { NuevoUsuarioComponent } from './components/nuevo-usuario/nuevo-usuario.
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { BannerHomeComponent } from './components/banner-home/banner-home.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog';
+import { LoginAdminComponent } from './login-admin/login-admin.component';
+import {MatInputModule} from '@angular/material/input';
 
 
 @NgModule({
@@ -29,6 +33,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     NuevoUsuarioComponent,
     CarritoComponent,
     BannerHomeComponent,
+    LoginAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     NgbModule,
     NgbPaginationModule,
-    ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
