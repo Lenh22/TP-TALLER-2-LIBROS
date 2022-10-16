@@ -45,24 +45,15 @@
     </div>
   </div>
 </section>
-<!-- /SECTION -->
-<section>
-  <ngb-pagination
-    [collectionSize]="productosNuevos.length"
-    [pageSize]="productosNuevos.length / 2.5"
-    [rotate]="true"
-    [(page)]="page"
-    [boundaryLinks]="true"
-    aria-label="Default pagination"
-    class="d-flex justify-content-start pagination-rounded-flat pagination-success mb-3"
-  ></ngb-pagination>
-  <div class="d-flex flex-wrap justify-content-center gap-5">
-    <div
-      *ngFor="
-        let producto of productosNuevos
-          | slice: (page - 1) * 6:(page - 1) * 6 + 6
-      "
-    >
+<!-- /SECTION --->
+
+<!-- SECTION -->
+<section id="lista-productos">
+  <div
+    class="d-flex flex-wrap justify-content-center gap-5 m-auto"
+    style="max-width: 1024px"
+  >
+    <div *ngFor="let producto of productosNuevos">
       <div
         class="product-card d-flex flex-column gap-2 border border-2 rounded-4 p-3"
       >
@@ -139,13 +130,4 @@
       </div>
     </div>
   </div>
-  <ngb-pagination
-    [collectionSize]="productosNuevos.length"
-    [pageSize]="productosNuevos.length / 2.5"
-    [rotate]="true"
-    [(page)]="page"
-    [boundaryLinks]="true"
-    aria-label="Default pagination"
-    class="d-flex justify-content-end pagination-rounded-flat pagination-success mt-5"
-  ></ngb-pagination>
 </section>

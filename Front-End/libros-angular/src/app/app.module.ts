@@ -15,6 +15,18 @@ import { CarritoComponent } from './components/carrito/carrito.component';
 import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { BannerHomeComponent } from './components/banner-home/banner-home.component';
 
+import { CarritoService } from './servicios/carrito.service';
+import { CategoriaService } from './servicios/categoria.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { StylesService } from './servicios/styles.service';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
+import { LoginAdminComponent } from './login-admin/login-admin.component';
+import {MatInputModule} from '@angular/material/input';
+
+
 
 @NgModule({
   declarations: [
@@ -28,6 +40,7 @@ import { BannerHomeComponent } from './components/banner-home/banner-home.compon
     NuevoUsuarioComponent,
     CarritoComponent,
     BannerHomeComponent,
+    LoginAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -35,8 +48,13 @@ import { BannerHomeComponent } from './components/banner-home/banner-home.compon
     HttpClientModule,
     NgbModule,
     NgbPaginationModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatInputModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [CarritoService, CategoriaService, StylesService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

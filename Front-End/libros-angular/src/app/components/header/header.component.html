@@ -41,6 +41,7 @@
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true"
       >
+      <!-- login -->
         <div class="modal-dialog">
           <div class="modal-content bg-light">
             <div class="modal-header">
@@ -53,7 +54,7 @@
               ></button>
             </div>
             <div class="modal-body">
-              <form>
+              <form [formGroup]="formularioLogin">
                 <div class="mb-2">
                   <input
                     type="email"
@@ -61,6 +62,7 @@
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                     placeholder="Usuario"
+                    formControlName="usuario"
                   />
                 </div>
                 <div class="mb-2">
@@ -69,6 +71,7 @@
                     class="form-control"
                     id="exampleInputPassword1"
                     placeholder="Contraseña"
+                    formControlName="contrasenia"
                   />
                 </div>
                 <div class="modal-footer">
@@ -76,6 +79,7 @@
                     type="button"
                     class="btn btn-warning"
                     style="border-radius: 60px"
+                    (click)="onLogin()"
                   >
                     Ingresar
                   </button>
@@ -142,11 +146,18 @@
             Categorias
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#">Separated link</a></li>
+            <li>
+              <a class="dropdown-item" href="#lista-productos"
+                >Todos los productos</a
+              >
+            </li>
+            <div *ngFor="let categoria of categorias">
+              <li>
+                <a class="dropdown-item" href="#lista-productos">{{
+                  categoria.nombre
+                }}</a>
+              </li>
+            </div>
           </ul>
           <input
             style="border: 2px solid rgb(255, 255, 255)"
@@ -172,9 +183,15 @@
           ><span class="fav-count">4</span></span
         >
 
-        <span class="carrito" routerLink="/carrito"
-          >Carrito <i class="fa-solid fa-cart-shopping"></i>
-          <span class="cart-count">3</span>
+        <span style="color: #fff">
+          <span class="carrito" routerLink="/carrito">Carrito </span>
+          <button
+            type="button"
+            style="border: none; color: #fff; background-color: inherit"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-count">3</span>
+          </button>
         </span>
       </div>
     </div>

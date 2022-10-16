@@ -1,1 +1,9 @@
-@import './../assets/styles/style.css'
+@import "./../assets/styles/style.css";
+body {
+  position: relative;
+}
+.example-container {
+  width: 100%;
+  height: 100vh;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
