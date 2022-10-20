@@ -4,7 +4,7 @@
       <div class="col-md-4">
         <h4 class="text-center"><strong></strong></h4>
         <hr />
-        <div class="profile-card-2">
+        <div class="profile-card-2" routerLink="/categoria/terror">
           <img
             src="../../assets/imagenes/terror6.jpg"
             class="img img-responsive"
@@ -17,7 +17,7 @@
       <div class="col-md-4">
         <h4 class="text-center"><strong></strong></h4>
         <hr />
-        <div class="profile-card-6">
+        <div class="profile-card-6" routerLink="/categoria/ficcion">
           <img
             src="../../assets/imagenes/ficcion.jpg"
             class="img img-responsive"
@@ -29,15 +29,15 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4" routerLink="/categoria/juvenil">
         <h4 class="text-center"><strong></strong></h4>
         <hr />
         <div class="profile-card-4 text-center">
           <img src="../../assets/imagenes/fantasia3.jpg" />
           <div class="profile-content">
             <div class="profile-name">
-              FANTASIA
-              <p>@fantasia</p>
+              JUVENIL
+              <p>@juvenil</p>
             </div>
           </div>
         </div>
@@ -79,7 +79,7 @@
             class="product-name my-2 d-block"
             style="word-break: break; width: 250px; height: 60px"
           >
-            <a href="/producto/{{ producto.id }}}">{{ producto.nombre }}</a>
+            <a href="/producto/{{ producto.id }}">{{ producto.nombre }}</a>
           </span>
           <h5
             class="{{
@@ -111,7 +111,8 @@
               <i class="fa fa-heart" style="color: red"></i>
             </button>
             <a
-              href="/producto/{{ producto.id }}}"
+              routerLink="/producto/{{producto.id}}"
+              href="/producto/{{ producto.id }}"
               class="btn btn-light border rounded-circle"
               data-toggle="tooltip"
               data-placement="top"

@@ -9,10 +9,14 @@ import { tap } from 'rxjs/operators';
 })
 export class ProductosService {
   //to do : cuando tengamos una api cambiar url y agregar ${environment.apiUrl}
+  
+
+  constructor(private http: HttpClient) { }
 
   //getProdsuctos
-  productosNuevosHome() {
-    const url = environment.URL + 'libreria/producto ';
+  productosNuevosHome(): Observable<any> {
+    //const url = environment.URL + 'libreria/producto ';
+    const url = environment.api + '/productos';
     return this.http.get<any>(`${url}`).pipe(
       tap((res: any) => {
         if (res) {
@@ -21,20 +25,15 @@ export class ProductosService {
     );
   }
 
-  // public getProductsByCategory(category: any) {
-  //   const url = environment.URL + 'libreria/categoria';
-  //   return this.http.get<any>(`${url}`).pipe(
-  //     tap((res: any) => {
-  //       if (res) {
-  //       }
-  //     })
-  //   );
-  // }
+   public getProductsByCategory(id: string): Observable<any> {
+    
+     return this.http.get(environment.api + '/categorias/' + id);
+   }
 
-  constructor(private http: HttpClient) {}
-
-  //getPorId
-  public detalle(id: number): Observable<any> {
-    return this.http.get<any>(environment.URL + `libreria/detalle/${id}`); //cambiar a la url adecuada
+  
+ 
+  getProductoById(id: string): Observable<any> {
+    return this.http.get(environment.api + '/productos/' + id);
   }
+  
 }

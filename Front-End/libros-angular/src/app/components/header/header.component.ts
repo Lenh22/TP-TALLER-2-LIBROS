@@ -8,6 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { loginSendData } from 'src/app/modulos/DataLogin';
 import { LoginService } from 'src/app/servicios/login.service';
 
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -26,7 +27,10 @@ export class HeaderComponent implements OnInit {
   })
   constructor(private loginService:LoginService,
     private servicioCategorias: CategoriaService,
-    private styleService: StylesService) { }
+    private styleService: StylesService,
+    private router:Router
+    
+    ) { }
 
 
   ngOnInit(): void {
@@ -53,4 +57,8 @@ export class HeaderComponent implements OnInit {
     this.show = 0;
     console.log(this.show);
   }
+  
+  
+
+
 }
