@@ -1,6 +1,9 @@
 @import url("../../../styles.css");
 
-.pago{
-    text-align: right;
+.pago {
+  text-align: right;
+}
 
+td {
+  vertical-align: middle;
 }
