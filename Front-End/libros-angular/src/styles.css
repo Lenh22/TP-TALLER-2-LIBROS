@@ -5,8 +5,8 @@ a {
 section,
 .container-general {
   max-width: 1440px;
-  padding: 3vw;
-  margin: auto;
+  padding: 0 3vw;
+  margin: 2rem auto;
 }
 
 button {
@@ -37,5 +37,5 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
