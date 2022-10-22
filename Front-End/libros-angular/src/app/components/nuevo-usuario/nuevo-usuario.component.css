@@ -1,0 +1,13 @@
+.img-signup {
+  background-image: url("../../../assets/imagenes/imagen-signup.jpg");
+  background-position: center;
+}
+
+@media (max-width: 991px) {
+  .img-signup {
+    display: none !important;
+  }
+  .form-signup {
+    width: 80% !important;
+  }
+}

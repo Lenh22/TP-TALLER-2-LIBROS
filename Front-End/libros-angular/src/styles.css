@@ -2,7 +2,8 @@ a {
   text-decoration: none;
 }
 
-section, .container-general {
+section,
+.container-general {
   max-width: 1440px;
   padding: 3vw;
   margin: auto;
@@ -16,12 +17,11 @@ li {
   list-style: none;
 }
 
-.btn-general{
+.btn-general {
   border-radius: 60px;
 }
 
 @media (max-width: 767px) {
-
   .header-top,
   .footer-top,
   .header-botton,
@@ -31,5 +31,11 @@ li {
   }
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

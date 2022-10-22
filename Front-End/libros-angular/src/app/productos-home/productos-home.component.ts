@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProductosService } from '../servicios/productos.service';
 import { ListaProductos } from '../modulos/DataProductos';
+import { CarritoService } from '../servicios/carrito.service';
 const FILTER_PAG_REGEX = /[^0-9]/g;
 @Component({
   selector: 'app-productos-home',
@@ -8,19 +9,24 @@ const FILTER_PAG_REGEX = /[^0-9]/g;
   styleUrls: ['./productos-home.component.css'],
 })
 export class ProductosHomeComponent implements OnInit {
+  @Input() dataCartEntry: any;
   productosNuevos: ListaProductos[] = [];
-  page:number = 1;
+  productoCarrito: ListaProductos;
+
+  page: number = 1;
   show: number = 0;
 
-  constructor(private serviciosProductos: ProductosService) {}
+  constructor(
+    private serviciosProductos: ProductosService,
+    private carritoService: CarritoService
+  ) {}
 
   ngOnInit(): void {
     this.serviciosProductos.productosNuevosHome().subscribe((arg) => {
-      console.log(arg);
       this.productosNuevos = arg;
-      console.log(this.productosNuevos);
     });
   }
+
 
   numSequence(n: number): Array<number> {
     return Array(n);
@@ -32,5 +38,15 @@ export class ProductosHomeComponent implements OnInit {
 
   formatInput(input: HTMLInputElement) {
     input.value = input.value.replace(FILTER_PAG_REGEX, '');
+  }
+
+  //carrito
+  addToCart(item: ListaProductos) {
+    this.carritoService.addToCartService(item);
+    this.carritoService.disparadorCarrito.emit(item);
+  }
+
+  deleteProduct(id: string) {
+    this.carritoService.deleteProductService(id);
   }
 }

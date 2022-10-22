@@ -1,131 +1,55 @@
-<section>
-  <div class="d-flex flex-wrap justify-content-center">
-    <div class="row">
-      <div class="col-md-4">
-        <h4 class="text-center"><strong></strong></h4>
-        <hr />
-        <div class="profile-card-2">
-          <img
-            src="../../assets/imagenes/terror6.jpg"
-            class="img img-responsive"
-          />
-          <div class="profile-name">TERROR</div>
-          <div class="profile-username">@terror</div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <h4 class="text-center"><strong></strong></h4>
-        <hr />
-        <div class="profile-card-6">
-          <img
-            src="../../assets/imagenes/ficcion.jpg"
-            class="img img-responsive"
-          />
-          <div class="profile-name">CIENCIA <br />FICCION</div>
-          <div class="profile-position">@cienciaFiccion</div>
-          <div class="profile-overview">
-            <div class="profile-overview"></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <h4 class="text-center"><strong></strong></h4>
-        <hr />
-        <div class="profile-card-4 text-center">
-          <img src="../../assets/imagenes/fantasia3.jpg" />
-          <div class="profile-content">
-            <div class="profile-name">
-              FANTASIA
-              <p>@fantasia</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- /SECTION --->
-
+<!-- <app-presentation></app-presentation> -->
 <!-- SECTION -->
 <section id="lista-productos">
   <div
     class="d-flex flex-wrap justify-content-center gap-5 m-auto"
-    style="max-width: 1024px"
+    style="max-width: 1024px;"
   >
     <div *ngFor="let producto of productosNuevos">
       <div
         class="product-card d-flex flex-column gap-2 border border-2 rounded-4 p-3"
       >
-        <div class="d-flex justify-content-end">
-          <span
-            class="bg-success px-3 border rounded-5 text-light fw-semibold {{
-              producto.descuento || 'invisible'
-            }}"
-            >- %{{ producto.descuento }}</span
-          >
-        </div>
         <div class="product-img d-block m-auto">
           <img
             [src]="producto.imagen"
             class="card-img-top"
             [alt]="producto.nombre"
-            style="object-fit: cover; height: 180px; width: 120px"
+            style="object-fit: cover; height: 180px; width: 120px;"
           />
         </div>
         <div class="product-body text-center">
-          <span style="font-size: 14px">{{ producto.categoria }}</span>
+          <span style="font-size: 14px;">{{ producto.categoria }}</span>
           <span
             class="product-name my-2 d-block"
-            style="word-break: break; width: 250px; height: 60px"
+            style="word-break: break; width: 250px; height: 60px;"
           >
-            <a href="/producto/{{ producto.id }}}">{{ producto.nombre }}</a>
+            <a href="/producto/{{ producto.id }}}" class="text-dark">
+              {{ producto.nombre }}
+            </a>
           </span>
-          <h5
-            class="{{
-              producto.descuento > 0 ? 'fw-semibold price-delete' : 'invisible'
-            }}"
-          >
-            ${{ producto.precio.toFixed(2) }}
+          <h5 class="semi-bold" (click)="deleteProduct(producto.id)">
+            $ {{ producto.precio.toFixed(2) }}
           </h5>
-          <h5 class="semi-bold">
-            ${{
-              (
-                producto.precio -
-                (producto.precio * producto.descuento) / 100
-              ).toFixed(2)
-            }}
-          </h5>
-          <div class="my-2 d-flex gap-1 justify-content-center">
-            <li *ngFor="let n of numSequence(producto.calificacion)">
-              <i class="fa-solid fa-star" style="font-size: 12px"></i>
-            </li>
-          </div>
-          <div class="d-flex gap-2 justify-content-center">
-            <button
-              class="btn btn-light border rounded-circle"
-              data-toggle="tooltip"
-              data-placement="top"
-              title="Agregar a favoritos"
-            >
-              <i class="fa fa-heart" style="color: red"></i>
-            </button>
+          <div class="d-flex gap-2 justify-content-center align-items-center">
             <a
               href="/producto/{{ producto.id }}}"
               class="btn btn-light border rounded-circle"
               data-toggle="tooltip"
               data-placement="top"
               title="Ver detalle"
-              style="border-radius: 60px; padding: 5px 10px"
+              style="border-radius: 60px; padding: 5px 10px;"
             >
-              <i class="fa fa-eye" style="color: red"></i>
+              <i class="fa fa-eye" style="color: red;"></i>
             </a>
+
+            <button
+              class="btn btn-danger btn-general fw-semibold"
+              (click)="addToCart(producto)"
+            >
+              <i class="fa fa-shopping-cart"></i>
+              Añadir al carrito
+            </button>
           </div>
-        </div>
-        <div class="d-flex justify-content-center mt-2">
-          <button class="btn btn-danger btn-general fw-semibold">
-            <i class="fa fa-shopping-cart"></i> Añadir al carrito
-          </button>
         </div>
       </div>
     </div>

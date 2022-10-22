@@ -1,64 +1,89 @@
-
-<div class="container">
-
-    <h2>PEDIDO</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Libro</th>
-                <th scope="col"></th>
-                <th scope="col">Categoria</th>
-                <th scope="col" >Precio</th>
-               
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            
-            <td>Harry Potter y la Orden del Fenix</td>
-            <td> <img class="img-thumbnail" width="100px" height="100px"
-            src="https://st.booknet.com/uploads/covers/220/1664331730_33.jpg" ></td>
-            <td>Fantasia</td>
-            <td>$500.00</td>
-            <td></td>
-            <td><i type="button"  class="bi bi-x-square-fill md-12"></i></td>
-            </tr>
-            <tr>
-            
-                <td>Harry Potter y la piedra Filosofal</td>
-                <td> <img class="img-thumbnail" width="100px" height="100px"
-                src="https://st.booknet.com/uploads/covers/220/1664331730_33.jpg" ></td>
-                <td>Fantasia</td>
-                <td>$500.00</td>
-                <td></td>
-    
-        
-                
-                <td><i type="button"  class="bi bi-x-square-fill md-12"></i></td>
-                </tr>
-                <tr>
-            
-                    <td>Harry Potter y la camara secreta</td>
-                    <td> <img class="img-thumbnail" width="100px" height="100px"
-                        src="https://st.booknet.com/uploads/covers/220/1664331730_33.jpg" ></td>
-                    <td>Fantasia</td>
-                    <td>$500.00</td>
-                    <td></td>
-        
-            
-                    
-                    <td><i type="button"  class="bi bi-x-square-fill md-12"></i></td>
-                    </tr>
-        </tbody>
-    </table>
-    <hr>
-  
-    <div class="pago">
-
-      <h2>Total: $1.500 </h2> 
-      <button class="btn btn-danger btn-lg px-5" type="submit">Realizar Pedido</button>
-    </div>
+<section>
+  <h3 class="text-center">Lista de compras</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Imagen</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Precio</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <img
+            class="img-thumbnail"
+            width="100px"
+            height="100px"
+            src="https://st.booknet.com/uploads/covers/220/1664331730_33.jpg"
+          />
+        </td>
+        <td>
+          <div class="d-flex flex-column gap-2">
+            <p>Harry Potter y la Orden del Fenix</p>
+            <p class="fst-italic fw-bolder">Fantasia</p>
+          </div>
+        </td>
+        <td>$500.00</td>
+        <td>
+          <button type="button" class="btn-close" aria-label="Close"></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <hr />
+  <div class="pago d-flex justify-content-between">
+    <h4>Total a pagar</h4>
+    <h4>$1800.00</h4>
   </div>
-      
-      
-  
+  <div class="d-flex justify-content-center my-4">
+    <button class="btn btn-danger btn-general fw-semibold" style="width: 100%;">
+      <i class="fa-solid fa-bag-shopping"></i>
+      Proceder a pagar
+    </button>
+  </div>
+  <div class="d-flex justify-content-center gap-5 fst-italic">
+    <span class="d-flex align-items-center gap-2">
+      <i class="fa-solid fa-truck-fast" style="color: rgb(105, 98, 98);"></i>
+      <span>Envios a todo el país</span>
+    </span>
+    <span class="d-flex align-items-center gap-2">
+      <i class="fa-solid fa-check-to-slot" style="color: rgb(105, 98, 98);"></i>
+      <span>Envios autorizados</span>
+    </span>
+  </div>
+</section>
+
+<section class="pt-1">
+  <div class="d-flex gap-5 justify-content-center banner-info__cart">
+    <span
+      class="text-muted rounded-circle border border-2 p-4 fw-semibold d-flex gap-2 flex-column align-items-center text-center"
+      style="max-width: 150px;"
+    >
+      <i class="fa-solid fa-truck-fast fa-3x"></i>
+      <span class="d-block">Envios a todo el país</span>
+    </span>
+    <span
+      class="text-muted rounded-circle border border-2 p-4 fw-semibold d-flex gap-2 flex-column align-items-center text-center"
+      style="max-width: 150px;"
+    >
+      <i class="fa-brands fa-whatsapp fa-3x"></i>
+      <span class="d-block">Ventas por What's App</span>
+    </span>
+    <span
+      class="text-muted rounded-circle border border-2 p-4 fw-semibold d-flex gap-2 flex-column align-items-center text-center"
+      style="max-width: 150px;"
+    >
+      <i class="fa-solid fa-calendar-days fa-3x"></i>
+      <span class="d-block">Los 365 días del año</span>
+    </span>
+    <span
+      class="text-muted rounded-circle border border-2 p-4 fw-semibold d-flex gap-2 flex-column align-items-center text-center"
+      style="max-width: 150px;"
+    >
+      <i class="fa-regular fa-star fa-3x"></i>
+      <span class="d-block">5 estrellas de rating</span>
+    </span>
+  </div>
+</section>
