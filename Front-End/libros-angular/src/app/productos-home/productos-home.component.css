@@ -12,14 +12,22 @@
   font-size: 14px;
 }
 
-/* @media (max-width: 991px) {
-  .product-list {
-    justify-content: center !important;
-  }
-} */
-
-/* @media (max-width: 767px) {
-.product-container-card{
-  width: 50%;
+.product-container {
+  display: grid;
+  grid-template-columns: min-content min-content min-content;
+  justify-content: center;
+  margin:auto;
+  grid-gap: 30px;
 }
-} */
+
+@media (max-width: 991px) {
+  .product-container {
+    grid-template-columns: min-content min-content;
+  }
+}
+
+@media (max-width: 767px) {
+  .product-container {
+    grid-template-columns: min-content;
+  }
+}
