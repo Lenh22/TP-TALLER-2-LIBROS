@@ -3,7 +3,7 @@
 <section id="lista-productos">
   <div
     class="d-flex flex-wrap justify-content-center gap-5 m-auto"
-    style="max-width: 1024px"
+    style="max-width: 1024px;"
   >
     <div *ngFor="let producto of productosNuevos">
       <div
@@ -14,21 +14,21 @@
             [src]="producto.imagen"
             class="card-img-top"
             [alt]="producto.nombre"
-            style="object-fit: cover; height: 180px; width: 120px"
+            style="object-fit: cover; height: 180px; width: 120px;"
           />
         </div>
         <div class="product-body text-center">
-          <span style="font-size: 14px">{{ producto.categoria }}</span>
+          <span style="font-size: 14px;">{{ producto.categoria }}</span>
           <span
             class="product-name my-2 d-block"
-            style="word-break: break; width: 250px; height: 60px"
+            style="word-break: break; width: 250px; height: 60px;"
           >
-            <a href="/producto/{{ producto.id }}}" class="text-dark">{{
-              producto.nombre
-            }}</a>
+            <a href="/producto/{{ producto.id }}}" class="text-dark">
+              {{ producto.nombre }}
+            </a>
           </span>
           <h5 class="semi-bold" (click)="deleteProduct(producto.id)">
-            ${{ producto.precio.toFixed(2) }}
+            $ {{ producto.precio.toFixed(2) }}
           </h5>
           <div class="d-flex gap-2 justify-content-center align-items-center">
             <a
@@ -37,16 +37,17 @@
               data-toggle="tooltip"
               data-placement="top"
               title="Ver detalle"
-              style="border-radius: 60px; padding: 5px 10px"
+              style="border-radius: 60px; padding: 5px 10px;"
             >
-              <i class="fa fa-eye" style="color: red"></i>
+              <i class="fa fa-eye" style="color: red;"></i>
             </a>
 
             <button
               class="btn btn-danger btn-general fw-semibold"
               (click)="addToCart(producto)"
             >
-              <i class="fa fa-shopping-cart"></i> Añadir al carrito
+              <i class="fa fa-shopping-cart"></i>
+              Añadir al carrito
             </button>
           </div>
         </div>

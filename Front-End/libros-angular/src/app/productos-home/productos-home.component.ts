@@ -12,6 +12,7 @@ export class ProductosHomeComponent implements OnInit {
   @Input() dataCartEntry: any;
   productosNuevos: ListaProductos[] = [];
   productoCarrito: ListaProductos;
+
   page: number = 1;
   show: number = 0;
 
@@ -25,6 +26,7 @@ export class ProductosHomeComponent implements OnInit {
       this.productosNuevos = arg;
     });
   }
+
 
   numSequence(n: number): Array<number> {
     return Array(n);

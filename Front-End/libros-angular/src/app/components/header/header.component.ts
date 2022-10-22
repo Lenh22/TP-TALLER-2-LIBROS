@@ -46,7 +46,7 @@ export class HeaderComponent implements OnInit {
     this.carrito = [];
   }
 
-  userName: string = 'Hola';
+  userName: string = '';
 
   ngOnInit(): void {
     this.servicioCategorias.getCategorias().subscribe((data) => {

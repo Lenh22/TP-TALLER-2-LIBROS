@@ -99,9 +99,11 @@ export class FirebaseLoginService {
   }
 
   getInfoUser(id: string) {
-    const url = environment.firebase + 'usuario.json';
+    const url = environment.firebase + 'usuario/' + id + '.json';
     this.http.get(url).subscribe(
-      (resp) => console.log(resp),
+      (resp) => {
+
+      },
       (error) => console.log(error)
     );
   }
