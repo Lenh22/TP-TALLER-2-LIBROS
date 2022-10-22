@@ -57,6 +57,12 @@ export class HeaderComponent implements OnInit {
       this.carrito.push(data);
       // localStorage.setItem('carrito', JSON.stringify(this.carrito));
     });
+    let fade = document.getElementsByClassName('offcanvas-backdrop fade show')
+      for(let i = 0; i < fade.length; i++) {
+        if(fade.length > 1) {
+          fade[i].remove()
+        }
+    }
   }
 
   //carrito

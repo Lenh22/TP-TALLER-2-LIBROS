@@ -12,6 +12,7 @@ export class ProductosHomeComponent implements OnInit {
   @Input() dataCartEntry: any;
   productosNuevos: ListaProductos[] = [];
   productoCarrito: ListaProductos;
+  loading: boolean;
 
   page: number = 1;
   show: number = 0;
@@ -22,11 +23,12 @@ export class ProductosHomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loading = true;
     this.serviciosProductos.productosNuevosHome().subscribe((arg) => {
       this.productosNuevos = arg;
+      this.loading = false;
     });
   }
-
 
   numSequence(n: number): Array<number> {
     return Array(n);

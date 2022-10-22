@@ -1,21 +1,21 @@
 <header>
   <div
     class="bg-dark header-top px-5 py-1 d-flex justify-content-between align-items-center"
-    style="width: 100%"
+    style="width: 100%;"
   >
     <div class="d-flex gap-3 header-top-contact">
-      <span style="color: #fff; font-size: 12px"
-        ><i class="fa-solid fa-phone" style="color: rgb(255, 0, 0)"></i> (+5411)
-        4480-8900</span
-      >
-      <span style="color: #fff; font-size: 12px"
-        ><i class="fa-solid fa-envelope" style="color: rgb(255, 0, 0)"></i>
-        alumnos@unlam.edu.ar</span
-      >
-      <span style="color: #fff; font-size: 12px"
-        ><i class="fa-solid fa-location-dot" style="color: rgb(255, 0, 0)"></i>
-        San Justo, Buenos Aires, Argentina</span
-      >
+      <span style="color: #fff; font-size: 12px;">
+        <i class="fa-solid fa-phone" style="color: rgb(255, 0, 0);"></i>
+        (+5411) 4480-8900
+      </span>
+      <span style="color: #fff; font-size: 12px;">
+        <i class="fa-solid fa-envelope" style="color: rgb(255, 0, 0);"></i>
+        alumnos@unlam.edu.ar
+      </span>
+      <span style="color: #fff; font-size: 12px;">
+        <i class="fa-solid fa-location-dot" style="color: rgb(255, 0, 0);"></i>
+        San Justo, Buenos Aires, Argentina
+      </span>
     </div>
     <div class="d-flex gap-3 align-items-center header__login">
       <div
@@ -27,16 +27,19 @@
           class="btn"
           data-bs-toggle="modal"
           data-bs-target="#modalLogin"
-          style="color: #fff"
+          style="color: #fff;"
         >
-          LogIn <i class="fa-solid fa-right-to-bracket"></i>
+          LogIn
+          <i class="fa-solid fa-right-to-bracket"></i>
         </button>
         <a
           href="/registrar"
           rel="noopener noreferrer"
           class="fw-bolder"
-          style="color: #fff"
-          >SignUp <i class="fa-solid fa-user-plus"></i>
+          style="color: #fff;"
+        >
+          SignUp
+          <i class="fa-solid fa-user-plus"></i>
         </a>
       </div>
       <div
@@ -47,10 +50,11 @@
         <button
           type="button"
           class="btn"
-          style="color: #fff"
+          style="color: #fff;"
           (click)="logOut()"
         >
-          LogOut <i class="fa-solid fa-right-from-bracket"></i>
+          LogOut
+          <i class="fa-solid fa-right-from-bracket"></i>
         </button>
       </div>
       <!-- login -->
@@ -64,20 +68,21 @@
     <div class="d-flex align-items-center py-3 header-botton-info">
       <div
         class="logotipo d-flex gap-2 align-items-center"
-        style="filter: invert(100%)"
+        style="filter: invert(100%);"
       >
         <img src="../../../assets/imagenes/iso.png" alt="isotipo" width="30" />
-        <a href=""
-          ><img
+        <a href="">
+          <img
             width="180"
             src="https://fontmeme.com/permalink/221001/e8000a6afc66936e040a5d1e9a070f90.png"
             alt="fuente-uncial-antiqua"
-        /></a>
+          />
+        </a>
       </div>
       <div class="col-6 m-auto header-botton__search">
         <form class="input-group my-3">
           <button
-            style="border-radius: 60px 0 0 60px"
+            style="border-radius: 60px 0 0 60px;"
             class="btn btn-light dropdown-toggle border border-0"
             type="button"
             data-bs-toggle="dropdown"
@@ -87,27 +92,30 @@
           </button>
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item" href="#lista-productos"
-                >Todos los productos</a
-              >
+              <a class="dropdown-item" href="#lista-productos">
+                Todos los productos
+              </a>
             </li>
             <div *ngFor="let categoria of categorias">
               <li>
-                <a class="dropdown-item" href="#lista-productos">{{
-                  categoria.nombre
-                }}</a>
+                <a class="dropdown-item" href="#lista-productos">
+                  {{ categoria.nombre }}
+                </a>
               </li>
             </div>
           </ul>
           <input
-            style="border: 2px solid rgb(255, 255, 255)"
+            style="border: 2px solid rgb(255, 255, 255);"
             type="text"
             class="form-control"
             aria-label="Text input with dropdown button"
             placeholder="Buscar producto"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasTop"
+            aria-controls="offcanvasTop"
           />
           <button
-            style="border-radius: 0 60px 60px 0"
+            style="border-radius: 0 60px 60px 0;"
             class="btn btn-danger fw-bolder"
             type="submit"
           >
@@ -123,11 +131,11 @@
           ><span class="fav-count">4</span></span
         > -->
 
-        <span style="color: #fff">
-          <span class="carrito" routerLink="/carrito">Carrito </span>
+        <span style="color: #fff;">
+          <span class="carrito" routerLink="/carrito">Carrito</span>
           <button
             type="button"
-            style="border: none; color: #fff; background-color: inherit"
+            style="border: none; color: #fff; background-color: inherit;"
           >
             <i class="fa-solid fa-cart-shopping"></i>
             <span class="cart-count">5</span>
@@ -137,4 +145,24 @@
     </div>
   </div>
 </header>
+
+<div
+  class="offcanvas offcanvas-top"
+  tabindex="-1"
+  id="offcanvasTop"
+  aria-labelledby="offcanvasTopLabel"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasTopLabel">Offcanvas top</h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    ...
+  </div>
+</div>
 <!-- <h1 class="my-5">{{ getCartQuantity() }}</h1> -->
