@@ -7,9 +7,12 @@ function hola(){
     console.log(saludo);
 }
 
-let fade = document.getElementsByClassName('offcanvas-backdrop fade show')
-      for(let i = 0; i < fade.length; i++) {
-        if(fade.length > 1) {
-          fade[i].remove()
-        }
+const toastTrigger = document.getElementById('liveToastBtn');
+    const toastLiveExample = document.getElementById('liveToast');
+    if (toastTrigger) {
+      toastTrigger.addEventListener('click', () => {
+        const toast = new bootstrap.Toast(toastLiveExample);
+
+        toast.show();
+      });
     }

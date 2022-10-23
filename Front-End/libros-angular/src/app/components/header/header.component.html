@@ -151,9 +151,23 @@
   tabindex="-1"
   id="offcanvasTop"
   aria-labelledby="offcanvasTopLabel"
+  style="height: 80vh;"
 >
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasTopLabel">Offcanvas top</h5>
+  <div
+    class="offcanvas-header d-flex justify-content-end justify-content-between"
+  >
+    <div>
+      <div class="logotipo d-flex gap-2 align-items-center">
+        <img src="../../../assets/imagenes/iso.png" alt="isotipo" width="30" />
+        <a href="">
+          <img
+            width="180"
+            src="https://fontmeme.com/permalink/221001/e8000a6afc66936e040a5d1e9a070f90.png"
+            alt="fuente-uncial-antiqua"
+          />
+        </a>
+      </div>
+    </div>
     <button
       type="button"
       class="btn-close"
@@ -162,7 +176,26 @@
     ></button>
   </div>
   <div class="offcanvas-body">
-    ...
+    <h4 class="mb-3 text-center">Buscar producto</h4>
+    <form
+      class="input-group d-flex align-items-center m-auto"
+      style="max-width: 1024px;"
+    >
+      <input
+        style="border-radius: 60px 0 0 60px !important;"
+        type="text"
+        class="form-control"
+        aria-label="Text input with dropdown button"
+        placeholder="Buscar producto"
+      />
+      <button
+        style="border-radius: 0 60px 60px 0;"
+        class="btn btn-danger fw-bolder"
+        type="submit"
+      >
+        Buscar
+      </button>
+    </form>
   </div>
 </div>
 <!-- <h1 class="my-5">{{ getCartQuantity() }}</h1> -->
