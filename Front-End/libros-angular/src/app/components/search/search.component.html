@@ -85,13 +85,15 @@
 </div>
 
 <div class="d-flex justify-content-center gap-2 mt-2">
-  <div *ngIf="productosBuscados.length > 3 && search.value !== ''; then thenCard"></div>
+  <div
+    *ngIf="productosBuscados.length > 3 && search.value !== ''; then thenCard"
+  ></div>
   <ng-template #thenCard>
     <div
       class="nav nav-pills"
       *ngFor="let prod of productosBuscados; index as i"
     >
-      <a class="" href="#scrollspyHeading{{ i }}">
+      <a class="dropdown-item" href="#scrollspyHeading{{ i }}">
         <i class="fa-regular fa-circle select-search"></i>
       </a>
     </div>
@@ -101,3 +103,5 @@
 <h5 class="text-center">
   {{ search.value !== 'unlam' ? mensaje : 'La mejor universidad' }}
 </h5>
+
+

@@ -24,7 +24,16 @@ export class SearchService {
   buscarLibro(value: string) {
     this.productosNuevosHome();
     this.productosBuscados = this.listaProductos.filter((product) =>
-      product.nombre.toLowerCase().includes(value.toLowerCase())
+      product.nombre
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .includes(
+          value
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+        )
     );
     return this.productosBuscados;
   }

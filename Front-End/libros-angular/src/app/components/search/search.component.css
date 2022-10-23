@@ -4,6 +4,7 @@
   overflow: scroll;
   max-width: 90%;
   margin: auto;
+  scroll-behavior: smooth;
 }
 
 .select-search:hover {
