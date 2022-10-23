@@ -31,6 +31,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { FirebaseLoginService } from './servicios/firebase-login.service.';
 import { CookieService } from 'ngx-cookie-service';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -46,13 +47,12 @@ import { CookieService } from 'ngx-cookie-service';
     LoginAdminComponent,
     PresentationComponent,
     LoginUsuarioComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModule,
-    NgbPaginationModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
