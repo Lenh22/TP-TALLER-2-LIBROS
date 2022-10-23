@@ -2,6 +2,11 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const express = require('express');
+
+//Conexion a BD
+const connectionBD = ('./config/conexion.js');
+
+
 const app = express();
 const port = 3000
 app.use(cors());
@@ -43,3 +48,10 @@ app.post('/api/authenticate', (req, res) => {
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
+
+
+//Rutas de Productos
+app.use('/api', require('./router'));
+
+
+

@@ -1,4 +1,52 @@
-<!-- <app-presentation></app-presentation> -->
+<section>
+  <div class="d-flex flex-wrap justify-content-center">
+    <div class="row">
+      <div class="col-md-4">
+        <h4 class="text-center"><strong></strong></h4>
+        <hr />
+        <div class="profile-card-2" routerLink="/categoria/terror">
+          <img
+            src="../../assets/imagenes/terror6.jpg"
+            class="img img-responsive"
+          />
+          <div class="profile-name">TERROR</div>
+          <div class="profile-username">@terror</div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <h4 class="text-center"><strong></strong></h4>
+        <hr />
+        <div class="profile-card-6" routerLink="/categoria/ficcion">
+          <img
+            src="../../assets/imagenes/ficcion.jpg"
+            class="img img-responsive"
+          />
+          <div class="profile-name">CIENCIA <br />FICCION</div>
+          <div class="profile-position">@cienciaFiccion</div>
+          <div class="profile-overview">
+            <div class="profile-overview"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" routerLink="/categoria/juvenil">
+        <h4 class="text-center"><strong></strong></h4>
+        <hr />
+        <div class="profile-card-4 text-center">
+          <img src="../../assets/imagenes/fantasia3.jpg" />
+          <div class="profile-content">
+            <div class="profile-name">
+              JUVENIL
+              <p>@juvenil</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /SECTION --->
+
 <!-- SECTION -->
 <section id="lista-productos">
   <div
@@ -23,7 +71,7 @@
             class="product-name my-2 d-block"
             style="word-break: break; width: 250px; height: 60px;"
           >
-            <a href="/producto/{{ producto.id }}}" class="text-dark">
+            <a href="/producto/{{ producto.id }}" class="text-dark">
               {{ producto.nombre }}
             </a>
           </span>
@@ -32,7 +80,8 @@
           </h5>
           <div class="d-flex gap-2 justify-content-center align-items-center">
             <a
-              href="/producto/{{ producto.id }}}"
+              
+              href="/producto/{{ producto.id }}"
               class="btn btn-light border rounded-circle"
               data-toggle="tooltip"
               data-placement="top"

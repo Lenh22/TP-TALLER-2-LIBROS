@@ -2,55 +2,43 @@
     <div class="col-md-12">
         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
-                <strong class="d-inline-block mb-2 text-primary">{{productoDetalle.categoria}}Categoria</strong>
-                <h3 class="mb-0">{{productoDetalle.nombre}}Nombre</h3>
-                <div class="mb-1 text-muted">{{productoDetalle.autor}}Autor</div>
-                <p class="card-text mb-auto fw-light">{{productoDetalle.calificacion}}Calificacion </p>
+                <strong class="d-inline-block mb-2 text-primary">{{productoDetalle.categoria}} </strong>
+                <h2 class="mb-0">{{productoDetalle.nombre}}</h2>
+                <div class="mb-1 text-muted"><strong>{{productoDetalle.autor}}</strong></div>
+
+               
+                <div class="my-2 d-flex gap-1 justify-content-center">
+                    <li *ngFor="let n of numSequence(productoDetalle.calificacion)">
+                      <i class="fa-solid fa-star" style="font-size: 12px"></i>
+                    </li>
+                  </div>
+                
                 <p *if="productoDetalle.stock > 0" class="card-text mb-auto"> En Stock </p>
                 <p *if="productoDetalle.stock <= 0" class="card-text mb-auto"> Sin Stock </p>
                 <!--Para prueba-->
 
-                <div class="col-12 mx-auto text-end">
-                    <a href="/comprar/{{productoDetalle.id}}" class="btn btn-primary  text-end ">Añadir al carro</a>
-                </div>
+               
+            
             </div>
             <div class="col-auto d-none d-lg-block">
                 <img class="img-thumbnail" width="200px" height="200px"
-                    src="https://st.booknet.com/uploads/covers/220/1664331730_33.jpg" class="card-img-top"
+                    src="{{productoDetalle.imagen}}" class="card-img-top"
                     [alt]="productoDetalle.nombre">
                 <!--[src]="productoDetalle.imagen"-->
+
+                <div class="col-12 mx-auto text-end mt-2">
+                    <button routerLink= "/comprar/{{productoDetalle.id}}" class="btn btn-danger btn-general fw-semibold">
+                      <i class="fa fa-shopping-cart"></i> Añadir al carrito
+                    </button>
+                  </div>
             </div>
         </div>
         <div class="container col-md-12">
             <div class="rounded bg-light p-4">
-                <h4>Sinopsis/Descripcion
-                </h4>
+                <h4><strong>Sinopsis/Descripcion</strong></h4>
                 <p class="card-text mb-auto">
                     {{productoDetalle.descripcion}}
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate fuga libero fugiat illum
-                    eligendi id, sapiente vel labore officiis adipisci dolorum laboriosam molestiae quod. Sunt
-                    recusandae placeat voluptatum sequi odit atque neque cupiditate ut repudiandae unde. Itaque soluta
-                    modi perspiciatis vitae nam eaque aperiam impedit architecto delectus, assumenda repudiandae maxime
-                    laboriosam error, dolor repellendus animi. Impedit suscipit libero, similique, quod voluptas
-                    voluptatum molestiae hic ab dicta inventore consequatur adipisci, porro at ducimus? Ipsum soluta
-                    molestias, quod consequuntur vero repellendus tempora mollitia repellat? Accusantium non nesciunt
-                    incidunt vitae rem hic tempora eos pariatur unde, sapiente molestias maxime ad? Impedit, sequi
-                    consectetur maiores sint dolorem magni. Deleniti explicabo excepturi vitae perspiciatis expedita
-                    neque magni, possimus est, dolor illo harum, praesentium recusandae aut delectus. Ullam, beatae vel
-                    quisquam excepturi voluptate eligendi laudantium dolorum quo mollitia veniam alias repellat
-                    quibusdam accusantium, ratione error dignissimos consequuntur ut, fugiat magni non. Illo voluptatem
-                    voluptate natus velit modi omnis quisquam distinctio ea, corrupti laudantium consequatur
-                    voluptatibus dolor eos aspernatur cupiditate hic blanditiis porro sunt? Quam vero incidunt et labore
-                    omnis alias explicabo earum illo necessitatibus nostrum, obcaecati at quia magnam. Cumque eum
-                    tempore, ab dolorum, blanditiis, magni inventore delectus corporis nemo nulla eaque error? Natus,
-                    vero, asperiores quo ducimus assumenda dignissimos voluptatum quam quae suscipit necessitatibus
-                    beatae, labore maiores doloribus. Dolor, repellat debitis, placeat rem odio molestias cumque
-                    doloremque corrupti at itaque provident illo facilis est ut blanditiis facere totam dolorum natus
-                    officia sequi, dicta autem distinctio aspernatur earum. Repellendus fugiat alias porro odit autem
-                    tenetur vel cupiditate dolorem quo. Neque vel repellat numquam voluptates impedit consectetur sequi
-                    deserunt, magni eius cumque molestiae, assumenda aliquam distinctio. Vero architecto expedita est
-                    repudiandae temporibus quod soluta ullam, sint earum, iusto magnam rerum porro a, incidunt possimus
-                    culpa vitae? Optio cupiditate beatae nemo quidem, quia ab maiores provident sequi neque.
+                    
                 </p>
             </div>
         </div>

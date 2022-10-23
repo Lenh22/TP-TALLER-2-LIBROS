@@ -90,4 +90,8 @@ export class HeaderComponent implements OnInit {
     this.show = 0;
     console.log(this.show);
   }
+  
+  
+
+
 }

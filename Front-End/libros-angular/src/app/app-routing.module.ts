@@ -9,6 +9,7 @@ const routes: Routes = [
   // {path: '', redirectTo: '/inicio', pathMatch: 'full'}, // para q cualquier direccion mande a inicio 
   // {path: 'inicio', component: InicioComponent},
   {path: '', component: HomeComponent },
+  {path: 'categoria/:id', component: HomeComponent },
   {path: 'admin', component:HomeAdminComponent,
   children:[
     {
