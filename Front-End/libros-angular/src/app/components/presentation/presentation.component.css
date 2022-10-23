@@ -1,6 +1,4 @@
-@import url('./../../styles.css');
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900|Open Sans:400,600,800');
-
+@import url("../../../styles.css");
 
 h1,
 h2,
@@ -266,48 +264,4 @@ body {
   color: rgb(150, 144, 144);
   font-weight: normal;
   font-size: 14px;
-}
-
-/* @media (max-width: 991px) {
-  .product-list {
-    justify-content: center !important;
-  }
-} */
-
-/* @media (max-width: 767px) {
-.product-container-card{
-  width: 50%;
-}
-} */
-
-
-.product-card:hover {
-  border: 2px solid rgb(170, 66, 66) !important;
-}
-
-.price-delete {
-  text-decoration-line: line-through;
-  color: rgb(150, 144, 144);
-  font-weight: normal;
-  font-size: 14px;
-}
-
-.product-container {
-  display: grid;
-  grid-template-columns: min-content min-content min-content;
-  justify-content: center;
-  margin:auto;
-  grid-gap: 30px;
-}
-
-@media (max-width: 991px) {
-  .product-container {
-    grid-template-columns: min-content min-content;
-  }
-}
-
-@media (max-width: 767px) {
-  .product-container {
-    grid-template-columns: min-content;
-  }
 }

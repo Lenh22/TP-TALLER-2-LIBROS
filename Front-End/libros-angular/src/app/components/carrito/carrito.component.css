@@ -1,6 +1,15 @@
-@import url("../../../styles.css");
+@import url('../../../styles.css');
 
-.pago{
-    text-align: right;
+.pago {
+  text-align: right;
+}
 
+td {
+  vertical-align: middle;
+}
+
+@media (max-width: 991px) {
+  .banner-info__cart {
+    display: none !important;
+  }
 }

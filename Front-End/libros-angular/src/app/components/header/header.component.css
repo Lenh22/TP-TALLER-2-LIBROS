@@ -1,7 +1,7 @@
 @import url("../../../styles.css");
 
 .header-botton {
-  background-color: #000;
+  background-color: rgb(36, 32, 32);
   border-bottom: 2px solid red;
 }
 
@@ -62,6 +62,11 @@
   position: fixed;
 }
 
+.modal-login {
+  width: fit-content;
+  margin: auto;
+}
+
 @media (max-width: 991px) {
   .header-top-contact {
     display: none !important;
@@ -82,12 +87,17 @@
   .example-sidenav {
     width: 50%;
   }
+
+  .header__login {
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
 }
 
 @media (max-width: 767px) {
-  .header-botton__cart {
+  /* .header-botton__cart {
     align-self: center !important;
-  }
+  } */
 
   .example-sidenav {
     width: 100%;

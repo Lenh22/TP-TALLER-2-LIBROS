@@ -1,43 +1,102 @@
-<section class="vh-100 gradient-custom  bg-white pos-fixed">
-    <div class="container  h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-          <div class="card bg-semiTrans text-white" style="border-radius: 1rem;">
-  
-            <div class="card-body p-5 text-center bg-dark rounded">
-              <!-- <div class="logoYTexto text-center"><img  src="./assets/images/nubeB.png" class="" alt="Nube" class="img-fluid rounded mx-auto" ></div> -->
-              <h2 class="fw-bold mb-2 text-uppercase">Crea tu usuario!</h2>
-  
-              <form  novalidate class=" mt-md-4">
-                <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" class="form-control form-control-lg"
-                      placeholder="Pepe Argento"  />
-                  </div>
-
-                <div class="form-outline form-white mb-4">
-                  <label class="form-label" for="email">Usuario</label>
-                  <input type="text" id="nombreUsuario" name="nombreUsuario" class="form-control form-control-lg"
-                    placeholder="Pepito" />
-                </div>
-
-                <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="">Email</label>
-                    <input type="text" id="email" name="email" class="form-control form-control-lg"
-                      placeholder="lea.alonso99@gmail.com"  />
-                  </div>
-                <div class="form-outline form-white mb-4">
-                  <label class="form-label" for="idpassword">Contraseña</label>
-                  <input id="password" name="password" class="formser.pas" type="password"
-                    class="form-control form-control-lg" placeholder="Epa! Aca ejemplo no eh"  />
-                </div>
-                <button class="btn btn-danger btn-lg px-5" type="submit">Crear</button>
-  
-              </form>
-
-            </div> 
+<section>
+  <div class="d-flex gap-5 justify-content-around">
+    <div class="col-4 form-signup">
+      <h3 class="mb-4 text-center">Registro de usuario</h3>
+      <form
+        class="d-flex flex-column gap-3"
+        [formGroup]="registrarUsuario"
+        (ngSubmit)="registrar()"
+      >
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Usuario"
+            formControlName="usuario"
+          />
+          <label>Usuario</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Email"
+            formControlName="email"
+          />
+          <label>Email</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Password"
+            formControlName="password"
+          />
+          <label>Password</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Repetir password"
+            formControlName="repetirPassword"
+          />
+          <label>Repetir password</label>
+        </div>
+        <div class="d-flex gap-2">
+          <div class="form-floating" style="width: 100%">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Nombre"
+              formControlName="name"
+            />
+            <label>Nombre</label>
+          </div>
+          <div class="form-floating" style="width: 100%">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Apellido"
+              formControlName="apellido"
+            />
+            <label>Apellido</label>
           </div>
         </div>
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Domicilio"
+            formControlName="domicilio"
+          />
+          <label>Domicilio</label>
+        </div>
+        <div>
+          <button
+            type="submit"
+            class="btn btn-warning fw-bolder"
+            style="border-radius: 60px"
+          >
+            Registrarse
+          </button>
+        </div>
+      </form>
+    </div>
+    <div
+      class="col-6 d-flex align-items-center justify-content-center img-signup"
+    >
+      <div
+        style="width: 100%; height: 100%; filter: invert(100%)"
+        class="logotipo d-flex gap-2 align-items-center justify-content-center"
+      >
+        <img src="../../../assets/imagenes/iso.png" alt="isotipo" width="50" />
+        <img
+          width="250"
+          src="https://fontmeme.com/permalink/221001/e8000a6afc66936e040a5d1e9a070f90.png"
+          alt="fuente-uncial-antiqua"
+        />
       </div>
     </div>
-  </section>
+  </div>
+</section>

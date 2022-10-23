@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { InicioComponent } from './inicio/inicio.component';
+
 import { HomeComponent } from './home/home.component';
 import { ProductosHomeComponent } from './productos-home/productos-home.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -22,16 +22,19 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { StylesService } from './servicios/styles.service';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
-import {MatInputModule} from '@angular/material/input';
-
-
+import { MatInputModule } from '@angular/material/input';
+import { PresentationComponent } from './components/presentation/presentation.component';
+import { LoginUsuarioComponent } from './components/login-usuario/login-usuario.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
+import { FirebaseLoginService } from './servicios/firebase-login.service.';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InicioComponent,
     HomeComponent,
     ProductosHomeComponent,
     HeaderComponent,
@@ -40,7 +43,9 @@ import {MatInputModule} from '@angular/material/input';
     NuevoUsuarioComponent,
     CarritoComponent,
     BannerHomeComponent,
-    LoginAdminComponent
+    LoginAdminComponent,
+    PresentationComponent,
+    LoginUsuarioComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,9 +57,16 @@ import {MatInputModule} from '@angular/material/input';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
-  providers: [CarritoService, CategoriaService, StylesService],
+  providers: [
+    CarritoService,
+    CategoriaService,
+    StylesService,
+    FirebaseLoginService,
+    CookieService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

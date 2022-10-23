@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProductosService } from '../servicios/productos.service';
 import { ListaProductos } from '../modulos/DataProductos';
+import { CarritoService } from '../servicios/carrito.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 
 
@@ -11,16 +12,22 @@ const FILTER_PAG_REGEX = /[^0-9]/g;
   styleUrls: ['./productos-home.component.css'],
 })
 export class ProductosHomeComponent implements OnInit {
+  @Input() dataCartEntry: any;
   productosNuevos: ListaProductos[] = [];
-  page:number = 1;
+  productoCarrito: ListaProductos;
+
+  page: number = 1;
   show: number = 0;
 
-  constructor(private serviciosProductos: ProductosService, 
+  constructor(
+    private serviciosProductos: ProductosService, 
     private activatedRoute: ActivatedRoute,
-              private router:RouterModule) {}
+    private router:RouterModule,
+    private carritoService: CarritoService
+  ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe(( )=>{ //cuando cambia un parametro de la URL el componente lo toma
+    this.activatedRoute.paramMap.subscribe(( )=>{ //cuando cambia un parametro de la URL se ejecuta la funcion
       const id = this.activatedRoute.snapshot.params.id;
       const ids = id;
 
@@ -49,6 +56,7 @@ export class ProductosHomeComponent implements OnInit {
    
   }
 
+
   numSequence(n: number): Array<number> {
     return Array(n);
   }
@@ -64,4 +72,14 @@ export class ProductosHomeComponent implements OnInit {
   
 
 
+
+  //carrito
+  addToCart(item: ListaProductos) {
+    this.carritoService.addToCartService(item);
+    this.carritoService.disparadorCarrito.emit(item);
+  }
+
+  deleteProduct(id: string) {
+    this.carritoService.deleteProductService(id);
+  }
 }

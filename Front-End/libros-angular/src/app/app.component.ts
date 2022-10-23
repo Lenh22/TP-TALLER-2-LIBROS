@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ListaProductos } from './modulos/DataProductos';
 import { StylesService } from './servicios/styles.service';
 
 @Component({
@@ -8,9 +9,9 @@ import { StylesService } from './servicios/styles.service';
 })
 export class AppComponent {
   constructor(private styleService: StylesService) {}
+
+  productos: ListaProductos[] = [];
   title = 'libros-angular';
 
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }

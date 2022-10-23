@@ -9,6 +9,7 @@ export interface ListaProductos {
   nombre: string;
   precio: number;
   stock: number;
+  cantidad: number | 1;
 }
 
 export interface ListaCategoria {
@@ -27,6 +28,7 @@ export class Producto implements ListaProductos {
   nombre: string; //
   precio: number;
   stock: number; //
+  cantidad: number | 1;
 
   constructor( ) {
 
