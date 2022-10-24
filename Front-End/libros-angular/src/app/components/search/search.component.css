@@ -1,10 +1,14 @@
-@import url('../../../styles.css');
+@import url("../../../styles.css");
 
 .search-flex {
-  overflow: scroll;
+  overflow-x: scroll !important;
+  scroll-behavior: smooth;
   max-width: 90%;
   margin: auto;
-  scroll-behavior: smooth;
+}
+
+.search-flex::-webkit-scrollbar {
+  display: none;
 }
 
 .select-search:hover {

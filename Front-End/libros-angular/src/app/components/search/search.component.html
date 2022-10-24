@@ -20,15 +20,15 @@
     aria-label="Close"
   ></button>
 </div>
-<div class="offcanvas-body">
+<div>
   <h4 class="mb-3 text-center">Buscar producto</h4>
   <form
     class="input-group d-flex align-items-center m-auto"
-    style="max-width: 1024px;"
+    style="max-width: 1024px"
   >
     <input
       #search
-      style="border-radius: 60px 0 0 60px !important;"
+      style="border-radius: 60px 0 0 60px !important"
       type="text"
       class="form-control"
       aria-label="Text input with dropdown button"
@@ -36,7 +36,7 @@
       (keyup)="searchProductHeader(search.value)"
     />
     <button
-      style="border-radius: 0 60px 60px 0;"
+      style="border-radius: 0 60px 60px 0"
       class="btn btn-danger fw-bolder"
       type="submit"
       (click)="searchProductHeader(search.value)"
@@ -47,7 +47,7 @@
 </div>
 
 <h3 class="{{ search.value !== '' && 'pt-2 pb-2 text-center' }}">
-  {{ search.value !== '' ? 'Resultado' : '' }}
+  {{ search.value !== "" ? "Resultado" : "" }}
 </h3>
 
 <div
@@ -60,20 +60,22 @@
     <ng-template #thenBlock>
       <div
         id="scrollspyHeading{{ i }}"
-        class="product-card d-flex flex-column gap-2 border border-2 rounded-4 p-3"
+        class="product-card d-flex flex-column gap-2 border border-2 rounded-4 p-1"
       >
         <div class="product-img d-block m-auto">
           <img
             [src]="producto.imagen"
             class="card-img-top"
             [alt]="producto.nombre"
-            style="object-fit: cover; height: 180px; width: 120px;"
+            style="object-fit: cover"
+            width="100"
+            height="150"
           />
         </div>
         <div class="product-body text-center">
           <span
             class="product-name d-block"
-            style="word-break: break; width: 250px; height: 60px;"
+            style="word-break: break; width: 250px; height: 60px"
           >
             <a href="/producto/{{ producto.id }}}">{{ producto.nombre }}</a>
           </span>
@@ -101,7 +103,5 @@
 </div>
 
 <h5 class="text-center">
-  {{ search.value !== 'unlam' ? mensaje : 'La mejor universidad' }}
+  {{ search.value !== "unlam" ? mensaje : "La mejor universidad" }}
 </h5>
-
-

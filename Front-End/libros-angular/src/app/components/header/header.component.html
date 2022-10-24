@@ -1,19 +1,19 @@
 <header>
   <div
     class="bg-dark header-top px-5 py-1 d-flex justify-content-between align-items-center"
-    style="width: 100%;"
+    style="width: 100%"
   >
     <div class="d-flex gap-3 header-top-contact">
-      <span style="color: #fff; font-size: 12px;">
-        <i class="fa-solid fa-phone" style="color: rgb(255, 0, 0);"></i>
+      <span style="color: #fff; font-size: 12px">
+        <i class="fa-solid fa-phone" style="color: rgb(255, 0, 0)"></i>
         (+5411) 4480-8900
       </span>
-      <span style="color: #fff; font-size: 12px;">
-        <i class="fa-solid fa-envelope" style="color: rgb(255, 0, 0);"></i>
+      <span style="color: #fff; font-size: 12px">
+        <i class="fa-solid fa-envelope" style="color: rgb(255, 0, 0)"></i>
         alumnos@unlam.edu.ar
       </span>
-      <span style="color: #fff; font-size: 12px;">
-        <i class="fa-solid fa-location-dot" style="color: rgb(255, 0, 0);"></i>
+      <span style="color: #fff; font-size: 12px">
+        <i class="fa-solid fa-location-dot" style="color: rgb(255, 0, 0)"></i>
         San Justo, Buenos Aires, Argentina
       </span>
     </div>
@@ -27,7 +27,7 @@
           class="btn"
           data-bs-toggle="modal"
           data-bs-target="#modalLogin"
-          style="color: #fff;"
+          style="color: #fff"
         >
           LogIn
           <i class="fa-solid fa-right-to-bracket"></i>
@@ -36,7 +36,7 @@
           href="/registrar"
           rel="noopener noreferrer"
           class="fw-bolder"
-          style="color: #fff;"
+          style="color: #fff"
         >
           SignUp
           <i class="fa-solid fa-user-plus"></i>
@@ -50,7 +50,7 @@
         <button
           type="button"
           class="btn"
-          style="color: #fff;"
+          style="color: #fff"
           (click)="logOut()"
         >
           LogOut
@@ -68,7 +68,7 @@
     <div class="d-flex align-items-center py-3 header-botton-info">
       <div
         class="logotipo d-flex gap-2 align-items-center"
-        style="filter: invert(100%);"
+        style="filter: invert(100%)"
       >
         <img src="../../../assets/imagenes/iso.png" alt="isotipo" width="30" />
         <a href="">
@@ -82,7 +82,7 @@
       <div class="col-6 m-auto header-botton__search">
         <form class="input-group my-3">
           <button
-            style="border-radius: 60px 0 0 60px;"
+            style="border-radius: 60px 0 0 60px"
             class="btn btn-light dropdown-toggle border border-0"
             type="button"
             data-bs-toggle="dropdown"
@@ -98,14 +98,16 @@
             </li>
             <div *ngFor="let categoria of categorias">
               <li>
-                <a  class="dropdown-item" routerLink="/categoria/{{categoria.nombre}}" >{{
-                  categoria.nombre
-                }}</a>
+                <a
+                  class="dropdown-item"
+                  routerLink="/categoria/{{ categoria.nombre }}"
+                  >{{ categoria.nombre }}</a
+                >
               </li>
             </div>
           </ul>
           <input
-            style="border: 2px solid rgb(255, 255, 255);"
+            style="border: 2px solid rgb(255, 255, 255)"
             type="text"
             class="form-control"
             aria-label="Text input with dropdown button"
@@ -115,7 +117,7 @@
             aria-controls="offcanvasTop"
           />
           <button
-            style="border-radius: 0 60px 60px 0;"
+            style="border-radius: 0 60px 60px 0"
             class="btn btn-danger fw-bolder"
             type="submit"
             aria-label="Text input with dropdown button"
@@ -135,11 +137,11 @@
           ><span class="fav-count">4</span></span
         > -->
 
-        <span style="color: #fff;">
+        <span style="color: #fff">
           <span class="carrito" routerLink="/carrito">Carrito</span>
           <button
             type="button"
-            style="border: none; color: #fff; background-color: inherit;"
+            style="border: none; color: #fff; background-color: inherit"
           >
             <i class="fa-solid fa-cart-shopping"></i>
             <span class="cart-count">5</span>
@@ -155,7 +157,7 @@
   tabindex="-1"
   id="offcanvasTop"
   aria-labelledby="offcanvasTopLabel"
-  style="height: 85vh; padding: 20px 3vw;"
+  style="height: 90vh; padding: 0px 3vw"
 >
   <app-search></app-search>
 </div>
