@@ -98,9 +98,9 @@
             </li>
             <div *ngFor="let categoria of categorias">
               <li>
-                <a class="dropdown-item" href="#lista-productos">
-                  {{ categoria.nombre }}
-                </a>
+                <a  class="dropdown-item" routerLink="/categoria/{{categoria.nombre}}" >{{
+                  categoria.nombre
+                }}</a>
               </li>
             </div>
           </ul>

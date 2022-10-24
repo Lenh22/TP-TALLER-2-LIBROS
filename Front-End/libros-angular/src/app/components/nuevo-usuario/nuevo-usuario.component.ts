@@ -25,7 +25,7 @@ export class NuevoUsuarioComponent implements OnInit {
   ) {
     this.registrarUsuario = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       name: ['', [Validators.required]],
       usuario: ['', Validators.required],
       repetirPassword: ['', [Validators.required]],
@@ -46,7 +46,10 @@ export class NuevoUsuarioComponent implements OnInit {
     const email = this.registrarUsuario.value.email;
     const password = this.registrarUsuario.value.password;
     const repetirPassword = this.registrarUsuario.value.repetirPassword;
-
+    if(password !== repetirPassword){
+      alert("Las contraseñas deben coincidir");
+      return;
+    }
     const nombre = this.registrarUsuario.value.name;
     const apellido = this.registrarUsuario.value.apellido;
     const domicilio = this.registrarUsuario.value.domicilio;

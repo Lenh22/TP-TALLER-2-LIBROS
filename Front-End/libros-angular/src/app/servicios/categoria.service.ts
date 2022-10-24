@@ -9,7 +9,12 @@ export class CategoriaService {
   constructor(private http: HttpClient) {}
 
   getCategorias() {
-    const url = environment.URL + 'libreria/categoria ';
+    const url = environment.api + '/categorias';
     return this.http.get<any>(url);
+  }
+
+  getCategoriaId(id:number){
+    const url = environment.api + "/categorias/" + id;
+    return this.http.get<any>(url); 
   }
 }

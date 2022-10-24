@@ -11,6 +11,10 @@ import { ProductosService } from 'src/app/servicios/productos.service';
 export class ProductoDetalleComponent implements OnInit {
   productoDetalle:Producto = new Producto();
 
+ 
+
+
+
   constructor(
               private activatedRoute: ActivatedRoute,
               private router:RouterModule,
@@ -18,14 +22,35 @@ export class ProductoDetalleComponent implements OnInit {
             ) { }
 
   ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.params['id'];
-    this.productoService.detalle(id).subscribe(
+    
+    const id = this.activatedRoute.snapshot.params.id;
+    this.productoService.getProductoById(id).subscribe(
       data=>{
-        this.productoDetalle = data;
+
+        const datas = JSON.stringify(data);//convertir a string
+        const datos = JSON.parse(datas); //convertir a objeto
+       
+        
+          this.productoDetalle.nombre = <string>datos[0].nombre;//asignar el nombre
+          this.productoDetalle.id = <string>datos[0].id;//asignar el id
+          this.productoDetalle.autor = <string>datos[0].autor;
+          this.productoDetalle.calificacion = <number>datos[0].calificacion;
+          this.productoDetalle.descripcion = <string>datos[0].descripcion;//asignar la altura
+          this.productoDetalle.precio = <number>datos[0].precio;//asignar el peso
+          this.productoDetalle.imagen = <string>datos[0].imagen;//la imagen
+          this.productoDetalle.categoria = <string>datos[0].categoria;
+          //this.productoDetalle = <any>data;
+          
+        console.log(data);
       },err =>{
         console.log("Error al traer los detalles del producto")
       }
     );
+    
   }
+  numSequence(n: number): Array<number> {
+    return Array(n);
+  }
+
 
 }

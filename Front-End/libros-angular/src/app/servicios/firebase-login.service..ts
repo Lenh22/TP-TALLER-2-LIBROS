@@ -1,3 +1,4 @@
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
@@ -16,6 +17,8 @@ export class FirebaseLoginService {
   user: any;
   usuario: Usuario;
   usuarios: Usuario[];
+  loading: boolean = false;
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -141,4 +144,14 @@ export class FirebaseLoginService {
         // this.router.navigate(['/']);
       });
   }
+//Recuperacion de Clave
+  recuperarClave(email:string){
+    this.loading = true;
+    this.afAuth.sendPasswordResetEmail(email).then(() => {
+    alert("Se ha enviado un mensaje al email: "+ email);
+    }).catch((error)=>{
+      this.loading=false;
+    });
+  }
 }
+

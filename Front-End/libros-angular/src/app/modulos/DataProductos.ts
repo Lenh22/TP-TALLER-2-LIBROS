@@ -30,7 +30,11 @@ export class Producto implements ListaProductos {
   stock: number; //
   cantidad: number | 1;
 
-  constructor() {}
+  constructor( ) {
+
+
+
+     }
 }
 
 export class Categoria implements ListaCategoria {

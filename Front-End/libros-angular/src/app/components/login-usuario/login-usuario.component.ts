@@ -11,15 +11,21 @@ import { FirebaseLoginService } from 'src/app/servicios/firebase-login.service.'
 })
 export class LoginUsuarioComponent implements OnInit {
   loginUsuario: FormGroup;
+  recuperoClave:FormGroup;
   @ViewChild('closeLogin') closeLogin: any;
+  @ViewChild('closeRecuperarClave') closeRecuperarClave: any;
 
   constructor(
     private fb: FormBuilder,
-    private firebaseLogin: FirebaseLoginService
+    private firebaseLogin: FirebaseLoginService,
   ) {
     this.loginUsuario = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      password: ['', [Validators.required,Validators.minLength(6)]],
+    });
+
+    this.recuperoClave = this.fb.group({
+      emailRecuperar: ['', [Validators.required, Validators.email]]
     });
   }
 
@@ -31,5 +37,14 @@ export class LoginUsuarioComponent implements OnInit {
     // console.log(email, password);
     this.firebaseLogin.loginFirebase(email, password);
     this.closeLogin.nativeElement.click();
+  }
+  cambiarModal(){
+    this.closeLogin.nativeElement.click();
+  }
+  enviarClave(){
+    const email = this.recuperoClave.value.emailRecuperar;
+    console.log(email);
+    this.firebaseLogin.recuperarClave(email);
+    this.closeRecuperarClave.nativeElement.click();
   }
 }
