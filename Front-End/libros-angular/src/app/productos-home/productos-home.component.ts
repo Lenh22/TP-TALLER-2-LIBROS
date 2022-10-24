@@ -14,7 +14,7 @@ const FILTER_PAG_REGEX = /[^0-9]/g;
 export class ProductosHomeComponent implements OnInit {
   @Input() dataCartEntry: any;
   productosNuevos: ListaProductos[] = [];
-  productoCarrito: ListaProductos;
+  productoCarrito: ListaProductos[] = [];
 
   page: number = 1;
   show: number = 0;
@@ -75,11 +75,16 @@ export class ProductosHomeComponent implements OnInit {
 
   //carrito
   addToCart(item: ListaProductos) {
+    
     this.carritoService.addToCartService(item);
-    this.carritoService.disparadorCarrito.emit(item);
+    //this.carritoService.disparadorCarrito.emit(item);
   }
 
   deleteProduct(id: string) {
     this.carritoService.deleteProductService(id);
   }
+  reload (){
+    location.reload();
+   }
+
 }

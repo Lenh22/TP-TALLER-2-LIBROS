@@ -15,7 +15,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { FirebaseLoginService } from 'src/app/servicios/firebase-login.service.';
 import { CarritoService } from 'src/app/servicios/carrito.service';
-
+import { ActivatedRoute, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
   categoria: string = 'Categorias';
   show: number = 0;
   carrito: ListaProductos[] = [];
-
+  cantidad;
   formularioLogin = new FormGroup({
     usuario: new FormControl('', Validators.required),
     contrasenia: new FormControl('', Validators.required),
@@ -40,29 +40,34 @@ export class HeaderComponent implements OnInit {
     private styleService: StylesService,
     private afAuth: AngularFireAuth,
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private carritoService: CarritoService,
     private firebaseLogin: FirebaseLoginService
   ) {
     this.carrito = [];
+    this.cantidad = 0;
   }
 
   userName: string = '';
 
   ngOnInit(): void {
-    this.servicioCategorias.getCategorias().subscribe((data) => {
+    
+    //this.cantidad = this.carritoService.getCountProductsService();
+    this.cantidad = localStorage.length;
+    this.servicioCategorias.getCategorias().subscribe((data)  => {
       this.categorias = data;
     });
-    // this.carrito = this.carritoService.getAllProductsService();
-    this.carritoService.disparadorCarrito.subscribe((data) => {
+      this.carrito = this.carritoService.getAllProductsService();
+      this.carritoService.disparadorCarrito.subscribe((data) => {
       this.carrito.push(data);
-      // localStorage.setItem('carrito', JSON.stringify(this.carrito));
+      this.cantidad = this.carritoService.getCountProductsService();
+
+       localStorage.setItem('carrito',  JSON.stringify(this.carrito));
     });
+     
   }
 
-  //carrito
-  getCartQuantity() {
-    return this.carrito.length;
-  }
+ 
 
   onLogin(): void {
     const datosFormularioLogin: loginSendData = this.formularioLogin.value;
@@ -90,6 +95,12 @@ export class HeaderComponent implements OnInit {
     this.show = 0;
     console.log(this.show);
   }
+   reload (){
+    location.reload();
+   }
+
+    
+  
   
   
 

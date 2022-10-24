@@ -5,29 +5,43 @@
       <tr>
         <th scope="col">Imagen</th>
         <th scope="col">Nombre</th>
+        <th scope="col">Cantidad</th>
         <th scope="col">Precio</th>
         <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr *ngFor="let carrito of carrito">
         <td>
           <img
             class="img-thumbnail"
             width="100px"
             height="100px"
-            src="https://st.booknet.com/uploads/covers/220/1664331730_33.jpg"
+            src="{{carrito.imagen}}"
           />
         </td>
         <td>
           <div class="d-flex flex-column gap-2">
-            <p>Harry Potter y la Orden del Fenix</p>
-            <p class="fst-italic fw-bolder">Fantasia</p>
+            <p>{{carrito.nombre}}</p>
+            <p class="fst-italic fw-bolder">{{carrito.categoria}}</p>
           </div>
         </td>
-        <td>$500.00</td>
         <td>
-          <button type="button" class="btn-close" aria-label="Close"></button>
+          <select name="prueba"  [(ngModel)]= "carrito.cantidad">
+
+            <option selected="yes" value=1> 1 </option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+          
+          </select>
+
+
+        </td>
+        <td>${{carrito.precio}}</td>
+        <td>
+          <button type="button" class="btn-close" aria-label="Close" (click)="sacarProdDeCarrito(carrito.id)" (click)="reload()" ></button>
         </td>
       </tr>
     </tbody>
@@ -35,7 +49,8 @@
   <hr />
   <div class="pago d-flex justify-content-between">
     <h4>Total a pagar</h4>
-    <h4>$1800.00</h4>
+    <h4>${{sum}}</h4>
+    
   </div>
   <div class="d-flex justify-content-center my-4">
     <button class="btn btn-danger btn-general fw-semibold" style="width: 100%;">
