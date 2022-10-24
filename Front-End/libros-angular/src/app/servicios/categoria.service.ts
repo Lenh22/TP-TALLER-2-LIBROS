@@ -12,4 +12,9 @@ export class CategoriaService {
     const url = environment.api + '/categorias';
     return this.http.get<any>(url);
   }
+
+  getCategoriaId(id:number){
+    const url = environment.api + "/categorias/" + id;
+    return this.http.get<any>(url); 
+  }
 }

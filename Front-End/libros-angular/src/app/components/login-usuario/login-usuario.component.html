@@ -27,6 +27,8 @@
               formControlName="email"
             />
             <label for="floatingInput">Email</label>
+            <span *ngIf="loginUsuario.get('email')?.hasError('required') && loginUsuario.get('email')?.touched" class="text-danger"> El <strong>Email</strong> es requerido</span>
+            <span *ngIf="loginUsuario.get('email')?.hasError('email') && loginUsuario.get('email')?.touched" class="text-danger"> Debe ser un <strong>Email</strong> valido</span>
           </div>
           <div class="form-floating">
             <input
@@ -36,13 +38,18 @@
               formControlName="password"
             />
             <label for="floatingPassword">Password</label>
+            <span *ngIf="loginUsuario.get('password')?.hasError('required') && loginUsuario.get('password')?.touched" class="text-danger"> El <strong>Pasword</strong> es requerido</span>
+            <span *ngIf="loginUsuario.get('password')?.hasError('minlength') && loginUsuario.get('password')?.touched" class="text-danger"> El <strong>Pasword</strong> debe tener minimo 6 caracteres</span>
           </div>
           <div class="modal-footer">
+            <!---->
+            <p class="cursor-ptr" data-bs-toggle="modal" data-bs-target="#modalRecuperarClave"  (click)="cambiarModal()">Olvidaste la clave?</p>
             <button
               id="buttonLogin"
               type="submit"
               class="btn btn-warning"
               style="border-radius: 60px"
+              [disabled]="loginUsuario.invalid"
             >
               Ingresar
             </button>
@@ -75,3 +82,54 @@
     </div>
   </div>
 </div>
+<!-- *** Modal recuperacion inicio *** -->
+<div
+  class="modal fade"
+  id="modalRecuperarClave"
+  data-bs-keyboard="false"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content bg-light px-3">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Aqui puede recuperar su cuenta</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          #closeRecuperarClave
+        ></button>
+      </div>
+      <div class="modal-body">
+        <!-- ** Formulario **-->
+        <form [formGroup]="recuperoClave" (ngSubmit)="enviarClave()">
+          <div class="form-floating mb-3">
+            <input
+              type="email"
+              class="form-control"
+              placeholder="name@example.com"
+              formControlName="emailRecuperar"
+            />
+            <label for="floatingInput">Email</label>
+            <span *ngIf="recuperoClave.get('emailRecuperar')?.hasError('required') && recuperoClave.get('emailRecuperar')?.touched" class="text-danger"> El <strong>Email</strong> es requerido</span>
+            <span *ngIf="recuperoClave.get('emailRecuperar')?.hasError('email') && recuperoClave.get('emailRecuperar')?.touched" class="text-danger"> Debe ser un <strong>Email</strong> valido</span>
+          </div>
+          <div class="modal-footer">
+            <!---->
+            <button
+              id="buttonLogin"
+              type="submit"
+              class="btn btn-warning"
+              style="border-radius: 60px"
+            >
+              Recuperar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- *** Modal recuperacion Fin *** -->

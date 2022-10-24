@@ -15,6 +15,7 @@
             formControlName="usuario"
           />
           <label>Usuario</label>
+          <span *ngIf="registrarUsuario.get('usuario')?.hasError('required') && registrarUsuario.get('usuario')?.touched" class="text-danger"> El <strong>Usuario</strong> es requerido</span>
         </div>
         <div class="form-floating">
           <input
@@ -24,6 +25,9 @@
             formControlName="email"
           />
           <label>Email</label>
+          <span *ngIf="registrarUsuario.get('email')?.hasError('required') && registrarUsuario.get('email')?.touched" class="text-danger"> El <strong>Email</strong> es requerido</span>
+          <span *ngIf="registrarUsuario.get('email')?.hasError('email') && registrarUsuario.get('email')?.touched" class="text-danger"> Debe ser un <strong>Email</strong> valido</span>
+
         </div>
         <div class="form-floating">
           <input
@@ -33,6 +37,9 @@
             formControlName="password"
           />
           <label>Password</label>
+          <span *ngIf="registrarUsuario.get('password')?.hasError('required') && registrarUsuario.get('password')?.touched" class="text-danger"> El <strong>Pasword</strong> es requerido</span>
+          <span *ngIf="registrarUsuario.get('password')?.hasError('minlength') && registrarUsuario.get('password')?.touched" class="text-danger"> El <strong>Pasword</strong> debe tener minimo 6 caracteres</span>
+
         </div>
         <div class="form-floating">
           <input
@@ -42,6 +49,8 @@
             formControlName="repetirPassword"
           />
           <label>Repetir password</label>
+          <span *ngIf="registrarUsuario.get('repetirPassword')?.hasError('required') && registrarUsuario.get('repetirPassword')?.touched" class="text-danger"> La <strong>repeticion</strong> es requerida</span>
+
         </div>
         <div class="d-flex gap-2">
           <div class="form-floating" style="width: 100%">
@@ -52,6 +61,8 @@
               formControlName="name"
             />
             <label>Nombre</label>
+            <span *ngIf="registrarUsuario.get('name')?.hasError('required') && registrarUsuario.get('name')?.touched" class="text-danger"> El <strong>Nombre</strong> es requerido</span>
+
           </div>
           <div class="form-floating" style="width: 100%">
             <input
@@ -61,6 +72,8 @@
               formControlName="apellido"
             />
             <label>Apellido</label>
+            <span *ngIf="registrarUsuario.get('apellido')?.hasError('required') && registrarUsuario.get('apellido')?.touched" class="text-danger"> El <strong>Apellido</strong> es requerido</span>
+
           </div>
         </div>
         <div class="form-floating">
@@ -71,13 +84,15 @@
             formControlName="domicilio"
           />
           <label>Domicilio</label>
+          <span *ngIf="registrarUsuario.get('domicilio')?.hasError('required') && registrarUsuario.get('domicilio')?.touched" class="text-danger"> El <strong>Domicilio</strong> es requerido</span>
+
         </div>
         <div>
           <button
             type="submit"
             class="btn btn-warning fw-bolder"
             style="border-radius: 60px"
-          >
+            [disabled]="registrarUsuario.invalid" > <!-- Disabled -->
             Registrarse
           </button>
         </div>

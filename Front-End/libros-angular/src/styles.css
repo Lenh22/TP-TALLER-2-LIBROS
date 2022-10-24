@@ -1,7 +1,9 @@
 a {
   text-decoration: none;
 }
-
+.cursor-ptr{
+  cursor: pointer;
+}
 section,
 .container-general {
   max-width: 1440px;
