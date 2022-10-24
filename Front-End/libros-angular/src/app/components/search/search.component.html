@@ -1,0 +1,107 @@
+<div
+  class="offcanvas-header d-flex justify-content-end justify-content-between"
+>
+  <div>
+    <div class="logotipo d-flex gap-2 align-items-center">
+      <img src="../../../assets/imagenes/iso.png" alt="isotipo" width="30" />
+      <a href="">
+        <img
+          width="180"
+          src="https://fontmeme.com/permalink/221001/e8000a6afc66936e040a5d1e9a070f90.png"
+          alt="fuente-uncial-antiqua"
+        />
+      </a>
+    </div>
+  </div>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="offcanvas"
+    aria-label="Close"
+  ></button>
+</div>
+<div>
+  <h4 class="mb-3 text-center">Buscar producto</h4>
+  <form
+    class="input-group d-flex align-items-center m-auto"
+    style="max-width: 1024px"
+  >
+    <input
+      #search
+      style="border-radius: 60px 0 0 60px !important"
+      type="text"
+      class="form-control"
+      aria-label="Text input with dropdown button"
+      placeholder="Buscar producto"
+      (keyup)="searchProductHeader(search.value)"
+    />
+    <button
+      style="border-radius: 0 60px 60px 0"
+      class="btn btn-danger fw-bolder"
+      type="submit"
+      (click)="searchProductHeader(search.value)"
+    >
+      Buscar
+    </button>
+  </form>
+</div>
+
+<h3 class="{{ search.value !== '' && 'pt-2 pb-2 text-center' }}">
+  {{ search.value !== "" ? "Resultado" : "" }}
+</h3>
+
+<div
+  class="d-flex gap-4 justify-content-{{
+    productosBuscados.length > 3 ? '' : 'center'
+  }} search-flex"
+>
+  <div *ngFor="let producto of productosBuscados; index as i">
+    <div *ngIf="search.value !== ''; then thenBlock; else elseBlock"></div>
+    <ng-template #thenBlock>
+      <div
+        id="scrollspyHeading{{ i }}"
+        class="product-card d-flex flex-column gap-2 border border-2 rounded-4 p-1"
+      >
+        <div class="product-img d-block m-auto">
+          <img
+            [src]="producto.imagen"
+            class="card-img-top"
+            [alt]="producto.nombre"
+            style="object-fit: cover"
+            width="100"
+            height="150"
+          />
+        </div>
+        <div class="product-body text-center">
+          <span
+            class="product-name d-block"
+            style="word-break: break; width: 250px; height: 60px"
+          >
+            <a href="/producto/{{ producto.id }}}">{{ producto.nombre }}</a>
+          </span>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template #elseBlock></ng-template>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center gap-2 mt-2">
+  <div
+    *ngIf="productosBuscados.length > 3 && search.value !== ''; then thenCard"
+  ></div>
+  <ng-template #thenCard>
+    <div
+      class="nav nav-pills"
+      *ngFor="let prod of productosBuscados; index as i"
+    >
+      <a class="dropdown-item" href="#scrollspyHeading{{ i }}">
+        <i class="fa-regular fa-circle select-search"></i>
+      </a>
+    </div>
+  </ng-template>
+</div>
+
+<h5 class="text-center">
+  {{ search.value !== "unlam" ? mensaje : "La mejor universidad" }}
+</h5>
