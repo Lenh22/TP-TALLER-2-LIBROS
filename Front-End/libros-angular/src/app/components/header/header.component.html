@@ -4,18 +4,18 @@
     style="width: 100%"
   >
     <div class="d-flex gap-3 header-top-contact">
-      <span style="color: #fff; font-size: 12px"
-        ><i class="fa-solid fa-phone" style="color: rgb(255, 0, 0)"></i> (+5411)
-        4480-8900</span
-      >
-      <span style="color: #fff; font-size: 12px"
-        ><i class="fa-solid fa-envelope" style="color: rgb(255, 0, 0)"></i>
-        alumnos@unlam.edu.ar</span
-      >
-      <span style="color: #fff; font-size: 12px"
-        ><i class="fa-solid fa-location-dot" style="color: rgb(255, 0, 0)"></i>
-        San Justo, Buenos Aires, Argentina</span
-      >
+      <span style="color: #fff; font-size: 12px">
+        <i class="fa-solid fa-phone" style="color: rgb(255, 0, 0)"></i>
+        (+5411) 4480-8900
+      </span>
+      <span style="color: #fff; font-size: 12px">
+        <i class="fa-solid fa-envelope" style="color: rgb(255, 0, 0)"></i>
+        alumnos@unlam.edu.ar
+      </span>
+      <span style="color: #fff; font-size: 12px">
+        <i class="fa-solid fa-location-dot" style="color: rgb(255, 0, 0)"></i>
+        San Justo, Buenos Aires, Argentina
+      </span>
     </div>
     <div class="d-flex gap-3 align-items-center header__login">
       <div
@@ -29,14 +29,17 @@
           data-bs-target="#modalLogin"
           style="color: #fff"
         >
-          LogIn <i class="fa-solid fa-right-to-bracket"></i>
+          LogIn
+          <i class="fa-solid fa-right-to-bracket"></i>
         </button>
         <a
           href="/registrar"
           rel="noopener noreferrer"
           class="fw-bolder"
           style="color: #fff"
-          >SignUp <i class="fa-solid fa-user-plus"></i>
+        >
+          SignUp
+          <i class="fa-solid fa-user-plus"></i>
         </a>
       </div>
       <div
@@ -50,7 +53,8 @@
           style="color: #fff"
           (click)="logOut()"
         >
-          LogOut <i class="fa-solid fa-right-from-bracket"></i>
+          LogOut
+          <i class="fa-solid fa-right-from-bracket"></i>
         </button>
       </div>
       <!-- login -->
@@ -67,12 +71,13 @@
         style="filter: invert(100%)"
       >
         <img src="../../../assets/imagenes/iso.png" alt="isotipo" width="30" />
-        <a href=""
-          ><img
+        <a href="">
+          <img
             width="180"
             src="https://fontmeme.com/permalink/221001/e8000a6afc66936e040a5d1e9a070f90.png"
             alt="fuente-uncial-antiqua"
-        /></a>
+          />
+        </a>
       </div>
       <div class="col-6 m-auto header-botton__search">
         <form class="input-group my-3">
@@ -87,15 +92,17 @@
           </button>
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item" href="#lista-productos"
-                >Todos los productos</a
-              >
+              <a class="dropdown-item" href="#lista-productos">
+                Todos los productos
+              </a>
             </li>
             <div *ngFor="let categoria of categorias">
               <li>
-                <a  class="dropdown-item" routerLink="/categoria/{{categoria.nombre}}" >{{
-                  categoria.nombre
-                }}</a>
+                <a
+                  class="dropdown-item"
+                  routerLink="/categoria/{{ categoria.nombre }}"
+                  >{{ categoria.nombre }}</a
+                >
               </li>
             </div>
           </ul>
@@ -105,11 +112,18 @@
             class="form-control"
             aria-label="Text input with dropdown button"
             placeholder="Buscar producto"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasTop"
+            aria-controls="offcanvasTop"
           />
           <button
             style="border-radius: 0 60px 60px 0"
             class="btn btn-danger fw-bolder"
             type="submit"
+            aria-label="Text input with dropdown button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasTop"
+            aria-controls="offcanvasTop"
           >
             Buscar
           </button>
@@ -124,7 +138,7 @@
         > -->
 
         <span style="color: #fff">
-          <span class="carrito" routerLink="/carrito">Carrito </span>
+          <span class="carrito" routerLink="/carrito">Carrito</span>
           <button
             type="button"
             style="border: none; color: #fff; background-color: inherit"
@@ -137,5 +151,13 @@
     </div>
   </div>
 </header>
-<!-- <h1 class="my-5">{{ getCartQuantity() }}</h1> -->
 
+<div
+  class="offcanvas offcanvas-top"
+  tabindex="-1"
+  id="offcanvasTop"
+  aria-labelledby="offcanvasTopLabel"
+  style="height: 90vh; padding: 0px 3vw"
+>
+  <app-search></app-search>
+</div>

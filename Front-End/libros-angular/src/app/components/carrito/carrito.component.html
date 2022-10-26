@@ -1,59 +1,232 @@
 <section>
-  <h3 class="text-center">Lista de compras</h3>
-  <table class="table">
+  <div class="d-flex justify-content-between align-items-center my-3 gap-3">
+    <div
+      class="d-flex justify-content-between align-items-center cart__title"
+      style="width: 100% !important;"
+    >
+      <h3 class="cart__title-sub">Lista de compras</h3>
+      <div
+        class="d-flex align-items-center flex-column justify-content-center cart__title-sub"
+      >
+        <p class="d-block m-auto" style="width: 100% !important;">Subtotal</p>
+        <p class="d-block m-auto">$3794.00</p>
+      </div>
+    </div>
+
+    <div style="width: max-content !important;">
+      <button
+        class="btn btn-danger btn-general fw-semibold py-2"
+        style="width: inherit !important;"
+      >
+        <i class="fa-solid fa-bag-shopping"></i>
+        Proceder a pagar
+      </button>
+    </div>
+  </div>
+
+  <div class="d-flex flex-column gap-3">
+    <div
+      class="border rounded p-3 d-flex align-items-center gap-4"
+      style="width: 100%;"
+    >
+      <img
+        class="img-thumbnail"
+        width="100px"
+        height="100px"
+        src="https://st.booknet.com/uploads/covers/220/1664331730_33.jpg"
+      />
+      <div
+        class="d-flex justify-content-between cart-detail"
+        style="width: 100%;"
+      >
+        <div class="d-flex flex-column">
+          <h5>Harry Potter y el prisionero de Azcaban</h5>
+          <p class="text-muted">
+            Autor/a:
+            <span>J. K. Rowling</span>
+          </p>
+          <p class="text-muted">
+            Categoria:
+            <span>Fantasia</span>
+          </p>
+          <p class="text-muted">
+            Precio:
+            <span>$ 1600.00</span>
+          </p>
+        </div>
+        <div class="d-flex justify-content-end cart-detail__price">
+          <div class="d-flex align-items-center gap-5 cart-detail__select">
+            <div class="form-floating cart-detail__cant" style="width: 100px;">
+              <select class="form-select" id="floatingSelect">
+                <option selected disabled>0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+              <label for="floatingSelect">Cantidad</label>
+            </div>
+            <div class="d-flex cart-detail__delete gap-4">
+              <h5>$ 18999.00</h5>
+              <button
+                type="button"
+                class="btn-close"
+                aria-label="Close"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="border rounded p-3 d-flex align-items-center gap-4"
+      style="width: 100%;"
+    >
+      <img
+        class="img-thumbnail"
+        width="100px"
+        height="100px"
+        src="https://st.booknet.com/uploads/covers/220/1664331730_33.jpg"
+      />
+      <div
+        class="d-flex justify-content-between cart-detail"
+        style="width: 100%;"
+      >
+        <div class="d-flex flex-column">
+          <h5>Harry Potter y el prisionero de Azcaban</h5>
+          <p class="text-muted">
+            Autor/a:
+            <span>J. K. Rowling</span>
+          </p>
+          <p class="text-muted">
+            Categoria:
+            <span>Fantasia</span>
+          </p>
+          <p class="text-muted">
+            Precio:
+            <span>$ 1600.00</span>
+          </p>
+        </div>
+        <div class="d-flex justify-content-end cart-detail__price">
+          <div class="d-flex align-items-center gap-5 cart-detail__select">
+            <div class="form-floating cart-detail__cant" style="width: 100px;">
+              <select class="form-select" id="floatingSelect">
+                <option selected disabled>0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+              <label for="floatingSelect">Cantidad</label>
+            </div>
+            <div class="d-flex cart-detail__delete gap-4">
+              <h5>$ 18999.00</h5>
+              <button
+                type="button"
+                class="btn-close"
+                aria-label="Close"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="border rounded p-3 d-flex align-items-center gap-4"
+      style="width: 100%;"
+    >
+      <img
+        class="img-thumbnail"
+        width="100px"
+        height="100px"
+        src="https://st.booknet.com/uploads/covers/220/1664331730_33.jpg"
+      />
+      <div
+        class="d-flex justify-content-between cart-detail"
+        style="width: 100%;"
+      >
+        <div class="d-flex flex-column">
+          <h5>Harry Potter y el prisionero de Azcaban</h5>
+          <p class="text-muted">
+            Autor/a:
+            <span>J. K. Rowling</span>
+          </p>
+          <p class="text-muted">
+            Categoria:
+            <span>Fantasia</span>
+          </p>
+          <p class="text-muted">
+            Precio:
+            <span>$ 1600.00</span>
+          </p>
+        </div>
+        <div class="d-flex justify-content-end cart-detail__price">
+          <div class="d-flex align-items-center gap-5 cart-detail__select">
+            <div class="form-floating cart-detail__cant" style="width: 100px;">
+              <select class="form-select" id="floatingSelect">
+                <option selected disabled>0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+              <label for="floatingSelect">Cantidad</label>
+            </div>
+            <div class="d-flex cart-detail__delete gap-4">
+              <h5>$ 18999.00</h5>
+              <button
+                type="button"
+                class="btn-close"
+                aria-label="Close"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <table class="table">
     <thead>
       <tr>
         <th scope="col">Imagen</th>
         <th scope="col">Nombre</th>
-        <th scope="col">Cantidad</th>
         <th scope="col">Precio</th>
         <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let carrito of carrito">
+      <tr>
         <td>
           <img
             class="img-thumbnail"
             width="100px"
             height="100px"
-            src="{{carrito.imagen}}"
+            src="https://st.booknet.com/uploads/covers/220/1664331730_33.jpg"
           />
         </td>
         <td>
           <div class="d-flex flex-column gap-2">
-            <p>{{carrito.nombre}}</p>
-            <p class="fst-italic fw-bolder">{{carrito.categoria}}</p>
+            <p>Harry Potter y la Orden del Fenix</p>
+            <p class="fst-italic fw-bolder">Fantasia</p>
           </div>
         </td>
+        <td>$500.00</td>
         <td>
-          <select name="prueba"  [(ngModel)]= "carrito.cantidad">
-
-            <option selected="yes" value=1> 1 </option>
-            <option value=2>2</option>
-            <option value=3>3</option>
-            <option value=4>4</option>
-            <option value=5>5</option>
-          
-          </select>
-
-
-        </td>
-        <td>${{carrito.precio}}</td>
-        <td>
-          <button type="button" class="btn-close" aria-label="Close" (click)="sacarProdDeCarrito(carrito.id)" (click)="reload()" ></button>
+          <button type="button" class="btn-close" aria-label="Close"></button>
         </td>
       </tr>
     </tbody>
-  </table>
+  </table> -->
   <hr />
   <div class="pago d-flex justify-content-between">
     <h4>Total a pagar</h4>
-    <h4>${{sum}}</h4>
-    
+    <h4>$1800.00</h4>
   </div>
   <div class="d-flex justify-content-center my-4">
-    <button class="btn btn-danger btn-general fw-semibold" style="width: 100%;">
+    <button
+      class="btn btn-danger btn-general fw-semibold py-2"
+      style="width: 100%;"
+    >
       <i class="fa-solid fa-bag-shopping"></i>
       Proceder a pagar
     </button>
