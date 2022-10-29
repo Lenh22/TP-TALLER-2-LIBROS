@@ -9,6 +9,8 @@ import { CarritoService } from 'src/app/servicios/carrito.service';
   styleUrls: ['./carrito.component.css']
 })
 export class CarritoComponent implements OnInit {
+  cantidad: number[] = [];
+  numValue: number = 1;
 
   carrito: ListaProductos[] = [];
    sum ;
@@ -23,34 +25,17 @@ export class CarritoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-
-  
-    this.getAllProducts();
-    this.sum =  this.carritoService.sumaProductsPrecio();
-   
-
+    for (let i = 1; i < 10; i++) {
+      this.cantidad.push(i);
     }
-   // this.carrito = JSON.parse(<string>localStorage.getItem("1"));
-    
+  }
 
- 
-
-  
- getAllProducts(){
-  this.carrito = this.carritoService.getAllProductsService();
- }
-
- sacarProdDeCarrito(id: string){
-
-this.carritoService.deleteProductService(id);
-
- }
-
- reload (){
-  location.reload();
- }
-
-  
+  selectCount(event: any) {
+    this.numValue = parseInt(event.target.value);
+    if (this.numValue === null || this.numValue === 0 || isNaN(this.numValue)) {
+      this.numValue = 1;
+    }
+    // console.log(this.numValue);
+  }
 }
  

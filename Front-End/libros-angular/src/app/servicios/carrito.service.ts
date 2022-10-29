@@ -13,10 +13,11 @@ export class CarritoService {
 
   constructor(private http: HttpClient) {}
 
-  addToCartService(item: ListaProductos) {
- 
-   
-    localStorage.setItem(item.id, JSON.stringify(item));
+  addToCartService(item: ListaProductos, count: number) {
+    localStorage.setItem(
+      item.id,
+      JSON.stringify(Object.assign({ ...item, cantidad: count }))
+    );
   }
 
   getProductService(id: string) {

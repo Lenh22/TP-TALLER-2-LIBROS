@@ -46,7 +46,7 @@
   </form>
 </div>
 
-<h3 class="{{ search.value !== '' && 'pt-2 pb-2 text-center' }}">
+<h3 class="{{ search.value !== '' ? 'pt-2 pb-2 text-center' : ''}}">
   {{ search.value !== "" ? "Resultado" : "" }}
 </h3>
 

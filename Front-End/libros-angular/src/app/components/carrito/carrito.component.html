@@ -2,21 +2,21 @@
   <div class="d-flex justify-content-between align-items-center my-3 gap-3">
     <div
       class="d-flex justify-content-between align-items-center cart__title"
-      style="width: 100% !important;"
+      style="width: 100% !important"
     >
       <h3 class="cart__title-sub">Lista de compras</h3>
       <div
         class="d-flex align-items-center flex-column justify-content-center cart__title-sub"
       >
-        <p class="d-block m-auto" style="width: 100% !important;">Subtotal</p>
+        <p class="d-block m-auto" style="width: 100% !important">Subtotal</p>
         <p class="d-block m-auto">$3794.00</p>
       </div>
     </div>
 
-    <div style="width: max-content !important;">
+    <div style="width: max-content !important">
       <button
         class="btn btn-danger btn-general fw-semibold py-2"
-        style="width: inherit !important;"
+        style="width: inherit !important"
       >
         <i class="fa-solid fa-bag-shopping"></i>
         Proceder a pagar
@@ -27,7 +27,7 @@
   <div class="d-flex flex-column gap-3">
     <div
       class="border rounded p-3 d-flex align-items-center gap-4"
-      style="width: 100%;"
+      style="width: 100%"
     >
       <img
         class="img-thumbnail"
@@ -37,7 +37,7 @@
       />
       <div
         class="d-flex justify-content-between cart-detail"
-        style="width: 100%;"
+        style="width: 100%"
       >
         <div class="d-flex flex-column">
           <h5>Harry Potter y el prisionero de Azcaban</h5>
@@ -56,7 +56,83 @@
         </div>
         <div class="d-flex justify-content-end cart-detail__price">
           <div class="d-flex align-items-center gap-5 cart-detail__select">
-            <div class="form-floating cart-detail__cant" style="width: 100px;">
+            <div
+              class="form-floating cart-detail__cant d-{{
+                numValue >= 10 ? 'none' : 'block'
+              }}"
+              style="width: 100px"
+            >
+              <select
+                value="{{ numValue }}"
+                class="form-select"
+                id="cantidad"
+                (change)="selectCount($event)"
+              >
+                <option *ngFor="let item of cantidad" value="{{ item }}">
+                  {{ item }}
+                </option>
+                <option value="10">+ 10</option>
+              </select>
+              <label for="cantidad">Cantidad</label>
+            </div>
+            <div
+              class="form-floating d-{{ numValue <= 9 ? 'none' : 'block' }}"
+              style="width: 100px"
+            >
+              <input
+                type="number"
+                class="form-control"
+                id="Inputcantidad"
+                (change)="selectCount($event)"
+                value="{{ numValue }}"
+              />
+              <label for="Inputcantidad">Cantidad</label>
+            </div>
+            <div class="d-flex cart-detail__delete gap-4">
+              <h5>$ 18999.00</h5>
+              <button
+                type="button"
+                class="btn-close"
+                aria-label="Close"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="border rounded p-3 d-flex align-items-center gap-4"
+      style="width: 100%"
+    >
+      <img
+        class="img-thumbnail"
+        width="100px"
+        height="100px"
+        src="https://st.booknet.com/uploads/covers/220/1664331730_33.jpg"
+      />
+      <div
+        class="d-flex justify-content-between cart-detail"
+        style="width: 100%"
+      >
+        <div class="d-flex flex-column">
+          <h5>Harry Potter y el prisionero de Azcaban</h5>
+          <p class="text-muted">
+            Autor/a:
+            <span>J. K. Rowling</span>
+          </p>
+          <p class="text-muted">
+            Categoria:
+            <span>Fantasia</span>
+          </p>
+          <p class="text-muted">
+            Precio:
+            <span>$ 1600.00</span>
+          </p>
+        </div>
+        <div class="d-flex justify-content-end cart-detail__price">
+          <div class="d-flex align-items-center gap-5 cart-detail__select">
+            <div class="form-floating cart-detail__cant" style="width: 100px">
               <select class="form-select" id="floatingSelect">
                 <option selected disabled>0</option>
                 <option value="1">1</option>
@@ -80,7 +156,7 @@
 
     <div
       class="border rounded p-3 d-flex align-items-center gap-4"
-      style="width: 100%;"
+      style="width: 100%"
     >
       <img
         class="img-thumbnail"
@@ -90,7 +166,7 @@
       />
       <div
         class="d-flex justify-content-between cart-detail"
-        style="width: 100%;"
+        style="width: 100%"
       >
         <div class="d-flex flex-column">
           <h5>Harry Potter y el prisionero de Azcaban</h5>
@@ -109,60 +185,7 @@
         </div>
         <div class="d-flex justify-content-end cart-detail__price">
           <div class="d-flex align-items-center gap-5 cart-detail__select">
-            <div class="form-floating cart-detail__cant" style="width: 100px;">
-              <select class="form-select" id="floatingSelect">
-                <option selected disabled>0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
-              <label for="floatingSelect">Cantidad</label>
-            </div>
-            <div class="d-flex cart-detail__delete gap-4">
-              <h5>$ 18999.00</h5>
-              <button
-                type="button"
-                class="btn-close"
-                aria-label="Close"
-              ></button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div
-      class="border rounded p-3 d-flex align-items-center gap-4"
-      style="width: 100%;"
-    >
-      <img
-        class="img-thumbnail"
-        width="100px"
-        height="100px"
-        src="https://st.booknet.com/uploads/covers/220/1664331730_33.jpg"
-      />
-      <div
-        class="d-flex justify-content-between cart-detail"
-        style="width: 100%;"
-      >
-        <div class="d-flex flex-column">
-          <h5>Harry Potter y el prisionero de Azcaban</h5>
-          <p class="text-muted">
-            Autor/a:
-            <span>J. K. Rowling</span>
-          </p>
-          <p class="text-muted">
-            Categoria:
-            <span>Fantasia</span>
-          </p>
-          <p class="text-muted">
-            Precio:
-            <span>$ 1600.00</span>
-          </p>
-        </div>
-        <div class="d-flex justify-content-end cart-detail__price">
-          <div class="d-flex align-items-center gap-5 cart-detail__select">
-            <div class="form-floating cart-detail__cant" style="width: 100px;">
+            <div class="form-floating cart-detail__cant" style="width: 100px">
               <select class="form-select" id="floatingSelect">
                 <option selected disabled>0</option>
                 <option value="1">1</option>
@@ -225,7 +248,7 @@
   <div class="d-flex justify-content-center my-4">
     <button
       class="btn btn-danger btn-general fw-semibold py-2"
-      style="width: 100%;"
+      style="width: 100%"
     >
       <i class="fa-solid fa-bag-shopping"></i>
       Proceder a pagar
@@ -233,11 +256,11 @@
   </div>
   <div class="d-flex justify-content-center gap-5 fst-italic">
     <span class="d-flex align-items-center gap-2">
-      <i class="fa-solid fa-truck-fast" style="color: rgb(105, 98, 98);"></i>
+      <i class="fa-solid fa-truck-fast" style="color: rgb(105, 98, 98)"></i>
       <span>Envios a todo el país</span>
     </span>
     <span class="d-flex align-items-center gap-2">
-      <i class="fa-solid fa-check-to-slot" style="color: rgb(105, 98, 98);"></i>
+      <i class="fa-solid fa-check-to-slot" style="color: rgb(105, 98, 98)"></i>
       <span>Envios autorizados</span>
     </span>
   </div>
@@ -247,28 +270,28 @@
   <div class="d-flex gap-5 justify-content-center banner-info__cart">
     <span
       class="text-muted rounded-circle border border-2 p-4 fw-semibold d-flex gap-2 flex-column align-items-center text-center"
-      style="max-width: 150px;"
+      style="max-width: 150px"
     >
       <i class="fa-solid fa-truck-fast fa-3x"></i>
       <span class="d-block">Envios a todo el país</span>
     </span>
     <span
       class="text-muted rounded-circle border border-2 p-4 fw-semibold d-flex gap-2 flex-column align-items-center text-center"
-      style="max-width: 150px;"
+      style="max-width: 150px"
     >
       <i class="fa-brands fa-whatsapp fa-3x"></i>
       <span class="d-block">Ventas por What's App</span>
     </span>
     <span
       class="text-muted rounded-circle border border-2 p-4 fw-semibold d-flex gap-2 flex-column align-items-center text-center"
-      style="max-width: 150px;"
+      style="max-width: 150px"
     >
       <i class="fa-solid fa-calendar-days fa-3x"></i>
       <span class="d-block">Los 365 días del año</span>
     </span>
     <span
       class="text-muted rounded-circle border border-2 p-4 fw-semibold d-flex gap-2 flex-column align-items-center text-center"
-      style="max-width: 150px;"
+      style="max-width: 150px"
     >
       <i class="fa-regular fa-star fa-3x"></i>
       <span class="d-block">5 estrellas de rating</span>
