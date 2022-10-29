@@ -41,6 +41,7 @@ export class ProductosHomeComponent implements OnInit {
           console.log(this.productosNuevos);
         });
       } else {
+        this.loading = true;
         this.serviciosProductos.getProductsByCategory(ids).subscribe((arg) => {
           console.log(arg);
           this.productosNuevos = arg;
@@ -63,13 +64,4 @@ export class ProductosHomeComponent implements OnInit {
     input.value = input.value.replace(FILTER_PAG_REGEX, '');
   }
 
-  //carrito
-  addToCart(item: ListaProductos) {
-    this.carritoService.addToCartService(item);
-    this.carritoService.disparadorCarrito.emit(item);
-  }
-
-  deleteProduct(id: string) {
-    this.carritoService.deleteProductService(id);
-  }
 }
