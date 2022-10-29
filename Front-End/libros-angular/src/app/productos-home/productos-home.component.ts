@@ -64,13 +64,4 @@ export class ProductosHomeComponent implements OnInit {
     input.value = input.value.replace(FILTER_PAG_REGEX, '');
   }
 
-  //carrito
-  addToCart(item: ListaProductos) {
-    this.carritoService.addToCartService(item);
-    this.carritoService.disparadorCarrito.emit(item);
-  }
-
-  deleteProduct(id: string) {
-    this.carritoService.deleteProductService(id);
-  }
 }
