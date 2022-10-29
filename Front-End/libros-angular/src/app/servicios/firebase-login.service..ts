@@ -61,40 +61,44 @@ export class FirebaseLoginService {
     apellido: string,
     domicilio: string
   ) {
-    // console.log(
-    //   userName,
-    //   email,
-    //   password,
-    //   repetirPassword,
-    //   nombre,
-    //   apellido,
-    //   domicilio
-    // );
+    // console.log( userName,email,password,repetirPassword, nombre,apellido, domicilio);
     this.afAuth
       .createUserWithEmailAndPassword(email, password)
       .then((user) => {
-        // console.log(user);
         const uid = user?.user?.uid || '';
         this.saveDataUser(uid, userName, email, nombre, apellido, domicilio);
+       //saveDataBase(parametros); /*Falta funcion que se guarde en la base de datos justo aca*/
+        this.verifyEmail();
       })
       .catch((error) => {
         console.log(error);
       });
   }
+    verifyEmail(){
+      this.afAuth.currentUser.then(user => user?.sendEmailVerification())
+                            .then(()=>{
+                              console.log('Se le ha enviado a su email la confirmacion de registro. Muchas gracias!');
+                              this.router.navigate([''])
+                            });
+    }
 
   //login
   loginFirebase(email: string, password: string) {
     this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((user) => {
-        this.user = user?.user?.email;
-        if (user) {
-          this.getTokenFirebase();
-          this.getInfoUser(user?.user?.uid || '');
+        if(user.user?.emailVerified){ //Pregunta si esta verificado el email
+          this.user = user?.user?.email;
+          if (user) {
+            this.getTokenFirebase();
+            this.getInfoUser(user?.user?.uid || '');
+          }
+          // console.log(user?.user);
+          console.log(user?.user?.uid);
+          // this.router.navigate(['/']);
+        }else{
+          alert('Por favor, verifique su email');
         }
-        // console.log(user?.user);
-        console.log(user?.user?.uid);
-        // this.router.navigate(['/']);
       })
       .catch((error) => {
         console.log(error);
