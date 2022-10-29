@@ -67,7 +67,7 @@ export class FirebaseLoginService {
       .then((user) => {
         const uid = user?.user?.uid || '';
         this.saveDataUser(uid, userName, email, nombre, apellido, domicilio);
-       //saveDataBase(parametros); /*Falta funcion que se guarde en la base de datos justo aca*/
+       //saveDataBase(parametros); /*Falta funcion que se guarde en la base de datos justo aca*/ 
         this.verifyEmail();
       })
       .catch((error) => {
