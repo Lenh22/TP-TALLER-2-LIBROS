@@ -1,4 +1,4 @@
-<section>
+<!-- <section>
   <div class="d-flex flex-wrap justify-content-center">
     <div class="row">
       <div class="col-md-4">
@@ -44,7 +44,7 @@
       </div>
     </div>
   </div>
-</section>
+</section>--->
 <!-- /SECTION --->
 
 <!-- SECTION -->
@@ -58,7 +58,7 @@
     </div>
   </ng-template>
   <ng-template #elseLoading>
-    <div class="product-container" style="max-width: 1024px;">
+    <div class="product-container" style="max-width: 1024px">
       <div *ngFor="let producto of productosNuevos">
         <div
           class="product-card d-flex flex-column gap-2 border border-2 rounded-4 p-3"
@@ -70,41 +70,33 @@
               [alt]="producto.nombre"
               height="180"
               width="120"
-              style="object-fit: cover;"
+              style="object-fit: cover"
             />
           </div>
           <div class="product-body text-center">
-            <span style="font-size: 14px;">{{ producto.categoria }}</span>
+            <span style="font-size: 14px">{{ producto.categoria }}</span>
             <span
               class="product-name my-2 d-block"
-              style="word-break: break; width: 250px; height: 60px;"
+              style="word-break: break; width: 250px; height: 60px"
             >
               <a href="/producto/{{ producto.id }}}" class="text-dark">
                 {{ producto.nombre }}
               </a>
             </span>
-            <h5 class="semi-bold" (click)="deleteProduct(producto.id)">
-              $ {{ producto.precio.toFixed(2) }}
-            </h5>
-            <div class="d-flex gap-2 justify-content-center align-items-center">
+            <div class="d-flex gap-2 justify-content-around align-items-center">
               <a
                 href="/producto/{{ producto.id }}}"
                 class="btn btn-light border rounded-circle"
                 data-toggle="tooltip"
                 data-placement="top"
                 title="Ver detalle"
-                style="border-radius: 60px; padding: 5px 10px;"
+                style="border-radius: 60px; padding: 5px 10px"
               >
-                <i class="fa fa-eye" style="color: red;"></i>
+                <i class="fa fa-eye" style="color: red"></i>
               </a>
-
-              <button
-                class="btn btn-danger btn-general fw-semibold"
-                (click)="addToCart(producto)"
-              >
-                <i class="fa fa-shopping-cart"></i>
-                Añadir al carrito
-              </button>
+              <h5 class="semi-bold" (click)="deleteProduct(producto.id)">
+                $ {{ producto.precio.toFixed(2) }}
+              </h5>
             </div>
           </div>
         </div>

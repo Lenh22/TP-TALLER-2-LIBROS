@@ -41,6 +41,7 @@ export class ProductosHomeComponent implements OnInit {
           console.log(this.productosNuevos);
         });
       } else {
+        this.loading = true;
         this.serviciosProductos.getProductsByCategory(ids).subscribe((arg) => {
           console.log(arg);
           this.productosNuevos = arg;
