@@ -99,7 +99,7 @@ export class FirebaseLoginService {
         this.usuario.nombre = nombre;
         this.usuario.apellido = apellido;
         this.usuario.domicilio = domicilio;
-        this.agregarUsuario(this.usuario);
+        this.usuarioService.agregarUsuario(this.usuario);
         console.log(this.usuario);
        //saveDataBase(parametros); /*Falta funcion que se guarde en la base de datos justo aca*/ 
         this.verifyEmail();
@@ -193,10 +193,7 @@ export class FirebaseLoginService {
   }
 
 
-  agregarUsuario(usuario: any){
-    return this.http.post(environment.api + '/registrer', usuario);
-  }
-
+ 
 }
 
  
