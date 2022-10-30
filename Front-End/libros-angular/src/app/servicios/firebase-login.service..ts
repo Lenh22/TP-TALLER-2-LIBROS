@@ -8,6 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { environment } from 'src/environments/environment';
 import { Usuario } from '../modulos/DataUsuario';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { UsuarioService } from './usuario.service';
 
 @Injectable({
   providedIn: 'root',
@@ -24,8 +25,31 @@ export class FirebaseLoginService {
     private router: Router,
     private afAuth: AngularFireAuth,
     private cookie: CookieService,
-    public db: AngularFireDatabase
-  ) {}
+    public db: AngularFireDatabase,
+    private usuarioService : UsuarioService
+  ) {
+
+
+      this.usuario ={
+        userName: "",
+       email: "",
+        contraseña: "",
+        nombre: "",
+       apellido: "",
+      domicilio: "",
+      id: "",
+      rol: "user",
+      activo: false,
+
+
+
+      }
+
+
+  }
+
+   
+
 
   //saveDataUser
   saveDataUser(
@@ -67,6 +91,16 @@ export class FirebaseLoginService {
       .then((user) => {
         const uid = user?.user?.uid || '';
         this.saveDataUser(uid, userName, email, nombre, apellido, domicilio);
+        //aca empieza la parte de user a la BD
+        this.usuario.id = uid;
+        this.usuario.userName = userName;
+        this.usuario.email = email;
+        this.usuario.contraseña = password;
+        this.usuario.nombre = nombre;
+        this.usuario.apellido = apellido;
+        this.usuario.domicilio = domicilio;
+        this.agregarUsuario(this.usuario);
+        console.log(this.usuario);
        //saveDataBase(parametros); /*Falta funcion que se guarde en la base de datos justo aca*/ 
         this.verifyEmail();
       })
@@ -157,5 +191,13 @@ export class FirebaseLoginService {
       this.loading=false;
     });
   }
+
+
+  agregarUsuario(usuario: any){
+    return this.http.post(environment.api + '/registrer', usuario);
+  }
+
 }
+
+ 
 

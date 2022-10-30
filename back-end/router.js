@@ -70,5 +70,42 @@ router.get('/categorias/:id', (req, res)=>{
 
 
 
+   //Agrega Usuario
+
+router.post('/registrer/', (req, res)=>{
+
+    const{id, nombre, userName, apellido, email, contraseña, domicilio, rol, activo}= req.body;
+    //let query = `INSERT INTO Usuario (id, nombre, userName, apellido, email, contraseña, direccion) VALUES ('${id}','${nombre}', '${userName}','${apellido}', '${email}', '${contraseña}', '${domicilio}')`;
+    let query = `INSERT INTO Usuario (id, nombre) VALUES ('12323','Gaston')`;
+    conexion.query(query, (error, result)=>{
+          if(error){
+              throw error;
+          }else{
+                console.log("Usuario Agregado")
+              res.json({status: 'Usuario agregado'});
+          }
+      }
+  )
+});
+
+//get Usuario
+//router.post('/login', (req, res)=>{
+  //let query = `SELECT * FROM  Usuario WHERE email = '${email}' and contraseña = '${contraseña}'  `;
+   // conexion.query(query, (error, result)=>{
+     //     if(error){
+       //       throw error;
+         // }else{
+           
+
+           //   res.send(result);
+          //}
+    //  }
+ // )
+//});
+
+
+
+
+
 
 module.exports = router;
