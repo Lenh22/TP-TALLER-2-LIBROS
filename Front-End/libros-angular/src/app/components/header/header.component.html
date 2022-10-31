@@ -20,6 +20,7 @@
     <div class="d-flex gap-3 align-items-center header__login">
       <div
         *ngIf="!estaLogueado()"
+       
         class="header__login d-flex align-items-center"
       >
         <button
@@ -46,12 +47,14 @@
         *ngIf="estaLogueado()"
         class="d-flex align-items-center header__login"
       >
+      
         <span class="fw-bolder text-light">{{ userName }}...</span>
         <button
           type="button"
           class="btn"
           style="color: #fff"
           (click)="logOut()"
+        
         >
           LogOut
           <i class="fa-solid fa-right-from-bracket"></i>

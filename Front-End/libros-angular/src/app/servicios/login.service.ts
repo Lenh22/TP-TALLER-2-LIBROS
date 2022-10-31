@@ -12,11 +12,13 @@ export class LoginService {
 
 
   constructor(private http: HttpClient,private router: Router) { }
+
   loginUsuario(datosFormularioLogin: loginSendData) {
     const url = `${environment.api}/authenticate`;
     const datos = {email:datosFormularioLogin.usuario,password:datosFormularioLogin.contrasenia};
     console.log(datosFormularioLogin);
     console.log(datos);
+    
     return this.http
     .post<any>(
     `${url}`, datos)
@@ -25,8 +27,13 @@ export class LoginService {
             if (res) {
               localStorage.setItem('auth_token', res.token);
               localStorage.setItem('niv_user', res.token);
+              
+              
             }
+            
         })
+        
     );
+   
   }
 }

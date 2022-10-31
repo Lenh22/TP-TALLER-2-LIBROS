@@ -9,7 +9,6 @@ import { environment } from 'src/environments/environment';
 import { Usuario } from '../modulos/DataUsuario';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { UsuarioService } from './usuario.service';
-
 @Injectable({
   providedIn: 'root',
 })
@@ -99,9 +98,9 @@ export class FirebaseLoginService {
         this.usuario.nombre = nombre;
         this.usuario.apellido = apellido;
         this.usuario.domicilio = domicilio;
-        this.usuarioService.agregarUsuario(this.usuario);
-        console.log(this.usuario);
-       //saveDataBase(parametros); /*Falta funcion que se guarde en la base de datos justo aca*/ 
+       // console.log(this.usuario);
+       this.saveDataBaseUser(this.usuario); 
+
         this.verifyEmail();
       })
       .catch((error) => {
@@ -123,13 +122,18 @@ export class FirebaseLoginService {
       .then((user) => {
         if(user.user?.emailVerified){ //Pregunta si esta verificado el email
           this.user = user?.user?.email;
+          
+          localStorage.setItem('uid',user?.user?.uid);//Guardo en el local Storage el uid
           if (user) {
             this.getTokenFirebase();
             this.getInfoUser(user?.user?.uid || '');
+        
           }
-          // console.log(user?.user);
-          console.log(user?.user?.uid);
-          // this.router.navigate(['/']);
+           console.log(user?.user.email);
+           console.log(user?.user?.uid);
+          
+          
+           
         }else{
           alert('Por favor, verifique su email');
         }
@@ -137,6 +141,7 @@ export class FirebaseLoginService {
       .catch((error) => {
         console.log(error);
       });
+     
   }
 
   getInfoUser(id: string) {
@@ -179,7 +184,11 @@ export class FirebaseLoginService {
         this.token = '';
         this.cookie.set('token', this.token);
         console.log('token vacio=>', this.token);
-        // this.router.navigate(['/']);
+        //esto solo
+        localStorage.removeItem('uid');
+       
+        
+         
       });
   }
 //Recuperacion de Clave
@@ -191,10 +200,21 @@ export class FirebaseLoginService {
       this.loading=false;
     });
   }
+//guardo en BD el Usuario
+  saveDataBaseUser(usuario: Usuario){
+    this.usuarioService.agregarUsuario(usuario).subscribe(
+      res =>{
+        console.log(this.usuario);
+      }
+    );
+
+  }
+
 
 
  
+
+ 
+
+
 }
-
- 
-

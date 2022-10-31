@@ -75,8 +75,8 @@ router.get('/categorias/:id', (req, res)=>{
 router.post('/registrer/', (req, res)=>{
 
     const{id, nombre, userName, apellido, email, contraseña, domicilio, rol, activo}= req.body;
-    //let query = `INSERT INTO Usuario (id, nombre, userName, apellido, email, contraseña, direccion) VALUES ('${id}','${nombre}', '${userName}','${apellido}', '${email}', '${contraseña}', '${domicilio}')`;
-    let query = `INSERT INTO Usuario (id, nombre) VALUES ('12323','Gaston')`;
+    let query = `INSERT INTO Usuario (id, nombre, userName, apellido, email, contraseña, direccion, rol, activo) VALUES ('${id}','${nombre}', '${userName}','${apellido}', '${email}', '${contraseña}', '${domicilio}', 'user', false)`;
+    //let query = `INSERT INTO Usuario (id, nombre) VALUES ('12323','Gaston')`;
     conexion.query(query, (error, result)=>{
           if(error){
               throw error;
@@ -89,19 +89,26 @@ router.post('/registrer/', (req, res)=>{
 });
 
 //get Usuario
-//router.post('/login', (req, res)=>{
-  //let query = `SELECT * FROM  Usuario WHERE email = '${email}' and contraseña = '${contraseña}'  `;
-   // conexion.query(query, (error, result)=>{
-     //     if(error){
-       //       throw error;
-         // }else{
-           
+router.post('/login', (req, res)=>{
+    //const{email, contrasenia}= req.body;
 
-           //   res.send(result);
-          //}
-    //  }
- // )
-//});
+    const {UID } = req.body;
+    let query = `SELECT userName FROM  Usuario WHERE id = '${UID}' `;
+  //let query = `SELECT userName FROM  Usuario WHERE email = '${email}' and contraseña = '${contrasenia}'  `;
+    conexion.query(query, (error, result)=>{
+          if(error){
+              throw error;
+          }else{
+
+            
+
+                console.log("Usuario Traido")
+              
+              res.send(result);
+          }
+     }
+  )
+});
 
 
 
