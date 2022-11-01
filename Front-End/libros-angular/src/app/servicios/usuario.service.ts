@@ -17,9 +17,9 @@ export class UsuarioService {
   }
 
   //trae de BD el user
-  traeUser(UID : any){
+  traeUser(email: any, contraseña: any){
   
-    return this.http.post(environment.api + '/login',{UID});
+    return this.http.post(environment.api + '/login',{email, contraseña});
   }
 
   

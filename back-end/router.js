@@ -90,19 +90,16 @@ router.post('/registrer/', (req, res)=>{
 
 //get Usuario
 router.post('/login', (req, res)=>{
-    //const{email, contrasenia}= req.body;
+    const{email, contraseña}= req.body;
 
-    const {UID } = req.body;
-    let query = `SELECT userName FROM  Usuario WHERE id = '${UID}' `;
-  //let query = `SELECT userName FROM  Usuario WHERE email = '${email}' and contraseña = '${contrasenia}'  `;
+   // const {UID } = req.body;
+    //let query = `SELECT userName FROM  Usuario WHERE id = '${UID}' `;
+  let query = `SELECT userName FROM  Usuario WHERE email = '${email}' and contraseña = '${contraseña}'  `;
     conexion.query(query, (error, result)=>{
           if(error){
               throw error;
-          }else{
-
-            
-
-                console.log("Usuario Traido")
+          }else{  
+                console.log(result)
               
               res.send(result);
           }

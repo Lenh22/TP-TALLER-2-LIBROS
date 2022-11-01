@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 
 import {
   Categoria,
@@ -27,11 +27,13 @@ export class HeaderComponent implements OnInit {
   categorias: ListaCategoria[] = [];
   categoria: string = 'Categorias';
   show: number = 0;
+  userName: string = JSON.stringify(localStorage.getItem("user"));
   carrito: ListaProductos[] = [];
   cantidad;
   formularioLogin = new FormGroup({
     usuario: new FormControl('', Validators.required),
     contrasenia: new FormControl('', Validators.required),
+    
   });
 
   datauser: any;
@@ -45,20 +47,20 @@ export class HeaderComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private carritoService: CarritoService,
     private firebaseLogin: FirebaseLoginService,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    
   ) {
     this.carrito = [];
     this.cantidad = 0;
+    //this.userName = JSON.stringify(localStorage.getItem("user"));
+    
   }
 
-   userName: any ;
-   UID: any ; 
+  
+
   
   ngOnInit(): void {
-
-    this.UID = localStorage.getItem('uid');
-    this.traeUsuario(this.UID);
-    
+ 
     //this.cantidad = this.carritoService.getCountProductsService();
     this.cantidad = localStorage.length;
     this.servicioCategorias.getCategorias().subscribe((data)  => {
@@ -88,7 +90,7 @@ export class HeaderComponent implements OnInit {
     
     const datosFormularioLogin: loginSendData = this.formularioLogin.value;
     this.loginService.loginUsuario(datosFormularioLogin).subscribe((arg) => {
-      console.log(arg);
+    console.log(arg);
       
     }); 
    
@@ -105,7 +107,7 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     this.firebaseLogin.logOut();
-    window.location.replace("/");
+    //window.location.replace("/");
     
   }
 
@@ -119,24 +121,8 @@ export class HeaderComponent implements OnInit {
     console.log(this.show);
   }
 
- 
-  traeUsuario(UID: any){
-    
-    this.usuarioService.traeUser(UID).subscribe((arg) => {
-      const datas = JSON.stringify(arg); //convertir a string
-        const datos = JSON.parse(datas); //convertir a objeto
-        
-        
-        this.userName = <string>datos[0].userName; //asignar el nombre
-        
-       
-    });
 
-  }
-   
 
-  
-  
 
 
 }

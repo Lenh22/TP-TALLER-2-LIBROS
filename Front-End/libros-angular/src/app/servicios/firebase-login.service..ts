@@ -18,7 +18,7 @@ export class FirebaseLoginService {
   usuario: Usuario;
   usuarios: Usuario[];
   loading: boolean = false;
-
+  apodo: string;
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -31,14 +31,14 @@ export class FirebaseLoginService {
 
       this.usuario ={
         userName: "",
-       email: "",
+        email: "",
         contraseña: "",
         nombre: "",
-       apellido: "",
-      domicilio: "",
-      id: "",
-      rol: "user",
-      activo: false,
+        apellido: "",
+        domicilio: "",
+        id: "",
+        rol: "user",
+        activo: false,
 
 
 
@@ -117,13 +117,14 @@ export class FirebaseLoginService {
 
   //login
   loginFirebase(email: string, password: string) {
+    this.traeUsuario(email, password);
     this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((user) => {
         if(user.user?.emailVerified){ //Pregunta si esta verificado el email
           this.user = user?.user?.email;
           
-          localStorage.setItem('uid',user?.user?.uid);//Guardo en el local Storage el uid
+          localStorage.setItem("user", this.apodo);
           if (user) {
             this.getTokenFirebase();
             this.getInfoUser(user?.user?.uid || '');
@@ -133,7 +134,7 @@ export class FirebaseLoginService {
            console.log(user?.user?.uid);
           
           
-           
+           this.router.navigate(['']);
         }else{
           alert('Por favor, verifique su email');
         }
@@ -141,7 +142,7 @@ export class FirebaseLoginService {
       .catch((error) => {
         console.log(error);
       });
-     
+      this.router.navigate(['']); 
   }
 
   getInfoUser(id: string) {
@@ -171,6 +172,7 @@ export class FirebaseLoginService {
   }
 
   isLogin() {
+    
     return this.cookie.get('token');
     // return this.token;
   }
@@ -185,7 +187,7 @@ export class FirebaseLoginService {
         this.cookie.set('token', this.token);
         console.log('token vacio=>', this.token);
         //esto solo
-        localStorage.removeItem('uid');
+        localStorage.removeItem('user');
        
         
          
@@ -207,6 +209,20 @@ export class FirebaseLoginService {
         console.log(this.usuario);
       }
     );
+
+  }
+
+  //traigo User
+    traeUsuario(email: string, contraseña: string){
+     
+    this.usuarioService.traeUser(email, contraseña).subscribe((arg) => {
+      const datas = JSON.stringify(arg); //convertir a string
+        const datos = JSON.parse(datas); //convertir a objeto
+      
+       this.apodo = <string>datos[0].userName; //asignar el nombre
+        
+       
+    });
 
   }
 

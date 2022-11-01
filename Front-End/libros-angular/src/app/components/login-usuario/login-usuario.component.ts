@@ -9,7 +9,6 @@ import { Usuario } from 'src/app/modulos/DataUsuario';
 
 @Component({
   selector: 'app-login-usuario',
-  
   templateUrl: './login-usuario.component.html',
   styleUrls: ['./login-usuario.component.css'],
 })
@@ -20,6 +19,7 @@ export class LoginUsuarioComponent implements OnInit {
   @ViewChild('closeRecuperarClave') closeRecuperarClave: any;
 
   userName: any;
+
   constructor(
     private fb: FormBuilder,
     private firebaseLogin: FirebaseLoginService,
@@ -51,12 +51,10 @@ export class LoginUsuarioComponent implements OnInit {
   
     const email = this.loginUsuario.value.email;
     const password = this.loginUsuario.value.password;
-    
-    // console.log(email, password);
     this.firebaseLogin.loginFirebase(email, password);
     this.closeLogin.nativeElement.click();
-     this.router.navigate(["/"]);
     
+  this.router.navigate(["/"]);
        }
   cambiarModal():void{
     this.closeLogin.nativeElement.click();
@@ -67,6 +65,8 @@ export class LoginUsuarioComponent implements OnInit {
     this.firebaseLogin.recuperarClave(email);
     this.closeRecuperarClave.nativeElement.click();
   } 
+
+
   
   
 
