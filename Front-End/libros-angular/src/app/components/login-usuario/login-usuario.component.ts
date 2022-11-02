@@ -1,8 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild,Output, EventEmitter } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { FirebaseLoginService } from 'src/app/servicios/firebase-login.service.';
+import { UsuarioService } from 'src/app/servicios/usuario.service';
+import { Usuario } from 'src/app/modulos/DataUsuario';
+
 
 @Component({
   selector: 'app-login-usuario',
@@ -15,9 +18,14 @@ export class LoginUsuarioComponent implements OnInit {
   @ViewChild('closeLogin') closeLogin: any;
   @ViewChild('closeRecuperarClave') closeRecuperarClave: any;
 
+  userName: any;
+
   constructor(
     private fb: FormBuilder,
     private firebaseLogin: FirebaseLoginService,
+    private router: Router,
+    private usuarioService: UsuarioService,
+    
   ) {
     this.loginUsuario = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -28,17 +36,27 @@ export class LoginUsuarioComponent implements OnInit {
       emailRecuperar: ['', [Validators.required, Validators.email]]
     });
   }
+ 
+  
+ 
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+   
+
+  }
+
+
 
   login() {
+  
     const email = this.loginUsuario.value.email;
     const password = this.loginUsuario.value.password;
-    // console.log(email, password);
     this.firebaseLogin.loginFirebase(email, password);
     this.closeLogin.nativeElement.click();
-  }
-  cambiarModal(){
+    
+  this.router.navigate(["/"]);
+       }
+  cambiarModal():void{
     this.closeLogin.nativeElement.click();
   }
   enviarClave(){
@@ -46,5 +64,12 @@ export class LoginUsuarioComponent implements OnInit {
     console.log(email);
     this.firebaseLogin.recuperarClave(email);
     this.closeRecuperarClave.nativeElement.click();
-  }
+  } 
+
+
+  
+  
+
+  
+
 }

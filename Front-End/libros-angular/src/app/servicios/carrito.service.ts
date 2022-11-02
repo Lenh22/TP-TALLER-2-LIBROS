@@ -8,7 +8,7 @@ import { ListaProductos } from '../modulos/DataProductos';
 })
 export class CarritoService {
   @Output() disparadorCarrito: EventEmitter<any> = new EventEmitter();
-  productoCarrito: ListaProductos;
+  productoCarrito: ListaProductos [];
   cantidadCarrito: number = 0;
 
   constructor(private http: HttpClient) {}
@@ -25,15 +25,36 @@ export class CarritoService {
     return product;
   }
 
+  
   getAllProductsService() {
     const products: ListaProductos[] = [];
+
     const keys = Object.keys(localStorage);
     keys.forEach((key) => {
       products.push(JSON.parse(localStorage[key]));
     });
     // console.log(keys, products);
+    
     return products;
   }
+
+
+  sumaProductsPrecio(){
+    var sum = 0;
+    this.getAllProductsService().forEach(item=>{
+      const suma = item.precio;
+      sum = suma + sum;
+      
+      
+    })
+    console.log(sum);
+    return sum;
+
+  }
+
+
+
+
 
   getCountProductsService() {
     const products: any = this.getAllProductsService();
@@ -52,15 +73,15 @@ export class CarritoService {
   //   console.log('aumento: ', product.cantidad);
   // }
 
-  // decrementCartCount(id: string) {
-  //   let product = this.getProduct(id);
-  //   if (product.cantidad === 1) {
-  //     this.deleteProduct(id);
-  //   } else {
-  //     product.cantidad--;
-  //   }
+   //decrementCartCount(id: string) {
+    // let product = this.getProduct(id);
+    // if (product.cantidad === 1) {
+     //  this.deleteProduct(id);
+     //} else {
+    //product.cantidad--;
+// }
   //   console.log('decremento: ', product.cantidad);
-  // }
+   //}
 
   deleteProductService(id: string) {
     localStorage.removeItem(id);

@@ -8,7 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { environment } from 'src/environments/environment';
 import { Usuario } from '../modulos/DataUsuario';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
-
+import { UsuarioService } from './usuario.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -18,14 +18,37 @@ export class FirebaseLoginService {
   usuario: Usuario;
   usuarios: Usuario[];
   loading: boolean = false;
-
+  apodo: string;
   constructor(
     private http: HttpClient,
     private router: Router,
     private afAuth: AngularFireAuth,
     private cookie: CookieService,
-    public db: AngularFireDatabase
-  ) {}
+    public db: AngularFireDatabase,
+    private usuarioService : UsuarioService
+  ) {
+
+
+      this.usuario ={
+        userName: "",
+        email: "",
+        contraseña: "",
+        nombre: "",
+        apellido: "",
+        domicilio: "",
+        id: "",
+        rol: "user",
+        activo: false,
+
+
+
+      }
+
+
+  }
+
+   
+
 
   //saveDataUser
   saveDataUser(
@@ -67,7 +90,17 @@ export class FirebaseLoginService {
       .then((user) => {
         const uid = user?.user?.uid || '';
         this.saveDataUser(uid, userName, email, nombre, apellido, domicilio);
-       //saveDataBase(parametros); /*Falta funcion que se guarde en la base de datos justo aca*/ 
+        //aca empieza la parte de user a la BD
+        this.usuario.id = uid;
+        this.usuario.userName = userName;
+        this.usuario.email = email;
+        this.usuario.contraseña = password;
+        this.usuario.nombre = nombre;
+        this.usuario.apellido = apellido;
+        this.usuario.domicilio = domicilio;
+       // console.log(this.usuario);
+       this.saveDataBaseUser(this.usuario); 
+
         this.verifyEmail();
       })
       .catch((error) => {
@@ -84,18 +117,24 @@ export class FirebaseLoginService {
 
   //login
   loginFirebase(email: string, password: string) {
+    this.traeUsuario(email, password);
     this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((user) => {
         if(user.user?.emailVerified){ //Pregunta si esta verificado el email
           this.user = user?.user?.email;
+          
+          localStorage.setItem("user", this.apodo);
           if (user) {
             this.getTokenFirebase();
             this.getInfoUser(user?.user?.uid || '');
+        
           }
-          // console.log(user?.user);
-          console.log(user?.user?.uid);
-          // this.router.navigate(['/']);
+           console.log(user?.user.email);
+           console.log(user?.user?.uid);
+          
+          
+           this.router.navigate(['']);
         }else{
           alert('Por favor, verifique su email');
         }
@@ -103,6 +142,7 @@ export class FirebaseLoginService {
       .catch((error) => {
         console.log(error);
       });
+      this.router.navigate(['']); 
   }
 
   getInfoUser(id: string) {
@@ -132,6 +172,7 @@ export class FirebaseLoginService {
   }
 
   isLogin() {
+    
     return this.cookie.get('token');
     // return this.token;
   }
@@ -145,7 +186,11 @@ export class FirebaseLoginService {
         this.token = '';
         this.cookie.set('token', this.token);
         console.log('token vacio=>', this.token);
-        // this.router.navigate(['/']);
+        //esto solo
+        localStorage.removeItem('user');
+       
+        
+         
       });
   }
 //Recuperacion de Clave
@@ -157,5 +202,35 @@ export class FirebaseLoginService {
       this.loading=false;
     });
   }
-}
+//guardo en BD el Usuario
+  saveDataBaseUser(usuario: Usuario){
+    this.usuarioService.agregarUsuario(usuario).subscribe(
+      res =>{
+        console.log(this.usuario);
+      }
+    );
 
+  }
+
+  //traigo User
+    traeUsuario(email: string, contraseña: string){
+     
+    this.usuarioService.traeUser(email, contraseña).subscribe((arg) => {
+      const datas = JSON.stringify(arg); //convertir a string
+        const datos = JSON.parse(datas); //convertir a objeto
+      
+       this.apodo = <string>datos[0].userName; //asignar el nombre
+        
+       
+    });
+
+  }
+
+
+
+ 
+
+ 
+
+
+}

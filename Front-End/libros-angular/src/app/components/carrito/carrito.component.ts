@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ListaProductos} from 'src/app/modulos/DataProductos';
+import { CarritoService } from 'src/app/servicios/carrito.service';
+//import { Form, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-carrito',
@@ -9,7 +12,17 @@ export class CarritoComponent implements OnInit {
   cantidad: number[] = [];
   numValue: number = 1;
 
-  constructor() { }
+  carrito: ListaProductos[] = [];
+   sum ;
+ 
+  
+  
+  constructor(private carritoService: CarritoService) { 
+    this.carrito = [];
+    this.sum = 0;
+  
+    
+  }
 
   ngOnInit(): void {
     for (let i = 1; i < 10; i++) {
@@ -25,3 +38,4 @@ export class CarritoComponent implements OnInit {
     // console.log(this.numValue);
   }
 }
+ 
