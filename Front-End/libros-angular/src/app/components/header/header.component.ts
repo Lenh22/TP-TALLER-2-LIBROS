@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit {
   ) {
     this.carrito = [];
     this.cantidad = 0;
-    //this.userName = JSON.stringify(localStorage.getItem("user"));
+    
     
   }
 

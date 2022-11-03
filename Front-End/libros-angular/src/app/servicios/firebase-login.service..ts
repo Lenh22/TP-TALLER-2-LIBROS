@@ -125,6 +125,7 @@ export class FirebaseLoginService {
           this.user = user?.user?.email;
           
           localStorage.setItem("user", this.apodo);
+         
           if (user) {
             this.getTokenFirebase();
             this.getInfoUser(user?.user?.uid || '');
@@ -134,7 +135,7 @@ export class FirebaseLoginService {
            console.log(user?.user?.uid);
           
           
-           this.router.navigate(['']);
+           
         }else{
           alert('Por favor, verifique su email');
         }
@@ -142,7 +143,7 @@ export class FirebaseLoginService {
       .catch((error) => {
         console.log(error);
       });
-      this.router.navigate(['']); 
+       
   }
 
   getInfoUser(id: string) {
@@ -188,7 +189,6 @@ export class FirebaseLoginService {
         console.log('token vacio=>', this.token);
         //esto solo
         localStorage.removeItem('user');
-       
         
          
       });
