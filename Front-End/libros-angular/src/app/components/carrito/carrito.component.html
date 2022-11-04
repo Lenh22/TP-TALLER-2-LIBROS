@@ -11,7 +11,7 @@
         <p class="d-block m-auto fw-bolder" style="width: 100% !important">
           Subtotal
         </p>
-        <p class="d-block m-auto">$ {{ total() }}</p>
+        <p class="d-block m-auto">$ {{ total().toFixed(2) }}</p>
       </div>
     </div>
 
@@ -36,25 +36,25 @@
           class="img-thumbnail"
           width="100px"
           height="100px"
-          src="https://st.booknet.com/uploads/covers/220/1664331730_33.jpg"
+          src="{{ producto.imagen }}"
         />
         <div
           class="d-flex justify-content-between cart-detail"
           style="width: 100%"
         >
           <div class="d-flex flex-column">
-            <h5>Harry Potter y el prisionero de Azcaban</h5>
+            <h5>{{ producto.nombre }}</h5>
             <p class="text-muted">
               Autor/a:
-              <span>J. K. Rowling</span>
+              <span>{{ producto.autor }}</span>
             </p>
             <p class="text-muted">
               Categoria:
-              <span>Fantasia</span>
+              <span>{{ producto.categoria }}</span>
             </p>
             <p class="text-muted">
-              Precio:
-              <span>$ 1600.00</span>
+              Precio c/u:
+              <span>$ {{ producto.precio.toFixed(2) }}</span>
             </p>
           </div>
           <div class="d-flex justify-content-end cart-detail__price">
@@ -64,7 +64,7 @@
                   <button
                     type="button"
                     class="btn btn-primary btn-md"
-                    (click)="downProductQuantity(producto)"
+                    (click)="downProductQuantity(producto); setCantidad(producto)"
                   >
                     -
                   </button>
@@ -77,18 +77,21 @@
                     [(ngModel)]="producto.cantidad"
                     style="width: 100px !important"
                     (focusout)="verificarCantidad(producto)"
+                    (change)="setCantidad(producto)"
                   />
                   <button
                     type="button"
                     class="btn btn-primary btn-md"
-                    (click)="upProductQuantity(producto)"
+                    (click)="upProductQuantity(producto); setCantidad(producto)"
                   >
                     +
                   </button>
                 </div>
               </div>
               <div class="d-flex cart-detail__delete gap-4">
-                <h5>$ {{ producto.precio * producto.cantidad }}</h5>
+                <h5>
+                  $ {{ (producto.precio * producto.cantidad).toFixed(2) }}
+                </h5>
                 <button
                   type="button"
                   class="btn-close"
@@ -138,7 +141,7 @@
   <hr />
   <div class="pago d-flex justify-content-between">
     <h4>Total a pagar</h4>
-    <h4>$ {{ total() }}</h4>
+    <h4>$ {{ total().toFixed(2) }}</h4>
   </div>
   <div class="d-flex justify-content-center my-4">
     <button

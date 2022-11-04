@@ -40,7 +40,7 @@ export class ProductoDetalleComponent implements OnInit {
         this.productoDetalle.stock = <number>datos[0].stock;
         //this.productoDetalle = <any>data;
 
-        console.log(data);
+        // console.log(data);
       },
       (err) => {
         console.log('Error al traer los detalles del producto');

@@ -27,13 +27,12 @@ export class HeaderComponent implements OnInit {
   categorias: ListaCategoria[] = [];
   categoria: string = 'Categorias';
   show: number = 0;
-  userName: string = JSON.stringify(localStorage.getItem("user"));
+  userName: string = JSON.stringify(localStorage.getItem('user'));
   carrito: ListaProductos[] = [];
   cantidad;
   formularioLogin = new FormGroup({
     usuario: new FormControl('', Validators.required),
     contrasenia: new FormControl('', Validators.required),
-    
   });
 
   datauser: any;
@@ -47,68 +46,49 @@ export class HeaderComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private carritoService: CarritoService,
     private firebaseLogin: FirebaseLoginService,
-    private usuarioService: UsuarioService,
-    
+    private usuarioService: UsuarioService
   ) {
     this.carrito = [];
     this.cantidad = 0;
     //this.userName = JSON.stringify(localStorage.getItem("user"));
-    
   }
 
-  
-
-  
   ngOnInit(): void {
- 
     //this.cantidad = this.carritoService.getCountProductsService();
-    this.cantidad = localStorage.length;
-    this.servicioCategorias.getCategorias().subscribe((data)  => {
-    this.categorias = data;
-   
+    this.servicioCategorias.getCategorias().subscribe((data) => {
+      this.categorias = data;
     });
-      this.carrito = this.carritoService.getAllProductsService();
-      this.carritoService.disparadorCarrito.subscribe((data) => {
-      this.carrito.push(data);
-      this.cantidad = this.carritoService.getCountProductsService();
-      localStorage.setItem('carrito',  JSON.stringify(this.carrito));
-      
-    });
-  
-     
-    
-     
+
+    // this.cantidad = localStorage.length;
+    // this.cantidad = this.carritoService.getCountProductsService();
+    this.carritoService.productosCarrito.subscribe(
+      (data) => (this.carrito = data)
+    );
   }
-
- 
-  
-  
-
- 
 
   onLogin(): void {
-    
     const datosFormularioLogin: loginSendData = this.formularioLogin.value;
     this.loginService.loginUsuario(datosFormularioLogin).subscribe((arg) => {
-    console.log(arg);
-      
-    }); 
-   
+      console.log(arg);
+    });
+  }
 
-   
-
+  cantidadProductos(): number {
+    let cantidad = 0;
+    this.carrito.forEach((data) => {
+      cantidad += data.cantidad;
+    });
+    return cantidad;
   }
 
   /* login usuario*/
   estaLogueado() {
-    
     return this.firebaseLogin.isLogin();
   }
 
   logOut() {
     this.firebaseLogin.logOut();
     //window.location.replace("/");
-    
   }
 
   showDrawer() {
@@ -120,9 +100,4 @@ export class HeaderComponent implements OnInit {
     this.show = 0;
     console.log(this.show);
   }
-
-
-
-
-
 }

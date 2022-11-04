@@ -9,7 +9,7 @@ import { CarritoService } from 'src/app/servicios/carrito.service';
   styleUrls: ['./carrito.component.css'],
 })
 export class CarritoComponent implements OnInit {
-  cantidad: number[] = [];
+  cantidadCarrito: number;
   productos: ListaProductos[] = [];
 
   constructor(private carritoService: CarritoService) {
@@ -17,12 +17,16 @@ export class CarritoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.carritoService.productosCarrito.subscribe(
-      (data) => (this.productos = data)
-    );
-    for (let i = 1; i < 10; i++) {
-      this.cantidad.push(i);
-    }
+    this.carritoService.productosCarrito.subscribe((data) => {
+      if (data.length > 0) {
+        this.productos = data;
+      } else {
+        this.productos = this.carritoService.getAllProductsService();
+      }
+    });
+    this.productos.forEach((data) => {
+      this.cantidadCarrito += data.cantidad;
+    });
   }
 
   total(): number {
@@ -31,6 +35,12 @@ export class CarritoComponent implements OnInit {
       sum += producto.cantidad * producto.precio;
     });
     return sum;
+  }
+
+  setCantidad(producto: any) {
+    if (producto.cantidad > producto.stock) {
+      producto.cantidad = 1;
+    }
   }
 
   // selectCount(event: any) {
@@ -46,7 +56,7 @@ export class CarritoComponent implements OnInit {
   }
 
   downProductQuantity(product: ListaProductos): void {
-    if (product.cantidad > 0) {
+    if (product.cantidad > 1) {
       product.cantidad--;
     }
   }
@@ -57,7 +67,7 @@ export class CarritoComponent implements OnInit {
       product.cantidad < 0 ||
       product.cantidad === null
     ) {
-      product.cantidad = 0;
+      product.cantidad = 1;
     }
   }
 
