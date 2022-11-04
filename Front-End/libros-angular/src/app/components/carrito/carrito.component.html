@@ -56,143 +56,33 @@
         </div>
         <div class="d-flex justify-content-end cart-detail__price">
           <div class="d-flex align-items-center gap-5 cart-detail__select">
-            <div
-              class="form-floating cart-detail__cant d-{{
-                numValue >= 10 ? 'none' : 'block'
-              }}"
-              style="width: 100px"
-            >
-              <select
-                value="{{ numValue }}"
-                class="form-select"
-                id="cantidad"
-                (change)="selectCount($event)"
-              >
-                <option *ngFor="let item of cantidad" value="{{ item }}">
-                  {{ item }}
-                </option>
-                <option value="10">+ 10</option>
-              </select>
-              <label for="cantidad">Cantidad</label>
-            </div>
-            <div
-              class="form-floating d-{{ numValue <= 9 ? 'none' : 'block' }}"
-              style="width: 100px"
-            >
-              <input
-                type="number"
-                class="form-control"
-                id="Inputcantidad"
-                (change)="selectCount($event)"
-                value="{{ numValue }}"
-              />
-              <label for="Inputcantidad">Cantidad</label>
-            </div>
-            <div class="d-flex cart-detail__delete gap-4">
-              <h5>$ 18999.00</h5>
-              <button
-                type="button"
-                class="btn-close"
-                aria-label="Close"
-              ></button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div
-      class="border rounded p-3 d-flex align-items-center gap-4"
-      style="width: 100%"
-    >
-      <img
-        class="img-thumbnail"
-        width="100px"
-        height="100px"
-        src="https://st.booknet.com/uploads/covers/220/1664331730_33.jpg"
-      />
-      <div
-        class="d-flex justify-content-between cart-detail"
-        style="width: 100%"
-      >
-        <div class="d-flex flex-column">
-          <h5>Harry Potter y el prisionero de Azcaban</h5>
-          <p class="text-muted">
-            Autor/a:
-            <span>J. K. Rowling</span>
-          </p>
-          <p class="text-muted">
-            Categoria:
-            <span>Fantasia</span>
-          </p>
-          <p class="text-muted">
-            Precio:
-            <span>$ 1600.00</span>
-          </p>
-        </div>
-        <div class="d-flex justify-content-end cart-detail__price">
-          <div class="d-flex align-items-center gap-5 cart-detail__select">
-            <div class="form-floating cart-detail__cant" style="width: 100px">
-              <select class="form-select" id="floatingSelect">
-                <option selected disabled>0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
-              <label for="floatingSelect">Cantidad</label>
-            </div>
-            <div class="d-flex cart-detail__delete gap-4">
-              <h5>$ 18999.00</h5>
-              <button
-                type="button"
-                class="btn-close"
-                aria-label="Close"
-              ></button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div
-      class="border rounded p-3 d-flex align-items-center gap-4"
-      style="width: 100%"
-    >
-      <img
-        class="img-thumbnail"
-        width="100px"
-        height="100px"
-        src="https://st.booknet.com/uploads/covers/220/1664331730_33.jpg"
-      />
-      <div
-        class="d-flex justify-content-between cart-detail"
-        style="width: 100%"
-      >
-        <div class="d-flex flex-column">
-          <h5>Harry Potter y el prisionero de Azcaban</h5>
-          <p class="text-muted">
-            Autor/a:
-            <span>J. K. Rowling</span>
-          </p>
-          <p class="text-muted">
-            Categoria:
-            <span>Fantasia</span>
-          </p>
-          <p class="text-muted">
-            Precio:
-            <span>$ 1600.00</span>
-          </p>
-        </div>
-        <div class="d-flex justify-content-end cart-detail__price">
-          <div class="d-flex align-items-center gap-5 cart-detail__select">
-            <div class="form-floating cart-detail__cant" style="width: 100px">
-              <select class="form-select" id="floatingSelect">
-                <option selected disabled>0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
-              <label for="floatingSelect">Cantidad</label>
+            <div class="form-floating cart-detail__cant">
+              <div class="input-group">
+                <button
+                  type="button"
+                  class="btn btn-primary btn-md"
+                  (click)="downProductQuantity(producto)"
+                >
+                  -
+                </button>
+                <!--<span class="form-control text-center">{{
+                  producto.cantidad
+                }}</span>-->
+                <input
+                  type="number"
+                  class="form-control"
+                  [(ngModel)]="producto.cantidad"
+                  style="width: 100px !important"
+                  (focusout)="verificarCantidad(producto)"
+                />
+                <button
+                  type="button"
+                  class="btn btn-primary btn-md"
+                  (click)="upProductQuantity(producto)"
+                >
+                  +
+                </button>
+              </div>
             </div>
             <div class="d-flex cart-detail__delete gap-4">
               <h5>$ 18999.00</h5>

@@ -37,6 +37,7 @@ export class ProductoDetalleComponent implements OnInit {
         this.productoDetalle.precio = <number>datos[0].precio; //asignar el peso
         this.productoDetalle.imagen = <string>datos[0].imagen; //la imagen
         this.productoDetalle.categoria = <string>datos[0].categoria;
+        this.productoDetalle.stock = <number>datos[0].stock;
         //this.productoDetalle = <any>data;
 
         console.log(data);
