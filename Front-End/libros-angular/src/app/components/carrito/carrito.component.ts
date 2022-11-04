@@ -10,49 +10,27 @@ import { CarritoService } from 'src/app/servicios/carrito.service';
 })
 export class CarritoComponent implements OnInit {
   cantidad: number[] = [];
-  carrito: ListaProductos[] = [];
-  total: number = 0;
-
-  productos: ListaProductos[] = [
-    {
-      autor: '',
-      calificacion: 0,
-      categoria: '',
-      descripcion: '',
-      descuento: 0,
-      id: '',
-      imagen: '',
-      nombre: '',
-      precio: 1600,
-      stock: 10,
-      cantidad: 1,
-    },
-    {
-      autor: '',
-      calificacion: 0,
-      categoria: '',
-      descripcion: '',
-      descuento: 0,
-      id: '',
-      imagen: '',
-      nombre: '',
-      precio: 1600,
-      stock: 10,
-      cantidad: 2,
-    },
-  ];
+  productos: ListaProductos[] = [];
 
   constructor(private carritoService: CarritoService) {
-    this.carrito = [];
+    this.productos = [];
   }
 
   ngOnInit(): void {
+    this.carritoService.productosCarrito.subscribe(
+      (data) => (this.productos = data)
+    );
     for (let i = 1; i < 10; i++) {
       this.cantidad.push(i);
     }
+  }
+
+  total(): number {
+    let sum = 0;
     this.productos.forEach((producto) => {
-      this.total += producto.cantidad * producto.precio;
+      sum += producto.cantidad * producto.precio;
     });
+    return sum;
   }
 
   // selectCount(event: any) {
@@ -81,5 +59,9 @@ export class CarritoComponent implements OnInit {
     ) {
       product.cantidad = 0;
     }
+  }
+
+  deleteProductCart() {
+    this.carritoService.deleteProducto();
   }
 }
