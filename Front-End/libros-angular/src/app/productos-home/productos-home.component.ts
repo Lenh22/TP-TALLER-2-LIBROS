@@ -35,18 +35,14 @@ export class ProductosHomeComponent implements OnInit {
 
       if (ids == null) {
         this.serviciosProductos.productosNuevosHome().subscribe((arg) => {
-          console.log(arg);
           this.productosNuevos = arg;
           this.loading = false;
-          console.log(this.productosNuevos);
         });
       } else {
         this.loading = true;
         this.serviciosProductos.getProductsByCategory(ids).subscribe((arg) => {
-          console.log(arg);
           this.productosNuevos = arg;
           this.loading = false;
-          console.log(this.productosNuevos);
         });
       }
     });
@@ -63,5 +59,4 @@ export class ProductosHomeComponent implements OnInit {
   formatInput(input: HTMLInputElement) {
     input.value = input.value.replace(FILTER_PAG_REGEX, '');
   }
-
 }

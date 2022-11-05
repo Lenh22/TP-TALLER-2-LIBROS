@@ -20,8 +20,6 @@ export class CarritoComponent implements OnInit {
     this.carritoService.productosCarrito.subscribe((data) => {
       if (data.length > 0) {
         this.productos = data;
-      } else {
-        this.productos = this.carritoService.getAllProductsService();
       }
     });
     this.productos.forEach((data) => {

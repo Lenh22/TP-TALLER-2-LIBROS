@@ -20,10 +20,10 @@ export class CarritoService {
   constructor(private http: HttpClient) {}
 
   addToCartService(item: ListaProductos, count: number) {
-    localStorage.setItem(
-      item.id,
-      JSON.stringify(Object.assign({ ...item, cantidad: count }))
-    );
+    // localStorage.setItem(
+    //   item.id,
+    //   JSON.stringify(Object.assign({ ...item, cantidad: count }))
+    // );
     let index = this._productosCarrito.findIndex((p) => p.id === item.id);
     if (index === -1) {
       this._productosCarrito.push(Object.assign({ ...item, cantidad: count }));
@@ -41,38 +41,36 @@ export class CarritoService {
     return product;
   }
 
-  getAllProductsService() {
-    const products: ListaProductos[] = [];
+  // getAllProductsService() {
+  //   const products: ListaProductos[] = [];
 
-    const keys = Object.keys(localStorage);
-    keys.forEach((key) => {
-      products.push(JSON.parse(localStorage[key]));
-    });
-    // console.log(keys, products);
+  //   const keys = Object.keys(localStorage);
+  //   keys.forEach((key) => {
+  //     products.push(JSON.parse(localStorage[key]));
+  //   });
+  //   return products;
+  // }
 
-    return products;
-  }
+  // sumaProductsPrecio() {
+  //   var sum = 0;
+  //   this.getAllProductsService().forEach((item) => {
+  //     const suma = item.precio;
+  //     sum = suma + sum;
+  //   });
+  //   console.log(sum);
+  //   return sum;
+  // }
 
-  sumaProductsPrecio() {
-    var sum = 0;
-    this.getAllProductsService().forEach((item) => {
-      const suma = item.precio;
-      sum = suma + sum;
-    });
-    console.log(sum);
-    return sum;
-  }
-
-  getCountProductsService() {
-    const products: any = this.getAllProductsService();
-    let count = 0;
-    products.forEach((product: ListaProductos) => {
-      count++;
-    });
-    console.log('cantidad total : ', count);
-    this.cantidadCarrito = count;
-    return count;
-  }
+  // getCountProductsService() {
+  //   const products: any = this.getAllProductsService();
+  //   let count = 0;
+  //   products.forEach((product: ListaProductos) => {
+  //     count++;
+  //   });
+  //   console.log('cantidad total : ', count);
+  //   this.cantidadCarrito = count;
+  //   return count;
+  // }
 
   // incrementCartCount(id: string) {
   //   let product: ListaProductos = this.getProduct(id);

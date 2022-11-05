@@ -56,7 +56,6 @@ export class ProductoDetalleComponent implements OnInit {
   }
 
   addToCart(producto: ListaProductos, cant: number) {
-    console.log(producto, 'cantidad:', cant);
     this.carritoService.addToCartService(producto, cant);
   }
 
@@ -65,6 +64,5 @@ export class ProductoDetalleComponent implements OnInit {
     if (this.numValue === null || this.numValue === 0 || isNaN(this.numValue)) {
       this.numValue = 1;
     }
-    // console.log(this.numValue);
   }
 }

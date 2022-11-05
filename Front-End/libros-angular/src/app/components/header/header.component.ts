@@ -54,13 +54,9 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.cantidad = this.carritoService.getCountProductsService();
     this.servicioCategorias.getCategorias().subscribe((data) => {
       this.categorias = data;
     });
-
-    // this.cantidad = localStorage.length;
-    // this.cantidad = this.carritoService.getCountProductsService();
     this.carritoService.productosCarrito.subscribe(
       (data) => (this.carrito = data)
     );
