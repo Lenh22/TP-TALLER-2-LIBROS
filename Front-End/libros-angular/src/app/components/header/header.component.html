@@ -20,7 +20,7 @@
     <div class="d-flex gap-3 align-items-center header__login">
       <div
         *ngIf="!estaLogueado()"
-       
+
         class="header__login d-flex align-items-center"
       >
         <button
@@ -47,14 +47,14 @@
         *ngIf="estaLogueado()"
         class="d-flex align-items-center header__login"
       >
-      
+
         <span class="fw-bolder text-light">{{ userName }}...</span>
         <button
           type="button"
           class="btn"
           style="color: #fff"
           (click)="logOut()"
-        
+
         >
           LogOut
           <i class="fa-solid fa-right-from-bracket"></i>
@@ -74,7 +74,7 @@
         style="filter: invert(100%)"
       >
         <img src="../../../assets/imagenes/iso.png" alt="isotipo" width="30" />
-        <a href="">
+        <a href="/">
           <img
             width="180"
             src="https://fontmeme.com/permalink/221001/e8000a6afc66936e040a5d1e9a070f90.png"

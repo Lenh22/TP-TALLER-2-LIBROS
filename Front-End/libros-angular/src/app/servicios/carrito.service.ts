@@ -19,17 +19,17 @@ export class CarritoService {
 
   constructor(private http: HttpClient) {}
 
-  addToCartService(item: ListaProductos, count: number) {
+  addToCartService(item: ListaProductos) {
     // localStorage.setItem(
     //   item.id,
     //   JSON.stringify(Object.assign({ ...item, cantidad: count }))
     // );
     let index = this._productosCarrito.findIndex((p) => p.id === item.id);
     if (index === -1) {
-      this._productosCarrito.push(Object.assign({ ...item, cantidad: count }));
+      this._productosCarrito.push(Object.assign({ ...item }));
     } else {
       this._productosCarrito.splice(index, 1);
-      this._productosCarrito.push(Object.assign({ ...item, cantidad: count }));
+      this._productosCarrito.push(Object.assign({ ...item }));
     }
     if (item.cantidad === 0) {
       this._productosCarrito.splice(index, 1);
