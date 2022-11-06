@@ -3,43 +3,81 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ListaProductos } from '../modulos/DataProductos';
+import { Producto } from './../modulos/DataProductos';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CarritoService {
-  @Output() disparadorCarrito: EventEmitter<any> = new EventEmitter();
-
-  private _productosCarrito: ListaProductos[] = [];
-  private _productosCarritoSubjects: BehaviorSubject<ListaProductos[]> =
-    new BehaviorSubject(this._productosCarrito);
-  public productosCarrito: Observable<ListaProductos[]> =
-    this._productosCarritoSubjects.asObservable();
-  cantidadCarrito: number = 0;
+  productos: ListaProductos[] = [];
 
   constructor(private http: HttpClient) {}
 
-  addToCartService(item: ListaProductos) {
-    // localStorage.setItem(
-    //   item.id,
-    //   JSON.stringify(Object.assign({ ...item, cantidad: count }))
-    // );
-    let index = this._productosCarrito.findIndex((p) => p.id === item.id);
+  // addTsoCart(producto: Producto) {
+  //   let localStorageGetItem = [];
+  //   if (localStorage.getItem('productos')) {
+  //     localStorageGetItem = JSON.parse(localStorage.getItem('productos') || '');
+  //     console.log(
+  //       localStorageGetItem.find((item: Producto) => {
+  //         item.id === producto.id;
+  //       })
+  //     );
+  //     // console.log(localStorageGetItem);
+  //   }
+
+  //   /*
+  //   verificar que en el local storage no este en el producto registrado
+  //   En caso de que este sera reemplazado y se le informara al usuario mediante un popup
+  //   */
+
+  //   this.productos.push(producto);
+  //   let productos = [];
+  //   if (localStorage.getItem('productos') === null) {
+  //     productos = [];
+  //     productos.push(producto);
+  //     localStorage.setItem('productos', JSON.stringify(productos));
+  //   } else {
+  //     productos = JSON.parse(localStorage.getItem('productos') || '');
+  //     productos.push(producto);
+  //     localStorage.setItem('productos', JSON.stringify(productos));
+  //   }
+  // }
+
+  addToCart(item: Producto) {
+    // this.productos.push(item);
+    let productos = [];
+
+    if (localStorage.getItem('productos')) {
+      productos = JSON.parse(localStorage.getItem('productos') || '');
+    }
+    let index = productos.findIndex((p: any) => p.id === item.id);
     if (index === -1) {
-      this._productosCarrito.push(Object.assign({ ...item }));
+      productos.push(item);
+      localStorage.setItem('productos', JSON.stringify(productos));
     } else {
-      this._productosCarrito.splice(index, 1);
-      this._productosCarrito.push(Object.assign({ ...item }));
+      productos.splice(index, 1);
+      productos.push(item);
+      localStorage.setItem('productos', JSON.stringify(productos));
     }
     if (item.cantidad === 0) {
-      this._productosCarrito.splice(index, 1);
+      productos.splice(index, 1);
+      localStorage.setItem('productos', JSON.stringify(productos));
     }
   }
 
-  getProductService(id: string) {
-    const product = JSON.parse(localStorage.getItem(id) || '');
-    return product;
+  getProductos() {
+    if (localStorage.getItem('productos') === null) {
+      this.productos = [];
+    } else {
+      this.productos = JSON.parse(localStorage.getItem('productos') || '');
+    }
+    return this.productos;
   }
+
+  // getProductService(id: string) {
+  //   const product = JSON.parse(localStorage.getItem(id) || '');
+  //   return product;
+  // }
 
   // getAllProductsService() {
   //   const products: ListaProductos[] = [];
@@ -88,11 +126,11 @@ export class CarritoService {
   //   console.log('decremento: ', product.cantidad);
   //}
 
-  deleteProductService(id: string) {
-    localStorage.removeItem(id);
-  }
+  // deleteProductService(id: string) {
+  //   localStorage.removeItem(id);
+  // }
 
-  deleteProducto() {
-    this._productosCarrito.splice(0, this._productosCarrito.length);
-  }
+  // deleteProducto() {
+  //   this._productosCarrito.splice(0, this._productosCarrito.length);
+  // }
 }

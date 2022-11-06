@@ -19,7 +19,7 @@ export class ProductoDetalleComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: RouterModule,
     private productoService: ProductosService,
-    private carritoService: CarritoService
+    public carritoService: CarritoService
   ) {}
 
   ngOnInit(): void {
@@ -40,24 +40,17 @@ export class ProductoDetalleComponent implements OnInit {
         this.productoDetalle.stock = <number>datos[0].stock;
         //this.productoDetalle = <any>data;
         this.productoDetalle.cantidad = <number>datos[0].cantidad;
-        this.productoDetalle.cantidad = 1
+        this.productoDetalle.cantidad = 1;
         // console.log(data);
       },
       (err) => {
         console.log('Error al traer los detalles del producto');
       }
     );
-
-    // for (let i = 1; i < 10; i++) {
-    //   this.cantidad.push(i);
-    // }
   }
+
   numSequence(n: number): Array<number> {
     return Array(n);
-  }
-
-  addToCart(producto: ListaProductos) {
-    this.carritoService.addToCartService(producto);
   }
 
   setCantidad(producto: any) {
@@ -69,7 +62,6 @@ export class ProductoDetalleComponent implements OnInit {
   upProductQuantity(product: ListaProductos): void {
     if (product.stock > product.cantidad) product.cantidad++;
   }
-
 
   downProductQuantity(product: ListaProductos): void {
     if (product.cantidad > 1) {
@@ -87,7 +79,8 @@ export class ProductoDetalleComponent implements OnInit {
     }
   }
 
-  deleteProductCart() {
-    this.carritoService.deleteProducto();
+  //carrito
+  addToCart(producto: Producto) {
+    this.carritoService.addToCart(producto);
   }
 }

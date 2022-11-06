@@ -23,6 +23,12 @@
           <p>
             Stock: <span class="fw-bolder">{{ productoDetalle.stock }} u.</span>
           </p>
+          <p *ngIf="productoDetalle.stock > 0" class="card-text mb-auto">
+            En Stock
+          </p>
+          <p *ngIf="productoDetalle.stock <= 0" class="card-text mb-auto">
+            Sin Stock
+          </p>
           <div class="mt-3" style="width: 150px">
             <div class="input-group">
               <button
@@ -62,12 +68,6 @@
               Añadir al carrito
             </button>
           </div>
-          <p *if="productoDetalle.stock > 0" class="card-text mb-auto">
-            En Stock
-          </p>
-          <p *if="productoDetalle.stock <= 0" class="card-text mb-auto">
-            Sin Stock
-          </p>
           <!--Para prueba-->
         </div>
         <div class="col-auto d-none m-auto d-lg-block">

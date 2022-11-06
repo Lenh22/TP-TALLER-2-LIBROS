@@ -26,10 +26,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 export class HeaderComponent implements OnInit {
   categorias: ListaCategoria[] = [];
   categoria: string = 'Categorias';
-  show: number = 0;
   userName: string = JSON.stringify(localStorage.getItem('user'));
-  carrito: ListaProductos[] = [];
-  cantidad;
   formularioLogin = new FormGroup({
     usuario: new FormControl('', Validators.required),
     contrasenia: new FormControl('', Validators.required),
@@ -40,7 +37,6 @@ export class HeaderComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     private servicioCategorias: CategoriaService,
-    private styleService: StylesService,
     private afAuth: AngularFireAuth,
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -48,8 +44,6 @@ export class HeaderComponent implements OnInit {
     private firebaseLogin: FirebaseLoginService,
     private usuarioService: UsuarioService
   ) {
-    this.carrito = [];
-    this.cantidad = 0;
     //this.userName = JSON.stringify(localStorage.getItem("user"));
   }
 
@@ -57,9 +51,6 @@ export class HeaderComponent implements OnInit {
     this.servicioCategorias.getCategorias().subscribe((data) => {
       this.categorias = data;
     });
-    this.carritoService.productosCarrito.subscribe(
-      (data) => (this.carrito = data)
-    );
   }
 
   onLogin(): void {
@@ -67,14 +58,6 @@ export class HeaderComponent implements OnInit {
     this.loginService.loginUsuario(datosFormularioLogin).subscribe((arg) => {
       console.log(arg);
     });
-  }
-
-  cantidadProductos(): number {
-    let cantidad = 0;
-    this.carrito.forEach((data) => {
-      cantidad += data.cantidad;
-    });
-    return cantidad;
   }
 
   /* login usuario*/
@@ -85,15 +68,5 @@ export class HeaderComponent implements OnInit {
   logOut() {
     this.firebaseLogin.logOut();
     //window.location.replace("/");
-  }
-
-  showDrawer() {
-    this.show = 1;
-    console.log(this.show);
-  }
-
-  closeDrawer() {
-    this.show = 0;
-    console.log(this.show);
   }
 }
