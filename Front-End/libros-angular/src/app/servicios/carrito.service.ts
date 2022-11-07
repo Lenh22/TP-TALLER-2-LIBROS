@@ -23,25 +23,21 @@ export class CarritoService {
 
     if (localStorage.getItem('productos')) {
       productos = JSON.parse(localStorage.getItem('productos') || '');
-      this.cantidad = productos.length;
     }
     let index = productos.findIndex((p: any) => p.id === item.id);
     if (index === -1) {
       productos.push(item);
       localStorage.setItem('productos', JSON.stringify(productos));
-      this.cantidad = productos.length;
     } else {
       productos.splice(index, 1);
       productos.push(item);
       localStorage.setItem('productos', JSON.stringify(productos));
-      this.cantidad = productos.length;
     }
     if (item.cantidad === 0) {
       productos.splice(index, 1);
       localStorage.setItem('productos', JSON.stringify(productos));
-      this.cantidad = productos.length;
     }
-    this.cantidad++;
+    window.location.href = '/carrito';
   }
 
   getProductos() {
@@ -60,6 +56,7 @@ export class CarritoService {
       if (producto.id == this.productos[i].id) {
         this.productos.splice(i, 1);
         localStorage.setItem('productos', JSON.stringify(this.productos));
+        window.location.href = '/carrito';
       }
     }
   }
