@@ -19,6 +19,7 @@ export class FirebaseLoginService {
   usuarios: Usuario[];
   loading: boolean = false;
   apodo: string;
+  mailVerif: any;
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -89,6 +90,9 @@ export class FirebaseLoginService {
       .createUserWithEmailAndPassword(email, password)
       .then((user) => {
         const uid = user?.user?.uid || '';
+        
+
+        
         this.saveDataUser(uid, userName, email, nombre, apellido, domicilio);
         //aca empieza la parte de user a la BD
         this.usuario.id = uid;
@@ -211,6 +215,8 @@ export class FirebaseLoginService {
     );
 
   }
+
+ 
 
   //traigo User
     traeUsuario(email: string, contraseña: string){
