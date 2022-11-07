@@ -133,10 +133,11 @@ export class FirebaseLoginService {
           if (user) {
             this.getTokenFirebase();
             this.getInfoUser(user?.user?.uid || '');
-        
+            window.location.href = '';
           }
            console.log(user?.user.email);
            console.log(user?.user?.uid);
+
           
           
            
@@ -206,6 +207,7 @@ export class FirebaseLoginService {
       this.loading=false;
     });
   }
+
 //guardo en BD el Usuario
   saveDataBaseUser(usuario: Usuario){
     this.usuarioService.agregarUsuario(usuario).subscribe(

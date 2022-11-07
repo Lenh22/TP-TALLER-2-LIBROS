@@ -47,10 +47,8 @@ export class HeaderComponent implements OnInit {
     private firebaseLogin: FirebaseLoginService,
     private usuarioService: UsuarioService
   ) {
-    this.carrito = [];
-    this.cantidad = 0;
     //this.userName = JSON.stringify(localStorage.getItem("user"));
-    
+
   }
 
   ngOnInit() {
@@ -73,6 +71,6 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     this.firebaseLogin.logOut();
-    //window.location.replace("/");
+    window.location.href = '';
   }
 }
