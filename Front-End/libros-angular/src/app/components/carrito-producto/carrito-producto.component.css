@@ -1,0 +1,47 @@
+@import url('../../../styles.css');
+
+.pago {
+  text-align: right;
+}
+
+td {
+  vertical-align: middle;
+}
+
+@media (max-width: 991px) {
+  .banner-info__cart {
+    display: none !important;
+  }
+
+  .cart-detail {
+    flex-direction: column !important;
+  }
+
+  .cart-detail__price {
+    justify-content: left !important;
+    width: 100% !important;
+  }
+
+  .cart-detail__cant {
+    align-self: baseline !important;
+  }
+
+  .cart-detail__select {
+    gap: 10px !important;
+    width: 100% !important;
+    flex-direction: column !important;
+  }
+
+  .cart-detail__delete {
+    width: 100% !important;
+    justify-content: space-between;
+  }
+
+  .cart__title {
+    flex-direction: column !important;
+  }
+
+  .cart__title-sub{
+    align-self: flex-start !important;
+  }
+}

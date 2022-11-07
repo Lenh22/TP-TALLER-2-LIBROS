@@ -1,0 +1,19 @@
+.cart-count,
+.fav-count {
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  background-color: red;
+  border-radius: 60px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.login-modal {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+}
+.carrito {
+  cursor: pointer;
+}

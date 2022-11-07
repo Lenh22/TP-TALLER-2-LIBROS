@@ -1,41 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import { ListaProductos} from 'src/app/modulos/DataProductos';
+import { Component, OnInit, Input } from '@angular/core';
+import { ListaProductos } from 'src/app/modulos/DataProductos';
 import { CarritoService } from 'src/app/servicios/carrito.service';
 //import { Form, FormGroup} from '@angular/forms';
+import { Producto } from './../../modulos/DataProductos';
 
 @Component({
   selector: 'app-carrito',
   templateUrl: './carrito.component.html',
-  styleUrls: ['./carrito.component.css']
+  styleUrls: ['./carrito.component.css'],
 })
 export class CarritoComponent implements OnInit {
-  cantidad: number[] = [];
-  numValue: number = 1;
+  cantidadCarrito: number;
+  productos: ListaProductos[] = [];
 
-  carrito: ListaProductos[] = [];
-   sum ;
- 
-  
-  
-  constructor(private carritoService: CarritoService) { 
-    this.carrito = [];
-    this.sum = 0;
-  
-    
+  constructor(public carritoService: CarritoService) {}
+
+  ngOnInit() {
+    this.productos = this.carritoService.getProductos();
   }
 
-  ngOnInit(): void {
-    for (let i = 1; i < 10; i++) {
-      this.cantidad.push(i);
-    }
+  total(): number {
+    let sum = 0;
+    this.productos.forEach((producto) => {
+      sum += producto.cantidad * producto.precio;
+    });
+    return sum;
   }
 
-  selectCount(event: any) {
-    this.numValue = parseInt(event.target.value);
-    if (this.numValue === null || this.numValue === 0 || isNaN(this.numValue)) {
-      this.numValue = 1;
-    }
-    // console.log(this.numValue);
+  //carrito storage
+  addToCart(producto: Producto) {
+    console.log('carrito component', producto);
+    this.carritoService.addToCart(producto);
   }
 }
- 
