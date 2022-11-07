@@ -20,7 +20,6 @@
     <div class="d-flex gap-3 align-items-center header__login">
       <div
         *ngIf="!estaLogueado()"
-
         class="header__login d-flex align-items-center"
       >
         <button
@@ -47,14 +46,12 @@
         *ngIf="estaLogueado()"
         class="d-flex align-items-center header__login"
       >
-
         <span class="fw-bolder text-light">{{ userName }}...</span>
         <button
           type="button"
           class="btn"
           style="color: #fff"
           (click)="logOut()"
-
         >
           LogOut
           <i class="fa-solid fa-right-from-bracket"></i>
@@ -142,13 +139,7 @@
 
         <span style="color: #fff">
           <span class="carrito" routerLink="/carrito">Carrito</span>
-          <button
-            type="button"
-            style="border: none; color: #fff; background-color: inherit"
-          >
-            <i class="fa-solid fa-cart-shopping"></i>
-            <span class="cart-count" id="conteoCarrito">{{ 5 }}</span>
-          </button>
+          <app-cart-cantidad></app-cart-cantidad>
         </span>
       </div>
     </div>

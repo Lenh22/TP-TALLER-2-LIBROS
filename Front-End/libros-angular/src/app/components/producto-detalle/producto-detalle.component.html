@@ -34,7 +34,10 @@
               <button
                 type="button"
                 class="btn btn-primary btn-md"
-                (click)="downProductQuantity(productoDetalle); setCantidad(productoDetalle)"
+                (click)="
+                  downProductQuantity(productoDetalle);
+                  setCantidad(productoDetalle)
+                "
               >
                 -
               </button>
@@ -52,7 +55,10 @@
               <button
                 type="button"
                 class="btn btn-primary btn-md"
-                (click)="upProductQuantity(productoDetalle); setCantidad(productoDetalle)"
+                (click)="
+                  upProductQuantity(productoDetalle);
+                  setCantidad(productoDetalle)
+                "
               >
                 +
               </button>
@@ -60,6 +66,7 @@
           </div>
           <div class="col-12 mx-auto text-start mt-3">
             <button
+              routerLink="/carrito/"
               (click)="addToCart(productoDetalle)"
               class="btn btn-danger btn-general fw-semibold"
             >

@@ -11,37 +11,11 @@ import { Producto } from './../modulos/DataProductos';
 export class CarritoService {
   productos: ListaProductos[] = [];
 
-  constructor(private http: HttpClient) {}
+  cantidad: number = 0;
 
-  // addTsoCart(producto: Producto) {
-  //   let localStorageGetItem = [];
-  //   if (localStorage.getItem('productos')) {
-  //     localStorageGetItem = JSON.parse(localStorage.getItem('productos') || '');
-  //     console.log(
-  //       localStorageGetItem.find((item: Producto) => {
-  //         item.id === producto.id;
-  //       })
-  //     );
-  //     // console.log(localStorageGetItem);
-  //   }
-
-  //   /*
-  //   verificar que en el local storage no este en el producto registrado
-  //   En caso de que este sera reemplazado y se le informara al usuario mediante un popup
-  //   */
-
-  //   this.productos.push(producto);
-  //   let productos = [];
-  //   if (localStorage.getItem('productos') === null) {
-  //     productos = [];
-  //     productos.push(producto);
-  //     localStorage.setItem('productos', JSON.stringify(productos));
-  //   } else {
-  //     productos = JSON.parse(localStorage.getItem('productos') || '');
-  //     productos.push(producto);
-  //     localStorage.setItem('productos', JSON.stringify(productos));
-  //   }
-  // }
+  constructor(private http: HttpClient) {
+    this.cantidad = 1;
+  }
 
   addToCart(item: Producto) {
     // this.productos.push(item);
@@ -49,88 +23,44 @@ export class CarritoService {
 
     if (localStorage.getItem('productos')) {
       productos = JSON.parse(localStorage.getItem('productos') || '');
+      this.cantidad = productos.length;
     }
     let index = productos.findIndex((p: any) => p.id === item.id);
     if (index === -1) {
       productos.push(item);
       localStorage.setItem('productos', JSON.stringify(productos));
+      this.cantidad = productos.length;
     } else {
       productos.splice(index, 1);
       productos.push(item);
       localStorage.setItem('productos', JSON.stringify(productos));
+      this.cantidad = productos.length;
     }
     if (item.cantidad === 0) {
       productos.splice(index, 1);
       localStorage.setItem('productos', JSON.stringify(productos));
+      this.cantidad = productos.length;
     }
+    this.cantidad++;
   }
 
   getProductos() {
     if (localStorage.getItem('productos') === null) {
       this.productos = [];
+      this.cantidad = this.productos.length;
     } else {
       this.productos = JSON.parse(localStorage.getItem('productos') || '');
+      this.cantidad = this.productos.length;
     }
     return this.productos;
   }
 
-  // getProductService(id: string) {
-  //   const product = JSON.parse(localStorage.getItem(id) || '');
-  //   return product;
-  // }
-
-  // getAllProductsService() {
-  //   const products: ListaProductos[] = [];
-
-  //   const keys = Object.keys(localStorage);
-  //   keys.forEach((key) => {
-  //     products.push(JSON.parse(localStorage[key]));
-  //   });
-  //   return products;
-  // }
-
-  // sumaProductsPrecio() {
-  //   var sum = 0;
-  //   this.getAllProductsService().forEach((item) => {
-  //     const suma = item.precio;
-  //     sum = suma + sum;
-  //   });
-  //   console.log(sum);
-  //   return sum;
-  // }
-
-  // getCountProductsService() {
-  //   const products: any = this.getAllProductsService();
-  //   let count = 0;
-  //   products.forEach((product: ListaProductos) => {
-  //     count++;
-  //   });
-  //   console.log('cantidad total : ', count);
-  //   this.cantidadCarrito = count;
-  //   return count;
-  // }
-
-  // incrementCartCount(id: string) {
-  //   let product: ListaProductos = this.getProduct(id);
-  //   product.cantidad++;
-  //   console.log('aumento: ', product.cantidad);
-  // }
-
-  //decrementCartCount(id: string) {
-  // let product = this.getProduct(id);
-  // if (product.cantidad === 1) {
-  //  this.deleteProduct(id);
-  //} else {
-  //product.cantidad--;
-  // }
-  //   console.log('decremento: ', product.cantidad);
-  //}
-
-  // deleteProductService(id: string) {
-  //   localStorage.removeItem(id);
-  // }
-
-  // deleteProducto() {
-  //   this._productosCarrito.splice(0, this._productosCarrito.length);
-  // }
+  deleteProducto(producto: Producto) {
+    for (let i = 0; i < this.productos.length; i++) {
+      if (producto.id == this.productos[i].id) {
+        this.productos.splice(i, 1);
+        localStorage.setItem('productos', JSON.stringify(this.productos));
+      }
+    }
+  }
 }

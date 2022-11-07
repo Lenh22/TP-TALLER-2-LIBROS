@@ -17,6 +17,7 @@ import { Router } from '@angular/router';
 import { FirebaseLoginService } from 'src/app/servicios/firebase-login.service.';
 import { CarritoService } from 'src/app/servicios/carrito.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { Producto } from './../../modulos/DataProductos';
 
 @Component({
   selector: 'app-header',
@@ -34,20 +35,23 @@ export class HeaderComponent implements OnInit {
 
   datauser: any;
 
+  productos: ListaProductos[] = [];
+
   constructor(
     private loginService: LoginService,
     private servicioCategorias: CategoriaService,
     private afAuth: AngularFireAuth,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private carritoService: CarritoService,
+    public carritoService: CarritoService,
     private firebaseLogin: FirebaseLoginService,
     private usuarioService: UsuarioService
   ) {
     //this.userName = JSON.stringify(localStorage.getItem("user"));
+
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.servicioCategorias.getCategorias().subscribe((data) => {
       this.categorias = data;
     });

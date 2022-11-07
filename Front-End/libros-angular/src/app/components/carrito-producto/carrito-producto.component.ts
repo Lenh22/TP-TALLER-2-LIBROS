@@ -1,17 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Producto, ListaProductos } from './../../modulos/DataProductos';
+import { CarritoService } from 'src/app/servicios/carrito.service';
 
 @Component({
   selector: 'app-carrito-producto',
   templateUrl: './carrito-producto.component.html',
-  styleUrls: ['./carrito-producto.component.css']
+  styleUrls: ['./carrito-producto.component.css'],
 })
 export class CarritoProductoComponent implements OnInit {
   @Input() producto: Producto;
-  constructor() { }
+  constructor(public carritoService: CarritoService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   setCantidad(producto: any) {
     if (producto.cantidad > producto.stock) {
@@ -39,4 +39,7 @@ export class CarritoProductoComponent implements OnInit {
     }
   }
 
+  deleteProducto(producto: Producto) {
+    this.carritoService.deleteProducto(producto);
+  }
 }
