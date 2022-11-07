@@ -1,89 +1,66 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Output, EventEmitter } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ListaProductos } from '../modulos/DataProductos';
+import { Producto } from './../modulos/DataProductos';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CarritoService {
-  @Output() disparadorCarrito: EventEmitter<any> = new EventEmitter();
-  productoCarrito: ListaProductos [];
-  cantidadCarrito: number = 0;
+  productos: ListaProductos[] = [];
 
-  constructor(private http: HttpClient) {}
+  cantidad: number = 0;
 
-  addToCartService(item: ListaProductos, count: number) {
-    localStorage.setItem(
-      item.id,
-      JSON.stringify(Object.assign({ ...item, cantidad: count }))
-    );
+  constructor(private http: HttpClient) {
+    this.cantidad = 1;
   }
 
-  getProductService(id: string) {
-    const product = JSON.parse(localStorage.getItem(id) || '');
-    return product;
+  addToCart(item: Producto) {
+    // this.productos.push(item);
+    let productos = [];
+
+    if (localStorage.getItem('productos')) {
+      productos = JSON.parse(localStorage.getItem('productos') || '');
+      this.cantidad = productos.length;
+    }
+    let index = productos.findIndex((p: any) => p.id === item.id);
+    if (index === -1) {
+      productos.push(item);
+      localStorage.setItem('productos', JSON.stringify(productos));
+      this.cantidad = productos.length;
+    } else {
+      productos.splice(index, 1);
+      productos.push(item);
+      localStorage.setItem('productos', JSON.stringify(productos));
+      this.cantidad = productos.length;
+    }
+    if (item.cantidad === 0) {
+      productos.splice(index, 1);
+      localStorage.setItem('productos', JSON.stringify(productos));
+      this.cantidad = productos.length;
+    }
+    this.cantidad++;
   }
 
-  
-  getAllProductsService() {
-    const products: ListaProductos[] = [];
-
-    const keys = Object.keys(localStorage);
-    keys.forEach((key) => {
-      products.push(JSON.parse(localStorage[key]));
-    });
-    // console.log(keys, products);
-    
-    return products;
+  getProductos() {
+    if (localStorage.getItem('productos') === null) {
+      this.productos = [];
+      this.cantidad = this.productos.length;
+    } else {
+      this.productos = JSON.parse(localStorage.getItem('productos') || '');
+      this.cantidad = this.productos.length;
+    }
+    return this.productos;
   }
 
-
-  sumaProductsPrecio(){
-    var sum = 0;
-    this.getAllProductsService().forEach(item=>{
-      const suma = item.precio;
-      sum = suma + sum;
-      
-      
-    })
-    console.log(sum);
-    return sum;
-
-  }
-
-
-
-
-
-  getCountProductsService() {
-    const products: any = this.getAllProductsService();
-    let count = 0;
-    products.forEach((product: ListaProductos) => {
-      count++;
-    });
-    console.log('cantidad total : ', count);
-    this.cantidadCarrito = count;
-    return count;
-  }
-
-  // incrementCartCount(id: string) {
-  //   let product: ListaProductos = this.getProduct(id);
-  //   product.cantidad++;
-  //   console.log('aumento: ', product.cantidad);
-  // }
-
-   //decrementCartCount(id: string) {
-    // let product = this.getProduct(id);
-    // if (product.cantidad === 1) {
-     //  this.deleteProduct(id);
-     //} else {
-    //product.cantidad--;
-// }
-  //   console.log('decremento: ', product.cantidad);
-   //}
-
-  deleteProductService(id: string) {
-    localStorage.removeItem(id);
+  deleteProducto(producto: Producto) {
+    for (let i = 0; i < this.productos.length; i++) {
+      if (producto.id == this.productos[i].id) {
+        this.productos.splice(i, 1);
+        localStorage.setItem('productos', JSON.stringify(this.productos));
+      }
+    }
   }
 }

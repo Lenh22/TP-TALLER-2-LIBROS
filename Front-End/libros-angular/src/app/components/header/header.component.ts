@@ -17,6 +17,7 @@ import { Router } from '@angular/router';
 import { FirebaseLoginService } from 'src/app/servicios/firebase-login.service.';
 import { CarritoService } from 'src/app/servicios/carrito.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { Producto } from './../../modulos/DataProductos';
 
 @Component({
   selector: 'app-header',
@@ -26,103 +27,50 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 export class HeaderComponent implements OnInit {
   categorias: ListaCategoria[] = [];
   categoria: string = 'Categorias';
-  show: number = 0;
-  userName: string = JSON.stringify(localStorage.getItem("user"));
-  carrito: ListaProductos[] = [];
-  cantidad;
+  userName: string = JSON.stringify(localStorage.getItem('user'));
   formularioLogin = new FormGroup({
     usuario: new FormControl('', Validators.required),
     contrasenia: new FormControl('', Validators.required),
-    
   });
 
   datauser: any;
 
+  productos: ListaProductos[] = [];
+
   constructor(
     private loginService: LoginService,
     private servicioCategorias: CategoriaService,
-    private styleService: StylesService,
     private afAuth: AngularFireAuth,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private carritoService: CarritoService,
+    public carritoService: CarritoService,
     private firebaseLogin: FirebaseLoginService,
-    private usuarioService: UsuarioService,
-    
+    private usuarioService: UsuarioService
   ) {
-    this.carrito = [];
-    this.cantidad = 0;
     //this.userName = JSON.stringify(localStorage.getItem("user"));
-    
+
   }
 
-  
-
-  
-  ngOnInit(): void {
- 
-    //this.cantidad = this.carritoService.getCountProductsService();
-    this.cantidad = localStorage.length;
-    this.servicioCategorias.getCategorias().subscribe((data)  => {
-    this.categorias = data;
-   
+  ngOnInit() {
+    this.servicioCategorias.getCategorias().subscribe((data) => {
+      this.categorias = data;
     });
-      this.carrito = this.carritoService.getAllProductsService();
-      this.carritoService.disparadorCarrito.subscribe((data) => {
-      this.carrito.push(data);
-      this.cantidad = this.carritoService.getCountProductsService();
-      localStorage.setItem('carrito',  JSON.stringify(this.carrito));
-      
-    });
-  
-     
-    
-     
   }
-
- 
-  
-  
-
- 
 
   onLogin(): void {
-    
     const datosFormularioLogin: loginSendData = this.formularioLogin.value;
     this.loginService.loginUsuario(datosFormularioLogin).subscribe((arg) => {
-    console.log(arg);
-      
-    }); 
-   
-
-   
-
+      console.log(arg);
+    });
   }
 
   /* login usuario*/
   estaLogueado() {
-    
     return this.firebaseLogin.isLogin();
   }
 
   logOut() {
     this.firebaseLogin.logOut();
     //window.location.replace("/");
-    
   }
-
-  showDrawer() {
-    this.show = 1;
-    console.log(this.show);
-  }
-
-  closeDrawer() {
-    this.show = 0;
-    console.log(this.show);
-  }
-
-
-
-
-
 }

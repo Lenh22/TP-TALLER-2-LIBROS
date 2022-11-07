@@ -19,7 +19,7 @@ export class ProductoDetalleComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: RouterModule,
     private productoService: ProductosService,
-    private carritoService: CarritoService
+    public carritoService: CarritoService
   ) {}
 
   ngOnInit(): void {
@@ -37,33 +37,50 @@ export class ProductoDetalleComponent implements OnInit {
         this.productoDetalle.precio = <number>datos[0].precio; //asignar el peso
         this.productoDetalle.imagen = <string>datos[0].imagen; //la imagen
         this.productoDetalle.categoria = <string>datos[0].categoria;
+        this.productoDetalle.stock = <number>datos[0].stock;
         //this.productoDetalle = <any>data;
-
-        console.log(data);
+        this.productoDetalle.cantidad = <number>datos[0].cantidad;
+        this.productoDetalle.cantidad = 1;
+        // console.log(data);
       },
       (err) => {
         console.log('Error al traer los detalles del producto');
       }
     );
-
-    for (let i = 1; i < 10; i++) {
-      this.cantidad.push(i);
-    }
   }
+
   numSequence(n: number): Array<number> {
     return Array(n);
   }
 
-  addToCart(producto: ListaProductos, cant: number) {
-    console.log(producto, 'cantidad:', cant);
-    this.carritoService.addToCartService(producto, cant);
+  setCantidad(producto: any) {
+    if (producto.cantidad > producto.stock) {
+      producto.cantidad = 1;
+    }
   }
 
-  selectCount(event: any) {
-    this.numValue = parseInt(event.target.value);
-    if (this.numValue === null || this.numValue === 0 || isNaN(this.numValue)) {
-      this.numValue = 1;
+  upProductQuantity(product: ListaProductos): void {
+    if (product.stock > product.cantidad) product.cantidad++;
+  }
+
+  downProductQuantity(product: ListaProductos): void {
+    if (product.cantidad > 1) {
+      product.cantidad--;
     }
-    // console.log(this.numValue);
+  }
+
+  verificarCantidad(product: ListaProductos): void {
+    if (
+      product.stock < product.cantidad ||
+      product.cantidad < 0 ||
+      product.cantidad === null
+    ) {
+      product.cantidad = 1;
+    }
+  }
+
+  //carrito
+  addToCart(producto: Producto) {
+    this.carritoService.addToCart(producto);
   }
 }

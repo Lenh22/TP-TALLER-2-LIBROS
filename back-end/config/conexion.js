@@ -8,7 +8,7 @@ app.use(cors()) // Use this
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'Dni33022376',
+    password: '',
     database: 'Libreria',
     //port: 3306
  });
