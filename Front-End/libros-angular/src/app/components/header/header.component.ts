@@ -71,6 +71,6 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     this.firebaseLogin.logOut();
-    //window.location.replace("/");
+    window.location.href = '';
   }
 }

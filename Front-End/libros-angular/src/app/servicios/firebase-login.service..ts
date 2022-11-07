@@ -19,6 +19,7 @@ export class FirebaseLoginService {
   usuarios: Usuario[];
   loading: boolean = false;
   apodo: string;
+  mailVerif: any;
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -89,6 +90,9 @@ export class FirebaseLoginService {
       .createUserWithEmailAndPassword(email, password)
       .then((user) => {
         const uid = user?.user?.uid || '';
+        
+
+        
         this.saveDataUser(uid, userName, email, nombre, apellido, domicilio);
         //aca empieza la parte de user a la BD
         this.usuario.id = uid;
@@ -125,16 +129,18 @@ export class FirebaseLoginService {
           this.user = user?.user?.email;
           
           localStorage.setItem("user", this.apodo);
+         
           if (user) {
             this.getTokenFirebase();
             this.getInfoUser(user?.user?.uid || '');
-        
+            window.location.href = '';
           }
            console.log(user?.user.email);
            console.log(user?.user?.uid);
+
           
           
-           this.router.navigate(['']);
+           
         }else{
           alert('Por favor, verifique su email');
         }
@@ -142,7 +148,7 @@ export class FirebaseLoginService {
       .catch((error) => {
         console.log(error);
       });
-      this.router.navigate(['']); 
+       
   }
 
   getInfoUser(id: string) {
@@ -188,7 +194,6 @@ export class FirebaseLoginService {
         console.log('token vacio=>', this.token);
         //esto solo
         localStorage.removeItem('user');
-       
         
          
       });
@@ -202,6 +207,7 @@ export class FirebaseLoginService {
       this.loading=false;
     });
   }
+
 //guardo en BD el Usuario
   saveDataBaseUser(usuario: Usuario){
     this.usuarioService.agregarUsuario(usuario).subscribe(
@@ -211,6 +217,8 @@ export class FirebaseLoginService {
     );
 
   }
+
+ 
 
   //traigo User
     traeUsuario(email: string, contraseña: string){
