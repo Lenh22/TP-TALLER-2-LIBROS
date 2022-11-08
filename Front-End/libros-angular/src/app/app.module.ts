@@ -34,6 +34,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { SearchComponent } from './components/search/search.component';
 import { CarritoProductoComponent } from './components/carrito-producto/carrito-producto.component';
 import { CartCantidadComponent } from './components/cart-cantidad/cart-cantidad.component';
+import { OrderComponent } from './components/order/order.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { CartCantidadComponent } from './components/cart-cantidad/cart-cantidad.
     SearchComponent,
     CarritoProductoComponent,
     CartCantidadComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,

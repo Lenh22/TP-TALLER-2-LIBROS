@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { ListaProductos } from 'src/app/modulos/DataProductos';
 import { CarritoService } from 'src/app/servicios/carrito.service';
 //import { Form, FormGroup} from '@angular/forms';
@@ -13,7 +14,7 @@ export class CarritoComponent implements OnInit {
   cantidadCarrito: number;
   productos: ListaProductos[] = [];
 
-  constructor(public carritoService: CarritoService) {}
+  constructor(public carritoService: CarritoService, private router: Router) {}
 
   ngOnInit() {
     this.productos = this.carritoService.getProductos();
