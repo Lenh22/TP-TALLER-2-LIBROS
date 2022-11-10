@@ -4,7 +4,7 @@ var cors = require('cors')
 const app = express();
 app.use(cors()) // Use this
 
-
+ 
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',

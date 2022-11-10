@@ -129,6 +129,7 @@ export class FirebaseLoginService {
           this.user = user?.user?.email;
           
           localStorage.setItem("user", this.apodo);
+          localStorage.setItem("uid", user?.user?.uid);
          
           if (user) {
             this.getTokenFirebase();
@@ -194,6 +195,7 @@ export class FirebaseLoginService {
         console.log('token vacio=>', this.token);
         //esto solo
         localStorage.removeItem('user');
+        localStorage.removeItem('uid');
         
          
       });

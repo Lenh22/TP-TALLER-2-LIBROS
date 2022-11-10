@@ -4,6 +4,7 @@ import { ListaProductos } from 'src/app/modulos/DataProductos';
 import { CarritoService } from 'src/app/servicios/carrito.service';
 //import { Form, FormGroup} from '@angular/forms';
 import { Producto } from './../../modulos/DataProductos';
+import { FirebaseLoginService } from 'src/app/servicios/firebase-login.service.';
 
 @Component({
   selector: 'app-carrito',
@@ -14,7 +15,8 @@ export class CarritoComponent implements OnInit {
   cantidadCarrito: number;
   productos: ListaProductos[] = [];
 
-  constructor(public carritoService: CarritoService, private router: Router) {}
+  constructor(public carritoService: CarritoService, private router: Router,
+    private firebaseLogin: FirebaseLoginService,) {}
 
   ngOnInit() {
     this.productos = this.carritoService.getProductos();
@@ -33,4 +35,12 @@ export class CarritoComponent implements OnInit {
     console.log('carrito component', producto);
     this.carritoService.addToCart(producto);
   }
+  estaLogueado() {
+    return this.firebaseLogin.isLogin();
+  }
+  /*procesarCompra(){
+    this.carritoService.procesarCompra;
+      
+  }
+  */
 }

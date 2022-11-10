@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const conexion = require('./config/conexion.js');
-
+var randomstring = require('randomstring');
 
 
 
@@ -106,6 +106,46 @@ router.post('/login', (req, res)=>{
      }
   )
 });
+
+
+//recibo compra 
+router.post('/orden', (req, res)=>{
+    const{orden, total}= req.body;
+    let query = `INSERT INTO compra(numeroOrden,total) values('${orden}','${total}')`;
+    conexion.query(query, (error, restul)=>{
+        if(error){
+            throw error;
+        }else{
+            console.log("Compra Ingresada")
+            res.json({status: 'Compra Ingresada'});
+        }
+    }) 
+});
+//Confirmo Compra
+
+
+router.post('/compra/', (req, res)=>{
+
+    const{/*numeroOrden,*/idUser, idProd, cantidad, precio}= req.body;
+    const numeroOrden = randomstring.generate(20);
+    let query = `INSERT INTO ProdComprados(numeroOrden, id_usuario, id_prod,cantidad, precio) values('${numeroOrden}', '${idUser}','${idProd}','${cantidad}','${precio}')`;
+    conexion.query(query, (error, result)=>{
+        if(error){
+            throw error;
+        }else{
+            console.log("Compra Confirmada")
+            res.json({status: 'Compra Confirmada'});
+        }
+    }) 
+});
+
+
+
+
+
+
+
+
 
 
 

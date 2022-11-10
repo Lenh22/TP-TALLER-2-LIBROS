@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ListaProductos } from '../modulos/DataProductos';
 import { Producto } from './../modulos/DataProductos';
+import { UsuarioService } from './usuario.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class CarritoService {
 
   cantidad: number = 0;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private usuarioService: UsuarioService) {
     this.cantidad = 1;
   }
 
@@ -60,4 +61,37 @@ export class CarritoService {
       }
     }
   }
+  procesarCompra(){
+    
+    console.log(this.productos.length);
+  
+    var idUser= localStorage.getItem("uid"); 
+
+   
+
+    for(let i= 0; i<this.productos.length; i++){
+      let idProd= this.productos[i].id;
+      let cantidad = this.productos[i].cantidad;
+      let precio= this.productos[i].precio;
+
+      console.log(this.productos[i].precio);
+      console.log(this.productos[i].cantidad);
+      console.log(this.productos[i].id);
+
+      this.procesarCompraDenserio( idUser,idProd, cantidad, precio).subscribe(
+        res =>{
+          console.log("Compra Realizada");
+        }
+      );
+     
+    }
+    localStorage.removeItem('productos');
+    
+  }
+  procesarCompraDenserio(idUser:any ,idProd: any, cantidad: any, precio: any){
+    
+        return this.http.post(environment.api + '/compra', { idUser,idProd, cantidad, precio});
+  }
+
+  
 }
