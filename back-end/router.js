@@ -126,7 +126,7 @@ router.post('/orden', (req, res)=>{
 
 router.post('/compra/', (req, res)=>{
 
-    const{/*numeroOrden,*/idUser, idProd, cantidad, precio}= req.body;
+    const{idUser, idProd, cantidad, precio}= req.body;
     const numeroOrden = randomstring.generate(20);
     let query = `INSERT INTO ProdComprados(numeroOrden, id_usuario, id_prod,cantidad, precio) values('${numeroOrden}', '${idUser}','${idProd}','${cantidad}','${precio}')`;
     conexion.query(query, (error, result)=>{
