@@ -1,0 +1,232 @@
+create  SCHEMA Libreria;
+USE Libreria;
+
+ 
+create table Categoria(
+id int, 
+nombre varchar (250),
+primary key (id)
+);
+
+create table Producto(
+id int,
+nombre varchar(250),
+descripcion varchar(1000),
+precio int,
+descuento int, 
+stock int,
+categoria int,
+calificacion int,
+imagen varchar(500),
+autor varchar (250),
+cantidad int,
+primary key (id),
+foreign key (categoria) references Categoria(id));
+
+create table Usuario(
+id varchar(200), 
+userName varchar (200),
+nombre varchar (100), 
+apellido varchar (100), 
+email varchar(150),
+contraseña varchar(150),
+direccion varchar(200),
+activo boolean,
+rol varchar(20),
+primary key (id)
+);
+
+create table Compra(
+numeroOrden varchar(400), 
+total int, 
+primary key (numeroOrden)
+);
+
+create table ProdComprados(
+numeroOrden varchar(400),
+id_usuario varchar(400),
+id_prod int,
+cantidad int,
+precio int
+);
+
+
+
+
+
+insert into Categoria (id, nombre) values 
+(1, "Educacion"), 
+(2, "Juvenil"), 
+(3, "Drama"), 
+(4, "Ficcion"), 
+(5, "Infantil"),
+(6,"Terror")
+;
+
+insert into Producto ( nombre, descripcion, precio, descuento, stock, categoria, calificacion, imagen, autor, id,cantidad) values
+("Harry potter y la piedra filosofal (harry potter 1)",
+"Harry Potter se ha quedado huérfano y vive en casa de sus abominables tíos y del insoportable primo Dudley. Se siente muy triste y solo, hasta que un buen día recibe una carta que cambiará su vida para siempre. En ella le comunican que ha sido aceptado como alumno en el colegio interno Hogwarts de magia y hechicería. A partir de ese momento, la suerte de Harry da un vuelco espectacular. En esa escuela tan especial aprenderá encantamientos, trucos fabulosos y tácticas de defensa contra las malas artes. Se convertirá en el campeón escolar de quidditch, especie de fútbol aéreo que se juega montado sobre escobas, y hará un puñado de buenos amigos... aunque también algunos temibles enemigos. Pero, sobre todo, conocerá los secretos que le permitirán cumplir con su destino. Pues, aunque no lo parezca a primera vista, Harry no es un chico común y corriente.",
+ 3644.1,
+ 5,
+ 10,
+ 2,
+ 5,
+ "http://drive.google.com/uc?export=view&id=1eaZC7nxc8Un-jEFYc_ZoZW3bE6I65CAD",
+ "J. K. Rowling",
+ 1,
+ 1
+ ), 
+ ("Harry potter y la cámara secreta (harry potter 2)",
+  "Mientras Harry espera impaciente en casa de sus insoportables tíos el inicio del segundo curso del Colegio Hogwarts de Magia y Hechicería, un elfo aparece en su habitación y le advierte de que una amenaza mortal se cierne sobre la escuela. Harry no se lo piensa dos veces y, acompañado de Ron, se dirige a Hogwarts en un coche volador. Pero, ¿puede un aprendiz de mago defender la escuela de los malvados que pretenden destruirla? Sin saber que alguien ha abierto la Cámara de los Secretos, dejando escapar una serie de monstruos peligrosos, Harry y sus amigos Ron y Hermione tendrán que enfrentarse con arañas gigantes, serpientes encantadas, fantasmas enfurecidos y, sobre todo, con la mismísima reencarnación de su más temible adversario",
+ 2789.1,
+ 10,
+ 60,
+ 2,
+ 5,
+ "http://drive.google.com/uc?export=view&id=1tOmFctxOOWwcrxXsBr5JHoLto0KACoea",
+ "J. K. Rowling",
+ 2,
+ 1
+ ), 
+ (
+     "Harry potter y el prisionero de Azkaban (harry potter 3)",
+               "Harry aguarda con impaciencia el inicio del tercer curso en el Colegio Hogwarts de Magia y Hechicería. Tras haber cumplido trece años, solo y lejos de sus amigos de Hogwarts, Harry se pelea con su bigotuda tía Marge, a la que convierte en globo, y debe huir en un autobús mágico. Mientras tanto, de la prisión de Azkaban se ha escapado un terrible villano, Sirius Black, un asesino en serie con poderes mágicos que fue cómplice de lord Voldemort y que parece dispuesto a eliminar a Harry del mapa. Y por si esto fuera poco, Harry debe enfrentarse también a unos terribles monstruos, los dementores, seres abominables capaces de robarles la felicidad a los magos y de borrar todo recuerdo hermoso de aquellos que osan mirarlos. Lo que ninguno de estos malvados personajes sabe es que Harry, con la ayuda de sus fieles amigos Ron y Hermione, es capaz de todo y mucho más.",
+                 2789.1,
+                 6,
+                95,
+                 2,
+                 5,
+                 "http://drive.google.com/uc?export=view&id=1cHBfQ5BeUsObFaCF-OTF_L0QFoHGPqLr",
+                 "J. K. Rowling",
+                3,
+                1
+ ), 
+ (
+    "Harry potter y el cáliz de fuego (harry potter 4)",
+                 "Tras otro abominable verano con los Dursley, Harry se dispone a iniciar el cuarto curso en Hogwarts, la famosa escuela de magia y hechicería. A sus catorce años, a Harry le gustaría ser un joven mago como los demás y dedicarse a aprender nuevos sortilegios, encontrarse con sus amigos Ron y Hermione y asistir con ellos a los Mundiales de quidditch. Sin embargo, al llegar al colegio le espera una gran sorpresa que lo obligará a enfrentarse a los desafíos más temibles de toda su vida. Si logra superarlos, habrá demostrado que ya no es un niño y que está preparado para vivir las nuevas y emocionantes experiencias que el futuro le depara.",
+                 5669.1,
+                 20,
+                16,
+                 2,
+                 4,
+                 "http://drive.google.com/uc?export=view&id=1NBO8akfb-b8QeisagthFWiCrS7EjYiMc",
+                 "J. K. Rowling",
+                 4,
+				1
+ ), (
+   "Harry potter y la orden del fénix (harry potter 5)",
+                 "Las tediosas vacaciones de verano en casa de sus tíos todavía no han acabado y Harry se encuentra más inquieto que nunca. Apenas ha tenido noticias de Ron y Hermione, y presiente que algo extraño está sucediendo en Hogwarts. En efecto, cuando por fin comienza otro curso en el famoso colegio de magia y hechicería, sus temores se vuelven realidad. El Ministerio de Magia niega que Voldemort haya regresado y ha iniciado una campaña de desprestigio contra Harry y Dumbledore, para lo cual ha asignado a la horrible profesora Dolores Umbridge la tarea de vigilar todos sus movimientos. Así pues, además de sentirse solo e incomprendido, Harry sospecha que Voldemort puede adivinar sus pensamientos, e intuye que el temible mago trata de apoderarse de un objeto secreto que le permitiría recuperar su poder destructivo.",
+                 7109.1,
+                20,
+                 24,
+                 2,
+                4,
+                "http://drive.google.com/uc?export=view&id=15mRu4IXRapoo-EuoL5e77YbSPdBr7MFq",
+                 "J. K. Rowling",
+                 5,
+                 1
+ ),
+ (
+   "Harry potter y el misterio del príncipe (harry potter 6)",
+                 "Con dieciséis años cumplidos, Harry inicia el sexto curso en Hogwarts en medio de terribles acontecimientos que asolan Inglaterra. Elegido capitán del equipo de quidditch, los ensayos, los exámenes y las chicas ocupan todo su tiempo, pero la tranquilidad dura poco. A pesar de los férreos controles de seguridad que protegen la escuela, dos alumnos son brutalmente atacados. Dumbledore sabe que se acerca el momento, anunciado por la Profecía, en que Harry y Voldemort se enfrentarán a muerte: «El único con poder para vencer al Señor Tenebroso se acerca... Uno de los dos debe morir a manos del otro, pues ninguno de los dos podrá vivir mientras siga el otro con vida.» El anciano director solicitará la ayuda de Harry y juntos emprenderán peligrosos viajes para intentar debilitar al enemigo, para lo cual el joven mago contará con un viejo libro de pociones perteneciente a un misterioso personaje, alguien que se hace llamar Príncipe Mestizo.",
+                 4544.1,
+                 13,
+                 80,
+                2,
+                 5,
+                 "http://drive.google.com/uc?export=view&id=1yQFPRPfAq8iJAivSMFmx2vl2gpgMJXcz",
+               "J. K. Rowling",
+                 6,
+                 1
+ ), 
+ (
+   "Harry potter y las reliquias de la muerte (harry potter 7)",
+                 "La fecha crucial se acerca. Cuando cumpla los diecisiete, Harry perderá el encantamiento protector que lo mantiene a salvo. El anunciado combate a muerte con Voldemort es inminente, y la casi imposible misión de encontrar y destruir los Horrocruxes restantes es más urgente que nunca. Ha llegado el momento de tomar las decisiones más difíciles. Harry debe abandonar la calidez y seguridad de La Madriguera para emprender sin miedo ni vacilaciones el inexorable sendero trazado para él. Consciente de lo mucho que está en juego, solo dentro de sí mismo encontrará la fuerza que lo impulsará en la vertiginosa carrera hacia un destino desconocido.",
+                 5669.1,
+                 13,
+                 6,
+                 2,
+                4,
+                "http://drive.google.com/uc?export=view&id=1-5phdxqURLpxmbUdaLL-8BOlspuvCIK-",
+                "J. K. Rowling",
+                 7,
+                 1
+ 
+ ), 
+ (
+     "El señor de los anillos I - La comunidad del anillo",
+                "Este libro es como un relámpago en un cielo claro. Decir que la novela heroica, espléndida, elocuente, desinhibida, ha retornado de pronto en una época de un antirromanticismo casi patológico, sería inadecuado. Para quienes vivimos en esa extraña época, el retorno y el alivio que nos trae  es sin duda lo más importante. Pero para la historia misma de la novela. una historia que se remonta a la Odisea y a antes de la Odisea no es un retorno, sino un paso adelante o una revolución: la conquista de un territorio nuevo. C. S. Lewis, Time y Tide. La obra de Tolkien, difundida en rnillones de ejemplares, traducida a docenas de lenguas, inspiradora de slogans pintados en las paredes de Nueva York y de Buenos Aires, . una coherente mitología de una autenticidad universal creada en pleno siglo veinte. Georg Steiner, Le Monde",
+                 3600,
+                34,
+                35,
+                4,
+                5,
+                 "http://drive.google.com/uc?export=view&id=1E3kyiU6biKtzyA4-IUj9D_R9cVnNE23K",
+                 "J. R. R. Tolkien",
+                 8,
+                 1
+ ), 
+ (
+ "El señor de los anillos II - Las dos torres",
+                 "Tras la muerte de Boromir y la desaparición de Gandalf, la Comunidad se divide en tres. Perdidos en las colinas de Emyn Muil, Frodo y Sam descubren que les persigue Gollum, una criatura volátil corrompida por el Anillo Único. Éste promete a los hobbits conducirles hasta la Puerta Negra de Mordor. Aragorn, Legolas y Gimli atraviesan la Tierra Media y llegan a Rohan, el reino de Théoden. El anciano rey, manipulado por el espía de Saruman, el siniestro Lengua de Serpiente, ha caído en las redes del malvado mago. Éowyn, la sobrina del rey, descubre en Aragorn a todo un líder. Mientras tanto, los hobbits Merry y Pippin, que estaban prisioneros de los Uruk-hai, han escapado y descubren en el misterioso Bosque de Fangorn a un aliado inesperado: Bárbol, guardián de los árboles y representante de un antiguo pueblo vegetal que Saruman había diezmado…",
+                 3600,
+                 5,
+                 48,
+                4,
+                 5,
+                "http://drive.google.com/uc?export=view&id=1d1xQxKvZI-N5nAFHB6mqyn6hNCeRwUkY",
+                 "J. R. R. Tolkien",
+                 9,
+                 1
+ ), 
+ (
+  "El señor de los anillos III - El retorno del rey",
+                 "El ejército de Sauron ha atacado Minas Tirith, la capital de Gondor. Una poderosa amenaza pone en peligro la paz del reino, antaño poderoso y que ahora necesita más que nunca a su rey. Ante esta situación límite, Aragorn se presenta como una figura clave para llevar al reino a la victoria pero, ¿será capaz de cumplir con su destino? Mientras tanto, Gandalf intentará contener a las fuerzas destructoras de Gondor y Théoden pedirá a los guerreros de Rohan que se unan al combate. Sin embargo, a pesar de su valor y lealtad, parece que las fuerzas de los Hombres no serán suficientes para derrotar a las inconmensurables legiones de enemigos que se ciernen sobre el reino. Cada victoria vendrá acompañada de grandes sacrificios y, a pesar de las pérdidas, la Comunidad continúara su batalla por sobrevivir hasta el final. Al mismo tiempo, sus miembros intentarán atraer la atención de Sauron para darle a Frodo la última oportunidad para completar su misión.",
+                3600,
+                35,
+                 6,
+                 4,
+                 5,
+                 "http://drive.google.com/uc?export=view&id=178rU9CGpzNbrvKedGNWvucvkovD9Y6w_",
+                 "J. R. R. Tolkien",
+                10,
+                1
+ 
+ ), 
+ (
+   "El principito",
+                 "Un aviador queda incomunicado en el desierto tras sufrir una avería en su avión a mil millas de cualquier región habitada. Allí se encontrará con un pequeño príncipe de cabellos de oro que afirma vivir en el asteroide B 612 (donde hay una rosa y tres volcanes) con el que no tardará en congeniar. En sus conversaciones, el Principito le relatará su visión de la vida y las personas, de esa sabiduría que se pierde cuando las personas abandonamos la infancia. El clásico de Saint-Exupéry, uno de los libros más leídos y amados de todos los tiempos, en una edición actualizada e ilustrada para lectores de todas las edades.",
+                1980,
+                 65,
+                 18,
+                 5,
+                 3,
+                 "http://drive.google.com/uc?export=view&id=1A8qpxBFB7GFFOrDpX9zW-aezst-IXBJz",
+                 "Antoine De Saint Exupery",
+                14,
+                1
+ 
+ 
+ );
+ 
+ select * from Usuario;
+select * from Producto;
+ 
+ Select * from ProdComprados;
+ SELECT p.nombre, p.descripcion, p.precio, p.descuento, p.stock, c.nombre as categoria, p.calificacion, p.imagen, p.autor, p.id 
+ from Producto p join  Categoria c on c.id = p.categoria WHERE p.id = 2;
+
+SELECT p.nombre, p.descripcion, p.precio, p.descuento, p.stock, c.descripcion as categoria, p.calificacion, p.imagen, p.autor, p.id from Producto p join  Categoria c  
+on c.id = p.categoria;
+
+SELECT * FROM Producto WHERE id = 1;
+
+select * from Producto;
+
+SELECT p.nombre, p.descripcion, p.precio, p.descuento, p.stock, c.descripcion as categoria, p.calificacion, 
+p.imagen, p.autor, p.id from Producto p join  Categoria c on c.id = p.categoria WHERE p.id = 9;
+
+
+
+SELECT p.nombre, p.descripcion, p.precio, p.descuento, p.stock, c.nombre as categoria, p.calificacion, p.imagen, p.autor, p.id
+ from Producto p join Categoria c on c.id = p.categoria WHERE c.id = 6;
