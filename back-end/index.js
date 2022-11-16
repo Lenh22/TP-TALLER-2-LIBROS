@@ -13,6 +13,7 @@ app.use(cors());
 app.use(bodyParser.json());
  
 // DECLARE JWT-secret
+/*
 const JWT_Secret = 'unlamRLZ';
 var testUser = { email: 'kelvin@gmai.com', password: '1234'};
 
@@ -44,8 +45,10 @@ app.post('/api/authenticate', (req, res) => {
     }
    
   });
-
+*/
 app.listen(port, () => {
+      
+
     console.log(`Example app listening on port ${port}`)
 })
 
