@@ -38,7 +38,7 @@
           />
           <label>Password</label>
           <span *ngIf="registrarUsuario.get('password')?.hasError('required') && registrarUsuario.get('password')?.touched" class="text-danger"> El <strong>Pasword</strong> es requerido</span>
-          <span *ngIf="registrarUsuario.get('password')?.hasError('minlength') && registrarUsuario.get('password')?.touched" class="text-danger"> El <strong>Pasword</strong> debe tener minimo 6 caracteres</span>
+          <span *ngIf="registrarUsuario.get('password')?.hasError('pattern') && registrarUsuario.get('password')?.touched" class="text-danger"> La <strong>Contraseña</strong> debe contener mínimo <strong>6</strong> caracteres, al menos una <strong>letra</strong> y un <strong>numero</strong></span>
 
         </div>
         <div class="form-floating">

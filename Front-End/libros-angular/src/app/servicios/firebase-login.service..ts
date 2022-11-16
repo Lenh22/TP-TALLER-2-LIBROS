@@ -9,6 +9,10 @@ import { environment } from 'src/environments/environment';
 import { Usuario } from '../modulos/DataUsuario';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { UsuarioService } from './usuario.service';
+import { resolveModuleName } from 'typescript';
+import { TransitiveCompileNgModuleMetadata } from '@angular/compiler';
+
+
 @Injectable({
   providedIn: 'root',
 })
@@ -18,6 +22,7 @@ export class FirebaseLoginService {
   usuario: Usuario;
   usuarios: Usuario[];
   loading: boolean = false;
+  pudoAgregarlo: boolean;
   apodo: string;
   mailVerif: any;
   constructor(
@@ -86,30 +91,45 @@ export class FirebaseLoginService {
     domicilio: string
   ) {
     // console.log( userName,email,password,repetirPassword, nombre,apellido, domicilio);
+
+  
+    this.usuario.userName = userName;
+    this.usuario.email = email;
+    this.usuario.contraseña = password;
+    this.usuario.nombre = nombre;
+    this.usuario.apellido = apellido;
+    this.usuario.domicilio = domicilio;
+
+    
+
     this.afAuth
       .createUserWithEmailAndPassword(email, password)
       .then((user) => {
         const uid = user?.user?.uid || '';
-        
-
-        
-        this.saveDataUser(uid, userName, email, nombre, apellido, domicilio);
+      
         //aca empieza la parte de user a la BD
+
         this.usuario.id = uid;
         this.usuario.userName = userName;
         this.usuario.email = email;
         this.usuario.contraseña = password;
         this.usuario.nombre = nombre;
         this.usuario.apellido = apellido;
-        this.usuario.domicilio = domicilio;
-       // console.log(this.usuario);
-       this.saveDataBaseUser(this.usuario); 
+        this.usuario.domicilio = domicilio;  
 
-        this.verifyEmail();
+       // console.log(this.usuario);
+       
+
+        this.saveDataBaseUser(this.usuario);
+        this.verifyEmail(); 
+        
+        //this.saveDataUser(uid, userName, email, nombre, apellido, domicilio);
+             
       })
       .catch((error) => {
         console.log(error);
       });
+    
   }
     verifyEmail(){
       this.afAuth.currentUser.then(user => user?.sendEmailVerification())
@@ -193,7 +213,7 @@ export class FirebaseLoginService {
         this.token = '';
         this.cookie.set('token', this.token);
         console.log('token vacio=>', this.token);
-        //esto solo
+        //Borro el user y el uid del local Storage
         localStorage.removeItem('user');
         localStorage.removeItem('uid');
         
@@ -212,15 +232,16 @@ export class FirebaseLoginService {
 
 //guardo en BD el Usuario
   saveDataBaseUser(usuario: Usuario){
+    
     this.usuarioService.agregarUsuario(usuario).subscribe(
       res =>{
-        console.log(this.usuario);
-      }
-    );
 
+        console.log(res); 
+        res.toString();
+      })
   }
 
- 
+
 
   //traigo User
     traeUsuario(email: string, contraseña: string){
@@ -230,7 +251,7 @@ export class FirebaseLoginService {
         const datos = JSON.parse(datas); //convertir a objeto
       
        this.apodo = <string>datos[0].userName; //asignar el nombre
-        
+        return this.apodo;
        
     });
 

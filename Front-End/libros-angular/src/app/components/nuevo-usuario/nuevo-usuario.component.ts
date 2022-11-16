@@ -25,7 +25,7 @@ export class NuevoUsuarioComponent implements OnInit {
   ) {
     this.registrarUsuario = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)]],
       name: ['', [Validators.required]],
       usuario: ['', Validators.required],
       repetirPassword: ['', [Validators.required]],
