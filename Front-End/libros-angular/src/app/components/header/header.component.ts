@@ -27,7 +27,7 @@ import { Producto } from './../../modulos/DataProductos';
 export class HeaderComponent implements OnInit {
   categorias: ListaCategoria[] = [];
   categoria: string = 'Categorias';
-  userName: string = JSON.stringify(localStorage.getItem('user'));
+  userName: string = JSON.parse(JSON.stringify(localStorage.getItem('user')));
   formularioLogin = new FormGroup({
     usuario: new FormControl('', Validators.required),
     contrasenia: new FormControl('', Validators.required),
@@ -71,6 +71,6 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     this.firebaseLogin.logOut();
-   
+
   }
 }

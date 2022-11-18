@@ -7,10 +7,10 @@ import {Usuario} from '../modulos/DataUsuario';
   providedIn: 'root'
 })
 export class UsuarioService {
-   
+
   constructor(private http: HttpClient) { }
   usuario : Usuario;
-  
+
   //Agrega A BD el user
   agregarUsuario(usuario: any){
     return this.http.post(environment.api + '/registrer', usuario);
@@ -18,14 +18,14 @@ export class UsuarioService {
 
   //trae de BD el user
   traeUser(email: any, contraseña: any){
-  
+
     return this.http.post(environment.api + '/login',{email, contraseña});
   }
 
- 
-
- 
 
 
-  
+
+
+
+
 }

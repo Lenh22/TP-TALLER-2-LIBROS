@@ -1,6 +1,6 @@
 <header>
   <div
-    class="bg-dark header-top px-5 py-1 d-flex justify-content-between align-items-center"
+    class="bg-dark header-top px-5 py-2 d-flex justify-content-between align-items-center"
     style="width: 100%"
   >
     <div class="d-flex gap-3 header-top-contact">
@@ -46,7 +46,7 @@
         *ngIf="estaLogueado()"
         class="d-flex align-items-center header__login"
       >
-        <span class="fw-bolder text-light">{{ userName }}...</span>
+        <span class="fw-bolder text-light btn btn-danger btn-general">{{ userName }}</span>
         <button
           type="button"
           class="btn"

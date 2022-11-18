@@ -1,7 +1,35 @@
+'use strict';
 const express = require('express');
 const router = express.Router();
 const conexion = require('./config/conexion.js');
 var randomstring = require('randomstring');
+
+global.fetch = require('node-fetch');
+require('dotenv').config();
+const Cognito = require('./cognito/index');
+const { verify } = require('./cognito/index');
+
+
+// const body = {
+//   email: "eduarchilon@gmail.com",
+//   password: "TALLERweb2."
+// };
+
+
+async function Verify() {
+    const response = await Cognito.verify(body.email,'820449');
+    console.log(response);
+}
+
+async function SignIn() {
+    const response = await Cognito.signIn(body.email,body.password);
+    console.log(response);
+}
+
+
+//Signup();
+//Verify();
+//SignIn();
 
 
 
@@ -71,6 +99,10 @@ router.get('/categorias/:id', (req, res)=>{
 
 
    //Agrega Usuario
+async function Signup(email, password) {
+    const response = await Cognito.signUp(email,password);
+    console.log(response);
+}
 
 router.post('/registrer/', (req, res)=>{
 
@@ -81,6 +113,7 @@ router.post('/registrer/', (req, res)=>{
           if(error){
               throw error;
           }else{
+            Signup(req.body.email, req.body.contraseña);
                 console.log("Usuario Agregado")
               res.json({status: 'Usuario agregado'});
           }
