@@ -24,5 +24,5 @@ _Participantes:_
 - Gaston Santos : https://github.com/gastonsantos
 - Eduardo Chilon
 - Rodrigo Consentino
-- Sofia Soengas
+- Sofia Soengas: https://github.com/SofiaSoengas
 
