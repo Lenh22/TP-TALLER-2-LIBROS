@@ -22,7 +22,7 @@ Hay implementaciones como por ejemplo:
 _Participantes:_
 - Leandro Alonso : https://github.com/Lenh22
 - Gaston Santos : https://github.com/gastonsantos
-- Eduardo Chilon
-- Rodrigo Consentino
+- Eduardo Chilon : https://github.com/eduarchilon
+- Rodrigo Consentino : https://github.com/cosentinowebdev
 - Sofia Soengas: https://github.com/SofiaSoengas
 
