@@ -30,7 +30,9 @@ import { LoginUsuarioComponent } from './components/login-usuario/login-usuario.
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { FirebaseLoginService } from './servicios/firebase-login.service.';
+
 import { CookieService } from 'ngx-cookie-service';
+
 import { SearchComponent } from './components/search/search.component';
 import { CarritoProductoComponent } from './components/carrito-producto/carrito-producto.component';
 import { CartCantidadComponent } from './components/cart-cantidad/cart-cantidad.component';
