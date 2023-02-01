@@ -19,7 +19,7 @@ export class ProductosService {
   //getTodosProductos
   productosNuevosHome(): Observable<any> {
     //const url = environment.URL + 'libreria/producto ';
-    const url = environment.api + '/productos';
+    const url = environment.firebase + '/producto';
     return this.http.get<any>(`${url}`).pipe(
       tap((res: any) => {
         if (res) {
@@ -30,27 +30,27 @@ export class ProductosService {
 //get Productos por Categoria
     getProductsByCategory(id: string): Observable<any> {
     
-     return this.http.get(environment.api + '/categorias/' + id);
+     return this.http.get(environment.firebase + '/categoria/' + id);
    }
 
   
  //Get producto por ID
   getProductoById(id: string): Observable<any> {
-    return this.http.get(environment.api + '/productos/' + id);
+    return this.http.get(environment.firebase + '/producto/' + id);
   }
 
 
 //add producto
 agregarProducto(producto: any){
-  return this.http.post(environment.api + '/productos/', producto);
+  return this.http.post(environment.firebase + '/producto/', producto);
 }
 //update producto
 updateProducto(id: string, producto: any){
-  return this.http.put(environment.api + '/productos/' + id, producto);
+  return this.http.put(environment.firebase + '/producto/' + id, producto);
 }
 //delete producto
 deleteProducto(id: number){
-  return this.http.delete(environment.api + '/productos/' + id);
+  return this.http.delete(environment.firebase + '/producto/' + id);
 }
 
 

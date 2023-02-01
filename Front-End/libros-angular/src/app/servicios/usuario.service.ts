@@ -13,13 +13,13 @@ export class UsuarioService {
   
   //Agrega A BD el user
   agregarUsuario(usuario: any){
-    return this.http.post(environment.api + '/registrer', usuario);
+    return this.http.post(environment.firebase + '/registrer', usuario);
   }
 
   //trae de BD el user
   traeUser(email: any, contraseña: any){
   
-    return this.http.post(environment.api + '/login',{email, contraseña});
+    return this.http.post(environment.firebase + '/login',{email, contraseña});
   }
 
  

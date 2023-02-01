@@ -9,12 +9,12 @@ export class CategoriaService {
   constructor(private http: HttpClient) {}
 
   getCategorias() {
-    const url = environment.api + '/categorias';
+    const url = environment.firebase + '/categoria';
     return this.http.get<any>(url);
   }
 
   getCategoriaId(id:number){
-    const url = environment.api + "/categorias/" + id;
+    const url = environment.firebase + "/categoria/" + id;
     return this.http.get<any>(url); 
   }
 }

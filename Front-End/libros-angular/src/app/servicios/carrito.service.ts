@@ -90,7 +90,7 @@ export class CarritoService {
   }
   procesarCompraDenserio(idUser:any ,idProd: any, cantidad: any, precio: any){
     
-        return this.http.post(environment.api + '/compra', { idUser,idProd, cantidad, precio});
+        return this.http.post(environment.firebase + '/compra', { idUser,idProd, cantidad, precio});
   }
 
   

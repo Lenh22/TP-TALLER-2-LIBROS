@@ -268,7 +268,7 @@ body {
   font-size: 14px;
 }
 
- @media (max-width: 991px) {
+ /* @media (max-width: 991px) {
   .product-list {
     justify-content: center !important;
   }
@@ -278,7 +278,7 @@ body {
 .product-container-card{
   width: 50%;
 }
-} 
+}  */
 
 
 .product-card:hover {
