@@ -10,19 +10,15 @@ section,
   padding: 0 3vw;
   margin: 2rem auto;
 }
-
 button {
   font-weight: bolder;
 }
-
 li {
   list-style: none;
 }
-
 .btn-general {
   border-radius: 60px;
 }
-
 @media (max-width: 767px) {
   .header-top,
   .footer-top,
@@ -32,7 +28,6 @@ li {
     padding-right: 1rem !important;
   }
 }
-
 html,
 body {
   height: 100%;
@@ -41,11 +36,8 @@ body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
-
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   appearance: none; 
   margin: 0; 
 }
-
-
