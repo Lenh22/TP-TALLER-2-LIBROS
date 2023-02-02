@@ -10,12 +10,12 @@ export class CategoriaService {
 
   getCategorias() {
     // cont url = environment.URL + '/categoria';
-    const url = environment.firebase + '/categoria';
+    const url = environment.URL + '/categoria';
     return this.http.get<any>(url);
   }
 
   getCategoriaId(id:number){
-    const url = environment.firebase + "/categoria/" + id;
+    const url = environment.URL + "/categoria/" + id;
     return this.http.get<any>(url); 
   }
 }
