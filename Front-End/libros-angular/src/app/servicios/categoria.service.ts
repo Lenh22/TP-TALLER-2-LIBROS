@@ -9,6 +9,7 @@ export class CategoriaService {
   constructor(private http: HttpClient) {}
 
   getCategorias() {
+    // cont url = environment.URL + '/categoria';
     const url = environment.firebase + '/categoria';
     return this.http.get<any>(url);
   }

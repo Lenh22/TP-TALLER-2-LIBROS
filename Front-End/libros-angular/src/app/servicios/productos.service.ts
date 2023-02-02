@@ -18,8 +18,8 @@ export class ProductosService {
   
   //getTodosProductos
   productosNuevosHome(): Observable<any> {
-    //const url = environment.URL + 'libreria/producto ';
-    const url = environment.firebase + '/producto';
+    const url = environment.URL + 'libreria/producto ';
+    // const url = environment.firebase + '/producto';
     return this.http.get<any>(`${url}`).pipe(
       tap((res: any) => {
         if (res) {
