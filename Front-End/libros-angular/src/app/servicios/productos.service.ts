@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { tap } from 'rxjs/operators';
 import { Producto } from '../modulos/DataProductos';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 
 @Injectable({
@@ -14,19 +14,25 @@ export class ProductosService {
   
 
   constructor(private http: HttpClient) { }
-  producto: Producto;
-  
-  //getTodosProductos
-  productosNuevosHome(): Observable<any> {
-    //const url = environment.URL + 'libreria/producto ';
-    const url = environment.URL + '/producto';
-    return this.http.get<any>(`${url}`).pipe(
-      tap((res: any) => {
-        if (res) {
-        }
-      })
-    );
+
+  producto:any;
+
+  // //getTodosProductos
+  // productosNuevosHome(): Observable<any> {
+  //   //const url = environment.URL + 'libreria/producto ';
+  //   const url = environment.URL + '/producto';
+  //   return this.http.get<any>(`${url}`).pipe(
+  //     tap((res: any) => {
+  //       if (res) {
+  //       }
+  //     })
+  //   );
+  // }
+  productosNuevosHome(){
+    return this.http.get('https://libreria-el-romano-default-rtdb.firebaseio.com/producto.json')
   }
+
+
 //get Productos por Categoria
     getProductsByCategory(id: string): Observable<any> {
     

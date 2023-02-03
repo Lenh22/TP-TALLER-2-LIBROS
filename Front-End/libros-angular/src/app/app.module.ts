@@ -27,6 +27,7 @@ import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { MatInputModule } from '@angular/material/input';
 import { PresentationComponent } from './components/presentation/presentation.component';
 import { LoginUsuarioComponent } from './components/login-usuario/login-usuario.component';
+
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { FirebaseLoginService } from './servicios/firebase-login.service.';

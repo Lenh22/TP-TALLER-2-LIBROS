@@ -12,7 +12,7 @@ const FILTER_PAG_REGEX = /[^0-9]/g;
 })
 export class ProductosHomeComponent implements OnInit {
   @Input() dataCartEntry: any;
-  productosNuevos: ListaProductos[] = [];
+  productosNuevos: any;
   productoCarrito: ListaProductos;
   loading: boolean;
 
@@ -32,10 +32,12 @@ export class ProductosHomeComponent implements OnInit {
       //cuando cambia un parametro de la URL se ejecuta la funcion
       const id = this.activatedRoute.snapshot.params.id;
       const ids = id;
-
+      console.log('Verificando si llega al init de productos')
       if (ids == null) {
-        this.serviciosProductos.productosNuevosHome().subscribe((arg) => {
-          this.productosNuevos = arg;
+        this.serviciosProductos.productosNuevosHome().subscribe(data => {
+          this.productosNuevos = data;
+          console.log('Aqui tienes los productos: ');
+          console.log(this.productosNuevos);
           this.loading = false;
         });
       } else {
