@@ -233,12 +233,12 @@ export class FirebaseLoginService {
 //guardo en BD el Usuario
   saveDataBaseUser(usuario: Usuario){
     
-    this.usuarioService.agregarUsuario(usuario).subscribe(
-      res =>{
-
-        console.log(res); 
-        res.toString();
-      })
+    this.usuarioService.agregarUsuario(usuario)
+    // .subscribe(
+    //   res =>{
+    //     console.log(res); 
+    //     res.toString();
+    //   });
   }
 
 
@@ -256,12 +256,4 @@ export class FirebaseLoginService {
     });
 
   }
-
-
-
- 
-
- 
-
-
 }

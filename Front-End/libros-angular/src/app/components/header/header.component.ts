@@ -25,7 +25,7 @@ import { Producto } from './../../modulos/DataProductos';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  categorias: ListaCategoria[] = [];
+  categorias: any;
   categoria: string = 'Categorias';
   userName: string = JSON.stringify(localStorage.getItem('user'));
   formularioLogin = new FormGroup({
