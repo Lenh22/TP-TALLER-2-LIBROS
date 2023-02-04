@@ -42,7 +42,10 @@
     text-align: center;
     justify-content: center;
   }
-  .sobre-nosotros,.redes-pagos{
+  .redes{
+    justify-content: center;
+  }
+  .sobre-nosotros,.redes-pagos, .footer-payments{
     flex: 0 0 auto;
     width: 100%;
     text-align: -webkit-center;
@@ -54,7 +57,10 @@
     text-align: center;
     justify-content: center;
   }
-  .sobre-nosotros , .redes-pagos{
+  .redes{
+    justify-content: center;
+  }
+  .sobre-nosotros , .redes-pagos, .footer-payments{
     width: 100%;
     text-align: -webkit-center;
   }
