@@ -29,8 +29,8 @@ export class ProductosService {
   //   );
   // }
   productosNuevosHome():Observable<any>{
-  //  return this.http.get(environment.firebaseConfig.databaseURL +'/producto.json');
-      return this.db.list('/producto').valueChanges();
+   return this.http.get(environment.firebaseConfig.databaseURL +'/producto.json');
+      // return this.db.list('/producto').valueChanges();
   }
 
 
