@@ -21,12 +21,15 @@
   gap: 30px;
 }
 .footer-top-about-us{
-  width: 100%;
+  flex: 0 0 auto;
+  width: 25%;
 }
 .footer-payments{
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 35px !important;
+  flex: 0 0 auto;
+  width: 25%;
 }
 
 .footer-servicio{
@@ -35,13 +38,26 @@
 }
 
 @media (max-width: 767px){
-footer{
-  text-align: center;
-}
+  footer{
+    text-align: center;
+  }
+  .footer-payments{
+    width: 100%;
+  }
+  .footer-top-about-us{
+    flex: 0 0 auto;
+    width: 100%;
+  }
 }
 
 @media (max-width: 280px){
-footer{
-  text-align: center;
-}
+  footer{
+    text-align: center;
+  }
+  .footer-payments{
+    width: 100%;
+  }
+  .footer-top-about-us{
+    width: 100%;
+  }
 }
