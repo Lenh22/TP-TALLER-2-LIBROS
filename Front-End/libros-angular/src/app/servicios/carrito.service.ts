@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { ListaProductos } from '../modulos/DataProductos';
 import { Producto } from './../modulos/DataProductos';
 import { UsuarioService } from './usuario.service';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ export class CarritoService {
 
   cantidad: number = 0;
 
-  constructor(private http: HttpClient, private usuarioService: UsuarioService) {
+  constructor(private http: HttpClient, private usuarioService: UsuarioService, private db: AngularFireDatabase) {
     this.cantidad = 1;
   }
 
@@ -91,6 +92,7 @@ export class CarritoService {
   procesarCompraDenserio(idUser:any ,idProd: any, cantidad: any, precio: any){
     
         return this.http.post(environment.firebase + '/compra', { idUser,idProd, cantidad, precio});
+        // return this.db.list('/compra').push({idUser,idProd,cantidad, precio}); Hay que crear en l BD de Firebase una entidad Compra
   }
 
   

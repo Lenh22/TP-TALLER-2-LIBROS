@@ -40,10 +40,12 @@
 @media (max-width: 767px){
       footer{
         text-align: center;
+        justify-content: center;
       }
       .sobre-nosotros,.redes-pagos{
         flex: 0 0 auto;
         width: 100%;
+        text-align: -webkit-center;
       }
 }
 
@@ -53,5 +55,6 @@
       }
       .sobre-nosotros , .redes-pagos{
         width: 100%;
+        text-align: -webkit-center;
       }
 }

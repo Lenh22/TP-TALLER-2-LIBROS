@@ -29,6 +29,7 @@ import { PresentationComponent } from './components/presentation/presentation.co
 import { LoginUsuarioComponent } from './components/login-usuario/login-usuario.component';
 
 import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from 'src/environments/environment';
 import { FirebaseLoginService } from './servicios/firebase-login.service.';
 
@@ -68,6 +69,7 @@ import { OrderComponent } from './components/order/order.component';
     MatDialogModule,
     MatInputModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
   ],
   providers: [
     CarritoService,
