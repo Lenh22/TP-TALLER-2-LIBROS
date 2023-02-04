@@ -29,34 +29,37 @@ export class ProductosService {
   //   );
   // }
   productosNuevosHome():Observable<any>{
-   return this.http.get(environment.firebaseConfig.databaseURL +'/producto')
+  //  return this.http.get(environment.firebaseConfig.databaseURL +'/producto.json');
+      return this.db.list('/producto').valueChanges();
   }
 
 
 //get Productos por Categoria
     getProductsByCategory(id: string): Observable<any> {
     
-     return this.http.get(environment.URL + '/categoria/' + id);
+     return this.http.get(environment.firebaseConfig.databaseURL +'/categoria/' + id + '.json');
    }
 
   
  //Get producto por ID
   getProductoById(id: string): Observable<any> {
-    return this.http.get(environment.URL + '/producto/' + id);
+    return this.http.get(environment.firebaseConfig.databaseURL +'/producto/' + id + '.json');
   }
 
 
 //add producto
 agregarProducto(producto: any){
-  return this.http.post(environment.URL + '/producto/', producto);
+  // return this.http.post(environment.firebaseConfig.databaseURL +'/producto.json', producto);
+  this.db.list('/producto').push(producto);
 }
 //update producto
 updateProducto(id: string, producto: any){
-  return this.http.put(environment.URL + '/producto/' + id, producto);
+  return this.http.put(environment.firebaseConfig.databaseURL +'/producto/' + id + '.json', producto);
 }
 //delete producto
 deleteProducto(id: number){
-  return this.http.delete(environment.URL + '/producto/' + id);
+  // return this.http.delete(environment.firebaseConfig.databaseURL +'/producto/' + id + '.json');
+  this.db.list('producto/'+ id).remove();
 }
 
 

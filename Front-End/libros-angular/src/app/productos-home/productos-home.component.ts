@@ -36,11 +36,12 @@ export class ProductosHomeComponent implements OnInit {
       if (ids == null) {
         this.serviciosProductos.productosNuevosHome().subscribe(data => {
           this.productosNuevos = data;
-          console.log('Aqui tienes los productos: ');
+          console.log('ids== null Aqui tienes los productos: ');
           console.log(this.productosNuevos);
           this.loading = false;
         });
       } else {
+        console.log('Llego al else de productoss')
         this.loading = true;
         this.serviciosProductos.getProductsByCategory(ids).subscribe((arg) => {
           this.productosNuevos = arg;
