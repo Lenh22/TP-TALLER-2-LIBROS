@@ -50,6 +50,7 @@
 @media (max-width: 280px){
       footer{
         text-align: center;
+        justify-content: center;
       }
       .sobre-nosotros , .redes-pagos{
         width: 100%;
