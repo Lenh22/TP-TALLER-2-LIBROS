@@ -20,7 +20,7 @@
   flex-direction: column;
   gap: 30px;
 }
-.footer-top-about-us{
+.sobre-nosotros, .redes-pagos{
   flex: 0 0 auto;
   width: 25%;
 }
@@ -38,26 +38,20 @@
 }
 
 @media (max-width: 767px){
-  footer{
-    text-align: center;
-  }
-  .footer-payments{
-    width: 100%;
-  }
-  .footer-top-about-us{
-    flex: 0 0 auto;
-    width: 100%;
-  }
+      footer{
+        text-align: center;
+      }
+      .sobre-nosotros,.redes-pagos{
+        flex: 0 0 auto;
+        width: 100%;
+      }
 }
 
 @media (max-width: 280px){
-  footer{
-    text-align: center;
-  }
-  .footer-payments{
-    width: 100%;
-  }
-  .footer-top-about-us{
-    width: 100%;
-  }
+      footer{
+        text-align: center;
+      }
+      .sobre-nosotros , .redes-pagos{
+        width: 100%;
+      }
 }
