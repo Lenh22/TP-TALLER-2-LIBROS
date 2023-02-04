@@ -32,18 +32,15 @@ export class ProductosHomeComponent implements OnInit {
       //cuando cambia un parametro de la URL se ejecuta la funcion
       const id = this.activatedRoute.snapshot.params.id;
       const ids = id;
-      console.log('Verificando si llega al init de productos')
       if (ids == null) {
         this.serviciosProductos.productosNuevosHome().subscribe(data => {
           this.productosNuevos = data;
-          console.log('ids== null Aqui tienes los productos: ');
-          console.log(this.productosNuevos);
           this.loading = false;
         });
       } else {
         console.log('Llego al else de productoss')
         this.loading = true;
-        this.serviciosProductos.getProductsByCategory(ids).subscribe((arg) => {
+        this.serviciosProductos.getProductsByCategory(ids).subscribe(arg => {
           this.productosNuevos = arg;
           this.loading = false;
         });
