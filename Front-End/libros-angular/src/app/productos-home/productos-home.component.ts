@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductosService } from '../servicios/productos.service';
+import { CategoriaService } from '../servicios/categoria.service';
 import { ListaProductos } from '../modulos/DataProductos';
 import { CarritoService } from '../servicios/carrito.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
@@ -14,6 +15,7 @@ export class ProductosHomeComponent implements OnInit {
   @Input() dataCartEntry: any;
   productosNuevos: any;
   productoCarrito: ListaProductos;
+  categorias:any;
   loading: boolean;
 
   page: number = 1;
@@ -21,6 +23,7 @@ export class ProductosHomeComponent implements OnInit {
 
   constructor(
     private serviciosProductos: ProductosService,
+    private serviciosCategorias: CategoriaService,
     private activatedRoute: ActivatedRoute,
     private router: RouterModule,
     private carritoService: CarritoService
@@ -28,20 +31,21 @@ export class ProductosHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
+    this.categorias = this.serviciosCategorias.getCategorias();
+    console.log("Categorias traida en productos-home: " +this.categorias);
     this.activatedRoute.paramMap.subscribe(() => {
       //cuando cambia un parametro de la URL se ejecuta la funcion
       const id = this.activatedRoute.snapshot.params.id;
-      const ids = id;
-      if (ids == null) {
+      if (id == null) {
         this.serviciosProductos.productosNuevosHome().subscribe(data => {
           this.productosNuevos = data;
           this.loading = false;
         });
       } else {
-        console.log('Llego al else de productoss')
+        console.log('Llego al else de productos porque el ID no es null')
         this.loading = true;
-        this.serviciosProductos.getProductsByCategory(ids).subscribe(arg => {
-          this.productosNuevos = arg;
+        this.serviciosProductos.getProductsByCategory(id).subscribe(filtrado => {
+          this.productosNuevos = filtrado;
           this.loading = false;
         });
       }

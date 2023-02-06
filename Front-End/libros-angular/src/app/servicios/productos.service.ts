@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Producto } from '../modulos/DataProductos';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
@@ -30,30 +31,25 @@ export class ProductosService {
   // }
   productosNuevosHome():Observable<any>{
   //  return this.http.get(environment.firebaseConfig.databaseURL +'/producto.json');
-      return this.db.list('/producto').valueChanges();
+      return this.db.list<Producto>('/producto').valueChanges();
   }
 
-
-//get Productos por Categoria
-    getProductsByCategory(id: string): Observable<any> {
-    
-    //  return this.http.get(environment.firebaseConfig.databaseURL +'/categoria/' + id + '.json');
-     return this.db.list('/categoria/' + id).valueChanges();
-  
+    getProductsByCategory(id: string): Observable<Producto[]> {
+      return this.db.list<Producto>('/producto', ref => ref.orderByChild('categoria').equalTo(id))
+      .valueChanges().pipe(
+        map(productos => productos.filter(producto => producto.categoria == id))
+      );
    }
 
-  
- //Get producto por ID
   getProductoById(id: string): Observable<any> {
-    // return this.http.get(environment.firebaseConfig.databaseURL +'/producto/' + id + '.json');
-    return this.db.list('/producto/' + id).valueChanges();
+    return this.db.list<Producto>('/producto/' + id).valueChanges();
   }
 
 
 //add producto
 agregarProducto(producto: any){
   // return this.http.post(environment.firebaseConfig.databaseURL +'/producto.json', producto);
-  this.db.list('/producto').push(producto);
+  this.db.list<Producto>('/producto').push(producto);
 }
 //update producto
 updateProducto(id: string, producto: any){

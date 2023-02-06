@@ -24,10 +24,12 @@ export class ProductoDetalleComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params.id;
+    console.log("En detalle del producto ID obtenido-. "+id);
     this.productoService.getProductoById(id).subscribe(
       (data) => {
-        const datas = JSON.stringify(data); //convertir a string
-        const datos = JSON.parse(datas); //convertir a objeto
+        console.log("Detalle producto, data obtenida: " + data);
+        // const datas = JSON.stringify(data); //convertir a string
+        const datos = JSON.parse(data); //convertir a objeto
 
         this.productoDetalle.nombre = <string>datos[0].nombre; //asignar el nombre
         this.productoDetalle.id = <string>datos[0].id; //asignar el id
