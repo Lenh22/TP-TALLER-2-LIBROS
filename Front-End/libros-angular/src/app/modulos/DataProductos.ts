@@ -1,3 +1,4 @@
+/*********************Interface ******************/
 export interface ListaProductos {
   autor: string;
   calificacion: number;
@@ -16,7 +17,7 @@ export interface ListaCategoria {
   id: string;
   nombre: string;
 }
-
+/************************Class****************** */
 export class Producto implements ListaProductos {
   autor: string; //
   calificacion: number; //
