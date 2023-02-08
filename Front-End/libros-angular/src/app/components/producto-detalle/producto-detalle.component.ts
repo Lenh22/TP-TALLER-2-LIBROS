@@ -25,33 +25,19 @@ export class ProductoDetalleComponent implements OnInit {
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params.id;
     this.productoService.getProductoById(id).subscribe((datos) => {
-      console.log("Detalles:")
-      console.log(datos[0].nombre, datos[1]);
-        this.productoDetalle = datos;
-      console.log(this.productoDetalle);
-
         // const datas = JSON.stringify(datos); //convertir a string
         // const dat = JSON.parse(datos); //convertir a objeto
-        // console.log("datas en string");
-        // console.log(datas);
-        // console.log("dat en objeto");
-        // console.log(dat);
-        // console.log("Detalle de producto, Datos nombre: " + datos[0]);
-
-        // // this.productoDetalle.nombre = <string>datos[0].nombre; //asignar el nombre
-        // // this.productoDetalle.id = <string>datos[0].id; //asignar el id
-        // // this.productoDetalle.autor = <string>datos[0].autor;
-        // // this.productoDetalle.calificacion = <number>datos[0].calificacion;
-        // // this.productoDetalle.descripcion = <string>datos[0].descripcion; //asignar la altura
-        // // this.productoDetalle.precio = <number>datos[0].precio; //asignar el peso
-        // // this.productoDetalle.imagen = <string>datos[0].imagen; //la imagen
-        // // this.productoDetalle.categoria = <string>datos[0].categoria;
-        // // this.productoDetalle.stock = <number>datos[0].stock;
-        // this.productoDetalle = datos;
-        // // this.productoDetalle.cantidad = <number>datos[0].cantidad;
+        this.productoDetalle.autor = datos[0]; 
+        this.productoDetalle.calificacion = datos[1]; 
+        this.productoDetalle.categoria = datos[2];
+        this.productoDetalle.descripcion = datos[3];
+        this.productoDetalle.descuento = datos[4];
+        this.productoDetalle.id = datos[5]; 
+        this.productoDetalle.imagen = datos[6]; 
+        this.productoDetalle.nombre = datos[7];
+        this.productoDetalle.precio = datos[8];
+        this.productoDetalle.cantidad = datos[9];
         // this.productoDetalle.cantidad = 1;
-        // console.log("Producto detalle:");
-        // console.log(this.productoDetalle);
       },
       (err) => {
         console.log('Error al traer los detalles del producto');
