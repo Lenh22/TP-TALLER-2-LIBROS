@@ -36,11 +36,8 @@ export class ProductoDetalleComponent implements OnInit {
         this.productoDetalle.imagen = datos[6]; 
         this.productoDetalle.nombre = datos[7];
         this.productoDetalle.precio = datos[8];
-        this.productoDetalle.cantidad = datos[9];
-        // this.productoDetalle.cantidad = 1;
-        console.log("los datos: " +datos);
-        console.log(this.productoDetalle);
-        console.log(datos);
+        this.productoDetalle.stock = datos[9];
+        this.productoDetalle.cantidad = 1;
       },
       (err) => { 
         console.log('Error al traer los detalles del producto');
