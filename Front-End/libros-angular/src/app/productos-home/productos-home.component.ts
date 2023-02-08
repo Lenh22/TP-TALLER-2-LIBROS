@@ -32,7 +32,7 @@ export class ProductosHomeComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this.categorias = this.serviciosCategorias.getCategorias();
-    console.log(this.categorias);
+    console.log("categorias: " +this.categorias);
     this.activatedRoute.paramMap.subscribe(() => {
       //cuando cambia un parametro de la URL se ejecuta la funcion
       const id = this.activatedRoute.snapshot.params.id;
