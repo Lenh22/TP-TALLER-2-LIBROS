@@ -31,18 +31,20 @@ export class ProductoDetalleComponent implements OnInit {
         // const datos = JSON.parse(data); //convertir a objeto
         console.log("Detalle de producto, Datos nombre: " + datos.nombre);
 
-        this.productoDetalle.nombre = <string>datos[0].nombre; //asignar el nombre
-        this.productoDetalle.id = <string>datos[0].id; //asignar el id
-        this.productoDetalle.autor = <string>datos[0].autor;
-        this.productoDetalle.calificacion = <number>datos[0].calificacion;
-        this.productoDetalle.descripcion = <string>datos[0].descripcion; //asignar la altura
-        this.productoDetalle.precio = <number>datos[0].precio; //asignar el peso
-        this.productoDetalle.imagen = <string>datos[0].imagen; //la imagen
-        this.productoDetalle.categoria = <string>datos[0].categoria;
-        this.productoDetalle.stock = <number>datos[0].stock;
-        //this.productoDetalle = <any>data;
-        this.productoDetalle.cantidad = <number>datos[0].cantidad;
+        // this.productoDetalle.nombre = <string>datos[0].nombre; //asignar el nombre
+        // this.productoDetalle.id = <string>datos[0].id; //asignar el id
+        // this.productoDetalle.autor = <string>datos[0].autor;
+        // this.productoDetalle.calificacion = <number>datos[0].calificacion;
+        // this.productoDetalle.descripcion = <string>datos[0].descripcion; //asignar la altura
+        // this.productoDetalle.precio = <number>datos[0].precio; //asignar el peso
+        // this.productoDetalle.imagen = <string>datos[0].imagen; //la imagen
+        // this.productoDetalle.categoria = <string>datos[0].categoria;
+        // this.productoDetalle.stock = <number>datos[0].stock;
+        this.productoDetalle = datos;
+        // this.productoDetalle.cantidad = <number>datos[0].cantidad;
         this.productoDetalle.cantidad = 1;
+        console.log("Producto detalle:");
+        console.log(this.productoDetalle);
         // console.log(data);
       },
       (err) => {
