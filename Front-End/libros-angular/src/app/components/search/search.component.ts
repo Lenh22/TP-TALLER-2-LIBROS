@@ -21,7 +21,7 @@ export class SearchComponent implements OnInit {
       this.categorias = data;
     });
   }
-
+ 
   searchProductHeader(search: string) {
     console.log(search);
     this.productoServicio.buscarLibro(search);
