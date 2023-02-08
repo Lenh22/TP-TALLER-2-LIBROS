@@ -17,9 +17,9 @@ export class SearchComponent implements OnInit {
   mensaje: string;
 
   ngOnInit(): void {
-    this.servicioCategorias.getCategorias().subscribe((data) => {
-      this.categorias = data;
-    });
+    // this.servicioCategorias.getCategorias().subscribe((data) => {
+    //   this.categorias = data;
+    // });
   }
  
   searchProductHeader(search: string) {

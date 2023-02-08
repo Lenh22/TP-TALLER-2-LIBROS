@@ -27,17 +27,28 @@ export class ProductoDetalleComponent implements OnInit {
     this.productoService.getProductoById(id).subscribe((datos) => {
         // const datas = JSON.stringify(datos); //convertir a string
         // const dat = JSON.parse(datos); //convertir a objeto
-        this.productoDetalle.autor = datos[0]; 
-        this.productoDetalle.calificacion = datos[1]; 
-        this.productoDetalle.categoria = datos[2];
-        this.productoDetalle.descripcion = datos[3];
-        this.productoDetalle.descuento = datos[4];
-        this.productoDetalle.id = datos[5]; 
-        this.productoDetalle.imagen = datos[6]; 
-        this.productoDetalle.nombre = datos[7];
-        this.productoDetalle.precio = datos[8];
-        this.productoDetalle.cantidad = datos[9];
+        // this.productoDetalle.autor = datos[0]; 
+        // this.productoDetalle.calificacion = datos[1]; 
+        // this.productoDetalle.categoria = datos[2];
+        // this.productoDetalle.descripcion = datos[3];
+        // this.productoDetalle.descuento = datos[4];
+        // this.productoDetalle.id = datos[5]; 
+        // this.productoDetalle.imagen = datos[6]; 
+        // this.productoDetalle.nombre = datos[7];
+        // this.productoDetalle.precio = datos[8];
+        // this.productoDetalle.cantidad = datos[9];
+        this.productoDetalle.autor = "Algunos datos"; 
+        this.productoDetalle.calificacion = 2; 
+        this.productoDetalle.categoria = "Algunos datos";
+        this.productoDetalle.descripcion = "Algunos datos";
+        this.productoDetalle.descuento = 0.5;
+        this.productoDetalle.id = "Algunos datos"; 
+        this.productoDetalle.imagen = "Algunos datos"; 
+        this.productoDetalle.nombre = "Algunos datos";
+        this.productoDetalle.precio = 22222;
+        this.productoDetalle.cantidad = 2;
         // this.productoDetalle.cantidad = 1;
+        console.log("los datos: " +datos);
         console.log(this.productoDetalle);
         console.log(datos);
       },
