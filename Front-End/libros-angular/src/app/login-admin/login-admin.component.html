@@ -1,18 +1,18 @@
-<h1 mat-dialog-title>Hi </h1>
+<h1 mat-dialog-title>Shhhh, solo administradores... </h1>
 <div mat-dialog-content>
   <p>Ingrese su usuario y contraseña</p>
     <form [formGroup]="loginForm">
         <div class="row">
             <div class="col">
-                <input type="text" class="form-control" placeholder="First name" formControlName="usuario" aria-label="First name">
+                <input type="text" class="form-control" placeholder="Nombre" formControlName="usuario" aria-label="First name">
             </div>
             <div class="col">
-                <input type="text" class="form-control" placeholder="Last name" formControlName="contrasenia" aria-label="Last name">
+                <input type="text" class="form-control" placeholder="Contraseña" formControlName="contrasenia" aria-label="Last name">
             </div>
         </div>
     </form>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button class="btn btn-danger" mat-button (click)="onNoClick()">Mejor me voy</button>
   <!-- <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button> -->
 </div>
