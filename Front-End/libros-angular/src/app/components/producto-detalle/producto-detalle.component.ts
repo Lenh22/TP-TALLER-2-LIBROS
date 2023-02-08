@@ -41,7 +41,7 @@ export class ProductoDetalleComponent implements OnInit {
         console.log(this.productoDetalle);
         console.log(datos);
       },
-      (err) => {
+      (err) => { 
         console.log('Error al traer los detalles del producto');
       }
     );
