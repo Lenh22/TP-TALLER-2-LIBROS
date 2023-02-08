@@ -44,7 +44,7 @@ export class ProductoDetalleComponent implements OnInit {
         // this.productoDetalle.cantidad = 1;
         // console.log("Producto detalle:");
         // console.log(this.productoDetalle);
-        console.log(datos[0], datos[1]);
+        console.log(datos[0].nombre, datos[1]);
         this.productoDetalle = datos;
         console.log(this.productoDetalle);
       },
