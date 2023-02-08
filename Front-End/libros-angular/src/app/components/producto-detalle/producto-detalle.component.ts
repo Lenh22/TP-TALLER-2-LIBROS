@@ -25,9 +25,17 @@ export class ProductoDetalleComponent implements OnInit {
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params.id;
     this.productoService.getProductoById(id).subscribe((datos) => {
-        // console.log("Detalle producto, data obtenida: " + datos);
-        // // const datas = JSON.stringify(data); //convertir a string
-        // // const datos = JSON.parse(data); //convertir a objeto
+
+      console.log(datos[0].nombre, datos[1]);
+      this.productoDetalle = datos;
+      console.log(this.productoDetalle);
+
+        const datas = JSON.stringify(datos); //convertir a string
+        const dat = JSON.parse(datos); //convertir a objeto
+        console.log("datas en string");
+        console.log(datas);
+        console.log("dat en objeto");
+        console.log(dat);
         // console.log("Detalle de producto, Datos nombre: " + datos[0]);
 
         // // this.productoDetalle.nombre = <string>datos[0].nombre; //asignar el nombre
@@ -44,9 +52,6 @@ export class ProductoDetalleComponent implements OnInit {
         // this.productoDetalle.cantidad = 1;
         // console.log("Producto detalle:");
         // console.log(this.productoDetalle);
-        console.log(datos[0].nombre, datos[1]);
-        this.productoDetalle = datos;
-        console.log(this.productoDetalle);
       },
       (err) => {
         console.log('Error al traer los detalles del producto');
