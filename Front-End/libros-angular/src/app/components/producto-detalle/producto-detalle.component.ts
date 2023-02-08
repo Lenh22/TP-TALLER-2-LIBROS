@@ -27,7 +27,7 @@ export class ProductoDetalleComponent implements OnInit {
     this.productoService.getProductoById(id).subscribe((datos) => {
 
       console.log(datos[0].nombre, datos[1]);
-      this.productoDetalle = datos;
+        this.productoDetalle = datos;
       console.log(this.productoDetalle);
 
         const datas = JSON.stringify(datos); //convertir a string
