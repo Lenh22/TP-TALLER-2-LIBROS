@@ -9,16 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit {
-  constructor(
-    private servicioCategorias: CategoriaService,
-    private productoServicio: SearchService
-  ) {}
+  categorias: any;
+  constructor(private servicioCategorias: CategoriaService,private productoServicio: SearchService) {}
 
   search: string;
   productosBuscados: ListaProductos[] = [];
   mensaje: string;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.servicioCategorias.getCategorias().subscribe((data) => {
+      this.categorias = data;
+    });
+  }
 
   searchProductHeader(search: string) {
     console.log(search);
@@ -30,4 +32,5 @@ export class SearchComponent implements OnInit {
       this.mensaje = '';
     }
   }
+  
 }
