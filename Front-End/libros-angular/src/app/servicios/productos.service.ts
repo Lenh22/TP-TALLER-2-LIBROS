@@ -42,7 +42,7 @@ export class ProductosService {
    }
 
   getProductoById(id: string): Observable<any> {
-    return this.db.list<Producto>('/producto/' + id).valueChanges();
+    return this.db.list('/producto/' + id).valueChanges();
   }
 
 
