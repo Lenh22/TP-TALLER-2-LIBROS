@@ -11,7 +11,7 @@ import { CarritoService } from 'src/app/servicios/carrito.service';
   styleUrls: ['./producto-detalle.component.css'],
 })
 export class ProductoDetalleComponent implements OnInit {
-  productoDetalle: Producto;
+  productoDetalle: Producto = new Producto();
   cantidad: number[] = [];
   numValue: number = 1;
 
