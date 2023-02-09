@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductosService } from '../servicios/productos.service';
 import { CategoriaService } from '../servicios/categoria.service';
-import { ListaProductos } from '../modulos/DataProductos';
+import { Categoria, ListaProductos } from '../modulos/DataProductos';
 import { CarritoService } from '../servicios/carrito.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 
@@ -14,8 +14,8 @@ const FILTER_PAG_REGEX = /[^0-9]/g;
 export class ProductosHomeComponent implements OnInit {
   @Input() dataCartEntry: any;
   productosNuevos: any;
-  productoCarrito: ListaProductos;
   categorias:any;
+  productoCarrito: ListaProductos;
   loading: boolean;
 
   page: number = 1;
@@ -31,26 +31,35 @@ export class ProductosHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.categorias = this.serviciosCategorias.getCategorias();
-    console.log("categorias: " +this.categorias);
+    this.serviciosCategorias.getCategorias().subscribe(data =>{
+      this.categorias = data;
+    });
     this.activatedRoute.paramMap.subscribe(() => {
-      //cuando cambia un parametro de la URL se ejecuta la funcion
       const id = this.activatedRoute.snapshot.params.id;
-      if (id == null) {
+  
+      if (!id) {
         this.serviciosProductos.productosNuevosHome().subscribe(data => {
+          data.forEach(producto => {
+            this.categorias.forEach((categoria: Categoria) => {
+              if (producto.categoria === categoria.id) {
+                producto.categoria = categoria.nombre;
+              }
+            });
+          });
+
           this.productosNuevos = data;
-          this.loading = false;
         });
       } else {
         console.log('Llego al else de productos porque el ID no es null')
         this.loading = true;
         this.serviciosProductos.getProductsByCategory(id).subscribe(filtrado => {
           this.productosNuevos = filtrado;
-          this.loading = false;
         });
       }
+      this.loading = false;
     });
   }
+  
 
   numSequence(n: number): Array<number> {
     return Array(n);

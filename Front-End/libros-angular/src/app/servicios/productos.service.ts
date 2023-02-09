@@ -29,7 +29,7 @@ export class ProductosService {
   //     })
   //   );
   // }
-  productosNuevosHome():Observable<any>{
+  productosNuevosHome():Observable<Producto[]>{
   //  return this.http.get(environment.firebaseConfig.databaseURL +'/producto.json');
       return this.db.list<Producto>('/producto').valueChanges();
   }
