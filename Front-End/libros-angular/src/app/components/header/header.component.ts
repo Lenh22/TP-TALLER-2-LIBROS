@@ -57,6 +57,7 @@ export class HeaderComponent implements OnInit {
     this.servicioCategorias.getCategorias().subscribe((data) => {
       this.categorias = data;
     });
+    this.userName = JSON.stringify(localStorage.getItem('user'));
   }
 
   onLogin(): void {

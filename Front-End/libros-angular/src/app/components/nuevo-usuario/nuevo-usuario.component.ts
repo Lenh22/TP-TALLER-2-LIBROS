@@ -35,7 +35,7 @@ export class NuevoUsuarioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const url = environment.firebase + 'usuario.json';
+    const url = environment.firebase + '/usuario.json';
     // this.http.get<any>(url).subscribe((data) => {
     //   console.log(data);
     // });
