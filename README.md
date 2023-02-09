@@ -1,5 +1,6 @@
 # El Romano
 **Proyecto integrador de Taller Web 2**
+<a href="https://tp-taller-2-libros.vercel.app/" target="_blank">Haz click aqui para ver la tienda (Falsa) "El Romano"</a>
 
 Es un trabajo grupal universitario; Creacion de una pagina web e-comerce de libros llamado _El Romano_ 
 Contiene el **Back-End** como el **Front-End**
