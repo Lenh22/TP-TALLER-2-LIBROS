@@ -33,8 +33,6 @@ export class FirebaseLoginService {
     public db: AngularFireDatabase,
     private usuarioService : UsuarioService
   ) {
-
-
       this.usuario ={
         userName: "",
         email: "",
@@ -45,12 +43,7 @@ export class FirebaseLoginService {
         id: "",
         rol: "user",
         activo: false,
-
-
-
       }
-
-
   }
 
    
@@ -149,6 +142,7 @@ export class FirebaseLoginService {
           this.user = user?.user?.email;
           
           localStorage.setItem("user", this.apodo);
+          localStorage.setItem("prueba","esto es prueba");
           localStorage.setItem("uid", user?.user?.uid);
          
           if (user) {
@@ -171,6 +165,26 @@ export class FirebaseLoginService {
       });
        
   }
+
+    //traigo User
+    traeUsuario(email: string, contraseña: string){
+      this.usuarioService.traeUser(email, contraseña).subscribe((arg) => {
+        // const datas = JSON.stringify(arg); //convertir a string
+        //   const datos = JSON.parse(datas); //convertir a objeto
+        //   console.log("Traer usuario");
+        //   console.log(datos[0]);
+        //  this.apodo = <string>datos[0].userName; //asignar el nombre
+        //  console.log(this.apodo);
+        if (arg) {
+          console.log("Traer usuario");
+          console.log(arg);
+          this.apodo = arg.nombre;
+          console.log(this.apodo);
+        }
+          return this.apodo;
+      });
+  
+    }
 
   getInfoUser(id: string) {
     const url = environment.firebase + '/usuario/' + id + '.json';
@@ -235,26 +249,9 @@ export class FirebaseLoginService {
   saveDataBaseUser(usuario: Usuario){
     
     this.usuarioService.agregarUsuario(usuario)
-    // .subscribe(
-    //   res =>{
-    //     console.log(res); 
-    //     res.toString();
-    //   });
   }
 
 
 
-  //traigo User
-    traeUsuario(email: string, contraseña: string){
-     
-    this.usuarioService.traeUser(email, contraseña).subscribe((arg) => {
-      const datas = JSON.stringify(arg); //convertir a string
-        const datos = JSON.parse(datas); //convertir a objeto
-      
-       this.apodo = <string>datos[0].userName; //asignar el nombre
-        return this.apodo;
-       
-    });
 
-  }
 }

@@ -27,7 +27,9 @@ import { Producto } from './../../modulos/DataProductos';
 export class HeaderComponent implements OnInit {
   categorias: any;
   categoria: string = 'Categorias';
-  userName: string = JSON.stringify(localStorage.getItem('user'));
+
+  userName: string = JSON.stringify(localStorage.getItem('user')); //nombre del Usuario
+
   formularioLogin = new FormGroup({
     usuario: new FormControl('', Validators.required),
     contrasenia: new FormControl('', Validators.required),

@@ -16,8 +16,6 @@ export class LoginService {
   loginUsuario(datosFormularioLogin: loginSendData) {
     const url = `${environment.firebase}/authenticate`;
     const datos = {email:datosFormularioLogin.usuario,password:datosFormularioLogin.contrasenia};
-    console.log(datosFormularioLogin);
-    console.log(datos);
     
     return this.http
     .post<any>(
