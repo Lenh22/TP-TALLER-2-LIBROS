@@ -34,24 +34,33 @@ export class UsuarioService {
       .pipe(
         switchMap(result => {
           if (result.user) {
-            let userId;
-            // const userId = result.user.uid; /// ************ eL uSER ID no es el que hay que poner en la URL
-            this.db.database.ref('items').orderByChild('email').equalTo(email).once('value')
-            .then(snapshot => {
-              let found = false;
-              snapshot.forEach(childSnapshot => {
-                if (childSnapshot.val().password === password){
-                  console.log(childSnapshot.key);
-                  found = true;
-
-                  userId = childSnapshot.key;
-                }
-              });
-              if (!found) {
-                alert('No se encontró un registro con ese correo electrónico y contraseña.');
-              }
-            });
-            return this.db.object(`/usuario/${userId}`).valueChanges();
+            return from(this.db.database.ref('items')
+              .orderByChild('email')
+              .equalTo(email)
+              .once('value'))
+              .pipe(
+                switchMap(snapshot => {
+                  let found = false;
+                  let userId;
+                  snapshot.forEach(childSnapshot => {
+                    if (childSnapshot.val().password === password){
+                      console.log(childSnapshot.key);
+                      found = true;
+                      userId = childSnapshot.key;
+                    }
+                  });
+                  if (!found) {
+                    alert('No se encontró un registro con ese correo electrónico y contraseña.');
+                    return of(null);
+                  } else {
+                    return this.db.object(`/usuario/${userId}`).valueChanges();
+                  }
+                }),
+                catchError(error => {
+                  console.error(error);
+                  return of(null);
+                })
+              );
           } else {
             console.error('No se ha encontrado un usuario con las credenciales especificadas');
             return of(null);
@@ -63,6 +72,7 @@ export class UsuarioService {
         })
       );
   }
+  
 
  
 
