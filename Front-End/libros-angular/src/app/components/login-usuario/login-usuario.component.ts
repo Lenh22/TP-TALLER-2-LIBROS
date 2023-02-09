@@ -55,7 +55,7 @@ export class LoginUsuarioComponent implements OnInit {
     this.firebaseLogin.loginFirebase(email, password);
     this.closeLogin.nativeElement.click();
     
- this.router.navigate([" "]);
+//  this.router.navigate([" "]); //MOMENTAÑO
        }
   cambiarModal():void{
     this.closeLogin.nativeElement.click();
