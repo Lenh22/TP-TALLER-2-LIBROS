@@ -34,7 +34,23 @@ export class UsuarioService {
       .pipe(
         switchMap(result => {
           if (result.user) {
-            const userId = result.user.uid;
+            let userId;
+            // const userId = result.user.uid; /// ************ eL uSER ID no es el que hay que poner en la URL
+            this.db.database.ref('items').orderByChild('email').equalTo(email).once('value')
+            .then(snapshot => {
+              let found = false;
+              snapshot.forEach(childSnapshot => {
+                if (childSnapshot.val().password === password){
+                  console.log(childSnapshot.key);
+                  found = true;
+
+                  userId = childSnapshot.key;
+                }
+              });
+              if (!found) {
+                alert('No se encontró un registro con ese correo electrónico y contraseña.');
+              }
+            });
             return this.db.object(`/usuario/${userId}`).valueChanges();
           } else {
             console.error('No se ha encontrado un usuario con las credenciales especificadas');

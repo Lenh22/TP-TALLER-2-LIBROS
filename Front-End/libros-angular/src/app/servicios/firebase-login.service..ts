@@ -127,7 +127,7 @@ export class FirebaseLoginService {
     verifyEmail(){
       this.afAuth.currentUser.then(user => user?.sendEmailVerification())
                             .then(()=>{
-                              console.log('Se le ha enviado a su email la confirmacion de registro. Muchas gracias!');
+                              alert('Se le ha enviado a su email la confirmacion de registro. Muchas gracias!');
                               this.router.navigate([''])
                             });
     }
