@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
   categorias: any;
   categoria: string = 'Categorias';
 
-  userName: string = JSON.stringify(localStorage.getItem('user')); //nombre del Usuario
+  emailUser: string; //nombre del Usuario
 
   formularioLogin = new FormGroup({
     usuario: new FormControl('', Validators.required),
@@ -57,12 +57,13 @@ export class HeaderComponent implements OnInit {
     this.servicioCategorias.getCategorias().subscribe((data) => {
       this.categorias = data;
     });
-    this.userName = JSON.stringify(localStorage.getItem('user'));
+    this.emailUser = JSON.stringify(localStorage.getItem('email'));
   }
 
   onLogin(): void {
     const datosFormularioLogin: loginSendData = this.formularioLogin.value;
     this.loginService.loginUsuario(datosFormularioLogin).subscribe((arg) => {
+      console.log("onLogin");
       console.log(arg);
     });
   }
