@@ -53,6 +53,14 @@ export class ProductosHomeComponent implements OnInit {
         console.log('Llego al else de productos porque el ID no es null')
         this.loading = true;
         this.serviciosProductos.getProductsByCategory(id).subscribe(filtrado => {
+          filtrado.forEach(producto => {
+            this.categorias.forEach((categoria: Categoria) => {
+              if (producto.categoria === categoria.id) {
+                producto.categoria = categoria.nombre;
+              }
+            });
+          });
+
           this.productosNuevos = filtrado;
         });
       }

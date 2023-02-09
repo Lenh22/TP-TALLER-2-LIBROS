@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { Producto } from 'src/app/modulos/DataProductos';
+import { Categoria, Producto } from 'src/app/modulos/DataProductos';
 import { ProductosService } from 'src/app/servicios/productos.service';
 import { ListaProductos } from './../../modulos/DataProductos';
 import { CarritoService } from 'src/app/servicios/carrito.service';
+import { CategoriaService } from 'src/app/servicios/categoria.service';
 
 @Component({
   selector: 'app-producto-detalle',
@@ -14,15 +15,20 @@ export class ProductoDetalleComponent implements OnInit {
   productoDetalle: Producto = new Producto();
   cantidad: number[] = [];
   numValue: number = 1;
+  categorias:any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: RouterModule,
     private productoService: ProductosService,
+    private serviciosCategorias:CategoriaService,
     public carritoService: CarritoService
   ) {}
 
   ngOnInit(): void {
+    this.serviciosCategorias.getCategorias().subscribe(data =>{
+      this.categorias = data;
+    });
     const id = this.activatedRoute.snapshot.params.id;
     this.productoService.getProductoById(id).subscribe((datos) => {
         // const datas = JSON.stringify(datos); //convertir a string
@@ -38,6 +44,12 @@ export class ProductoDetalleComponent implements OnInit {
         this.productoDetalle.precio = datos[8];
         this.productoDetalle.stock = datos[9];
         this.productoDetalle.cantidad = 1;
+        
+        this.categorias.forEach((categoria: Categoria) => {
+          if (this.productoDetalle.categoria === categoria.id) {
+            this.productoDetalle.categoria = categoria.nombre;
+          }
+        });
       },
       (err) => { 
         console.log('Error al traer los detalles del producto');
