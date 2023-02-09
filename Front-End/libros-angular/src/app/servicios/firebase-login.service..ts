@@ -134,15 +134,16 @@ export class FirebaseLoginService {
 
   //login
   loginFirebase(email: string, password: string) {
+    console.log('loginFirebase');
     this.traeUsuario(email, password);
     this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((user) => {
         if(user.user?.emailVerified){ //Pregunta si esta verificado el email
           this.user = user?.user?.email;
-          
+          console.log(user);
           localStorage.setItem("user", this.apodo);
-          localStorage.setItem("prueba","esto es prueba");
+          localStorage.setItem("email",user?.user?.email?email:"No hay email");
           localStorage.setItem("uid", user?.user?.uid);
          
           if (user) {
@@ -168,6 +169,7 @@ export class FirebaseLoginService {
 
     //traigo User
     traeUsuario(email: string, contraseña: string){
+      console.log("Traer usuario");
       this.usuarioService.traeUser(email, contraseña).subscribe((arg) => {
         // const datas = JSON.stringify(arg); //convertir a string
         //   const datos = JSON.parse(datas); //convertir a objeto
@@ -176,7 +178,7 @@ export class FirebaseLoginService {
         //  this.apodo = <string>datos[0].userName; //asignar el nombre
         //  console.log(this.apodo);
         if (arg) {
-          console.log("Traer usuario");
+          localStorage.setItem("traerUsuario", JSON.stringify(arg));
           console.log(arg);
           this.apodo = arg.nombre;
           console.log(this.apodo);
@@ -231,6 +233,7 @@ export class FirebaseLoginService {
         //Borro el user y el uid del local Storage
         localStorage.removeItem('user');
         localStorage.removeItem('uid');
+        localStorage.removeItem('email');
         
          
       });

@@ -12,7 +12,6 @@ export class CategoriaService {
   constructor(private http: HttpClient, private db: AngularFireDatabase) {}
 
   getCategorias():Observable<any>{
-    // return this.http.get<any>(environment.URL + '/categoria');
     return this.db.list<Categoria>('/categoria').valueChanges();
   }
 

@@ -51,6 +51,7 @@ export class LoginUsuarioComponent implements OnInit {
   
     const email = this.loginUsuario.value.email;
     const password = this.loginUsuario.value.password;
+    console.log('login-usuario');
     this.firebaseLogin.loginFirebase(email, password);
     this.closeLogin.nativeElement.click();
     
