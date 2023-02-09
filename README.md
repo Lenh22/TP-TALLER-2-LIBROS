@@ -10,6 +10,8 @@ Contiene el **Back-End** como el **Front-End**
 - Contiene **Angular**
 - Estilos con Bootstrap 5
 - Font Awesome
+- Deploy Front End en Vercel
+- Deploy Back End en Firebase
 
 Hay implementaciones como por ejemplo:
 - Logeo / Registro con JWT
@@ -27,4 +29,3 @@ _Participantes:_
 - Eduardo Chilon : https://github.com/eduarchilon
 - Rodrigo Consentino : https://github.com/cosentinowebdev
 - Sofia Soengas: https://github.com/SofiaSoengas
-
