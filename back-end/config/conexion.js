@@ -14,7 +14,7 @@ const connection = mysql.createConnection({
  });
  connection.connect(function(error){
     if(error){
-       throw error;
+       console.warn('MySQL no disponible:', error.message, '- Iniciá MySQL o revisá config en config/conexion.js');
     }else{
        console.log('Conexion correcta.');
     }

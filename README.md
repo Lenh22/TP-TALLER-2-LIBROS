@@ -176,6 +176,34 @@ En producción se usa `environment.prod.ts`; asegúrate de que `api` apunte a tu
 
 ---
 
+## Problemas frecuentes
+
+### El back-end arranca pero dice "MySQL no disponible"
+
+El servidor puede iniciar igual; las rutas que usan la base de datos fallarán hasta que MySQL esté activo.
+
+- **Si querés usar la API con datos reales:** instalá MySQL, creá la base `Libreria` y las tablas, y revisá usuario/contraseña en `back-end/config/conexion.js`.
+- **Si solo querés probar el front:** podés dejar el back sin MySQL; el front también usa MockAPI según la configuración en `environment.ts`.
+
+---
+
+### Error en el front: "digital envelope routines::unsupported"
+
+Con **Node 18 o superior** en tu PC, el build de Angular 12 puede fallar por OpenSSL. En este proyecto los scripts `npm start` y `npm build` ya usan `--openssl-legacy-provider`. Si en otro entorno te sale el error, ejecutá:
+
+```bash
+node --openssl-legacy-provider node_modules/@angular/cli/bin/ng serve
+```
+
+(o `ng build` según lo que estés haciendo).
+
+---
+
+### Vercel: "Invalid or discontinued Node.js Version: 14.x"
+
+Vercel ya no usa Node 14. En el proyecto está configurado Node 24 (`.nvmrc` y `engines` en `package.json` del front). Asegurate de que en Vercel el **Root Directory** sea `Front-End/libros-angular` para que tome esa configuración.
+
+
 ## Despliegue
 
 - **Front-End:** Vercel — [https://tp-taller-2-libros.vercel.app/](https://tp-taller-2-libros.vercel.app/)
