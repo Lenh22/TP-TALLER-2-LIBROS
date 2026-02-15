@@ -90,7 +90,7 @@ TP-TALLER-2-LIBROS/
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/<tu-usuario>/TP-TALLER-2-LIBROS.git
+git clone https://github.com/Lenh22/TP-TALLER-2-LIBROS.git
 cd TP-TALLER-2-LIBROS
 ```
 
