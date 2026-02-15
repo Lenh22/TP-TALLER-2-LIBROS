@@ -157,7 +157,7 @@ En producción se usa `environment.prod.ts`; asegúrate de que `api` apunte a tu
 
 ---
 
-## Scripts útiles
+## Scripts útiles 
 
 ### Back-End (`back-end/`)
 
